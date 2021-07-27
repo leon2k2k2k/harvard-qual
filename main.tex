@@ -1,0 +1,71 @@
+\documentclass[11pt]{article}
+
+%%%%%%%%%%%Packages%%%%%%%%%%%%
+
+\usepackage[utf8]{inputenc}%%<- This introduces a bunch of symbols.
+\usepackage{comment}%<- this allows you to do multi-line of comments
+\usepackage{indentfirst}%<- This requires the first paragraph to be indented.
+\usepackage{amsthm}%<- Introduces unnumbered theorem environment for remark, comments, etc.
+\usepackage{amscd} %% commutative diagrams
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{amsmath}%<- gives you flexibility in math display mode
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{matrix,arrows}
+\usepackage{tikz-cd}%% for commutative diagrams.
+\usepackage{mathtools}
+\usepackage{mathalfa}
+\usepackage[colorinlistoftodos]{todonotes}  %%<- this creates to-do notes.
+\usepackage{subfiles} %% Give ability to use subfiles.
+\usepackage{upgreek} %% gives \uptau
+\usepackage{mathtools} %% gives \xrightarrow 
+\usepackage{adjustbox}
+\usepackage{hyperref} %% make references clickable
+\usepackage{cleveref}
+%\usepackage{autonum} %%makes equations auto-numbered.
+\usepackage[mathscr]{eucal}
+\usepackage{biblatex}
+\addbibresource{bib.bib}
+\usepackage{xr} 
+\usepackage{graphicx} %package to manage images
+\graphicspath{ {./images/} }
+
+
+
+%%%%%%%%%equation counting%%%%%%%%%%%%%
+
+\numberwithin{equation}{subsection}%Numbering of equation restarts on each section.
+
+%%%%%%%%%%%Environments%%%%%%%%%%%%%%
+\newtheorem{theorem}[equation]{Theorem}
+\newtheorem*{theorem-non}{Theorem} %% no numbering
+\newtheorem{lemma}[equation]{Lemma}
+\newtheorem{proposition}[equation]{Proposition}
+\newtheorem{corollary}[equation]{Corollary}
+%%%%%%%%%%%%%%%%%
+\theoremstyle{definition}
+\newtheorem{definition}[equation]{Definition}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%
+\theoremstyle{remark}
+\newtheorem{remark}[equation]{Remark}
+\newtheorem{example}[equation]{Example}
+\newtheorem{construction}[equation]{Construction}
+
+
+
+\title{Quals}
+\author{Leon Liu }
+\date{July 2021}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+This is Leon's preparation notes for quals.
+\end{document}
+

@@ -1,0 +1,157 @@
+\documentclass[main.tex]{subfiles}
+\usepackage[utf8]{inputenc}
+
+\title{DG}
+\date{July 2021}
+
+\begin{document}
+
+\maketitle
+
+
+%%%%%%%%%%%%%%%%%%%%
+\section{Overview}
+There is a lot of equation and stuff to remember for DG. A lot of connection stuff, but I think (thankfully) no gauge theory.
+
+%%%%%%%%%%%%%%%%%%%%
+\section{Connection and curvature}
+
+
+\begin{definition}
+A connection $\nabla$ on a vector bundle $E$ on a manifold $M$ is a linear map 
+$$
+\nabla: \Gamma(M, E) \rightarrow \Gamma(M, \Omega^1(M) \otimes E )
+$$
+satisfying the Leibniz rule:
+$$
+\nabla(f s) = f \nabla(s) + df \otimes s
+$$
+where $f \in C^{\infty}M$ and $s \in \Gamma(M)$. Given $X \in \Gamma(M)$, we can define 
+$\nabla_X(s) \coloneqq \nabla(s) (\mu)$. Note that this is $C^{\infty}M$-linear in $X$, that is, $\nabla_{fX}(s) = f \nabla_{X}(s)$
+\end{definition}
+
+Naturally, if I have a connection $\nabla$ on $p: E \rightarrow M$, and a map $f : N \rightarrow M$, then we get pullback connection $f^*\nable$ on $f^*E \rightarrow N$.
+
+In local coordinates, we have basis $s_j$ for $E$ and $dx^i$ for $T^*M$, then we have 
+$$
+\nabla(s_j) = \Gamma_{ij}^k dx^i \otimes s_k
+$$
+Equivalently, 
+$$
+\nabla_{\partial_i} s_j = \Gamma_{ij}^k s_k
+$$
+$\Gamma_{ij}^k$ are called the Christoffel symbols. From this and Leibnitz rule we can determine the formula for any local section.
+Given a covariant derivative $\nabla$ on $E$, we can extend $d_\nabla: \Gamma(M, \Omega^i(M) \otimes E) \rightarrow \Gamma(M, \Omega^{i+1}(M) \otimes E)$. We also get connection on tensors, direct sums, and duals of a vector bundle.
+
+%%%%%%%%%%%%%%
+\subsection{curvature}
+
+\todo[inline]{Mean curvature, scalar curvature etc, Ricci curvature, the symmetry of the Riemann curvature tensor}
+From this, we can define the curvature of a connection:
+
+\begin{definition}
+Given a connection $\nabla$ on $E$, we have the curvature:
+$$
+R(\mu, \nu) s  \coloneqq \nabla_{\mu} \nabla_{\nu} s - \nabla_{\nu} \nabla_{\mu} s  - \nabla_{[\mu, \nu]} s
+$$
+In fact, $R: \Gamma(E) \rightarrow \Gamma(\Omega^2(M) \otimes E)$ is precisely $d_\nabla ^2$. It is in fact a tensor (that is it is linear in $\mu, \nu$ and $s$.
+
+A connection is flat if its curvature is 0. Thus gives local systems on the manifold.
+\end{definition}
+
+The most interesting connections are the ones on the tangent bundle, which is what we called a connection on a manifold.
+
+\begin{definition}Given a connection $\nabla$ on $M$ ($TM$), then its torsion tensor is 
+$$
+T(X,Y) \coloneqq \nabla_X(Y) - \nabla_Y(X) - [X,Y]
+$$
+It can be shown that this is a tensor ($C^{\infty}M$-linear) and ofc anti-symmetric.
+\end{definition}
+
+In local coordinates and Christoffel symbols, this means that 
+$$
+\Gamma_{ij}^k = \Gamma_{ji}^k
+$$
+%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Parallel transport}
+Given a bundle $E$ over the interval $[0,1] \in \mathbb{R}$, together with a connection $\nabla$. At any point $v \in E|_0$, there exists a unique section $s_v : [0,1] \rightarrow E$ with starting point $v$ such that $\nabla_{\partial_x} s_v = 0$.
+
+Locally, write a basis for $E$ with $s_v$ being an basis element (ofc, when $s_v$ is nonzero), and we have Christoffel symbol:
+$$
+\nabla_{\partial_x} s_i = \Gamma_{i}^k s_k
+$$
+By the fundamental theorem of ODE, we see that this has a unique solution that exists for all $x \in [0,1]$.
+
+Thus given a connection $\nabla$ on $E \rightarrow M$, and a path $\gamma: [0,1] \rightarrow M$, then we get a parallel transport map: $E|_{\gamma(0)} \rightarrow E|_{\gamma(1)} $. Ofc this is compatible with concatenation. Moreover, the difference between how infinitesimally small path give different parallel transport is precisely measure by the curvature. So when the curvature vanishes, then any two homotopic smooth paths gives the same transport, and we get a local system. Another way to put it is that we have local flat sections, over a local neighborhood, not just a path.
+
+%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Geodesics}
+Given a connection $\nabla$ on (the tangent space of) manifold $M$. Given any path $\gamma: [0,1] \rightarrow M$, we can ask for the following
+$$
+\nabla_{\dot{\gamma}} \dot{\gamma} = 0
+$$
+In coordinates, where $t$ is the coordinate of the interval, and $x^i$ are the local coordinates of the manifold, we have the geodesic equations:
+$$
+\frac{d^2 x^k}{dt ^2} + \Gamma_{ij}^k \frac{dx^i}{dt} \frac{dx^j}{dt} = 0
+$$
+Note that this is $n$ 2nd order ODE in $n$ variables, and the existence and uniqueness theorem tells us that there exists locally a unique solution, determined by the starting point as well as the velocity. That is, given any $p \in M$ and $v \in T_p M$, there is locally a unique geodesic going through $p$ with velocity $v$.
+%%%%%%%%%%%%%%%%%%%%
+\section{Riemannian Geometry: General Theory}
+Let $(M, g)$ be a Riemannian manifold, then we have an inner product 
+$(-,-)$ on $T_p M$ for every point $p \in M$.
+
+
+Given a Riemnnian metric $g$ on a vector bundle $E$, a connection $\nabla$ on $E$ is compatible with the metric if $\nabla g = 0$. In formula, this means that for any $X \in TM$, $s, t$ sections of $E$, we have 
+$$
+d(s,t) = (\nabla s, t) + (s, \nabla t)
+$$
+
+\begin{definition}
+There is a unique torsion-free, compatible connection $\nabla$ associated to $g$, called the Levi-Civita connection.
+\end{definition}
+In local coordinates, 
+$$
+\Gamma_{ij}^k = \frac{1}{2} g^{kl}(\partial_i g_{jl} + \partial_j g_{il} - \partial_l g_{ij})
+$$
+
+%%%%%%%%%%%%%%%%%%%%
+\section{Riemannian Geometry: Submanifolds}
+
+Given an immersion of manifold $i: N \rightarrow M$, then a Riemannian metric $g$ on $M$ pullback to a Riemannian metric $g'$ on $N$. However, we can define the Levi-Civita connection
+$\nabla'$ on $N$ more easily:
+\begin{lemma}
+$\nabla'_{\mu} \nu = pr (\nabla_{\mu} \nu)$, where the projection is $TM \rightarrow TN$ using the metric $g$ on $M$. 
+\end{lemma}
+
+We can also project down to the normal bundle:
+\begin{definition}
+$II: TN \times TN \rightarrow N$ is defined as $II(X, Y) \coloneqq (\nabla_{X} Y)^\perp$, where $\perp$ is the projection $TM \rightarrow N$, where $N$ is the normal bundle. This is symmetric because the Levi-Civita connection is torsion-free (and the lie bracket of two tangent vector field that lies on a submanifold stays on the submanifold).
+Given $\mathfrak{n} \in N$, then we get a pairing $II_\mathfrak{n}: TN \times TN \rightarrow \mathbb{R}$ given by 
+$$
+X, Y \mapsto (\nabla_{X} Y, \mathfrak{n}) = - (\nabla_{X} \mathfrak{n}, Y)
+$$
+Note that the equation is by the compatibility of $\nabla$ with $g$ as well as the fact that $(Y, \mathfrak{n}) = 0$ as $\mathfrak{n}$ is normal.
+
+Dually, we have the shape operator associated to $\mathfrak{n}$: 
+\begin{align*}
+S_{\mathfrak{n}}: TN &\rightarrow TN \\ 
+X  \mapsto & - (\nabla_{X} \mathfrak{n}) 
+\end{align*}
+\end{definition}
+One can check that $\nabla_{X} \mathfrak{n}$ lies on the tangent space of $M$
+
+As the shape operator is symmetric (with respect to the Riemannian inner product of $N$), its eigenvalues are all real, and they are all orthogonal, no generalize eigenspaces. Thus there are eigenvalues and eigensubspaces of $S$. The eigenvalues are called the principal curvatures and the tangent vector there curve in circle around the normal vector.
+
+\section{Riemannian Geometry: Surfaces in $\mathbb{R}^3$}
+\todo[inline]{There is a lot of classical theory here: computation of second fundamental form, Curvature, principal curvature, Gaussian curvature, mean curvature, scalar curvature lol. Shape operator, Gauss map.}
+
+Let $S \subset \mathbb{R}^3$ be an embedded smooth surface, and $\mathfrak{n}$ a normal vector (this implicitly assumed a co-orientation of $S$, equivalently, an orientation of $S$, since $\mathbb{R}^3$ is oriented).
+
+Since there is a canonical choice of normal vector, we get the second fundamental form. At any point $p$, the shape has two (not necessarily distinct) eigenvalues, $k1$ and $k2$, and they are the maximal point of the curvature of the normal planes intersecting with the curve. The Gaussian curvature $K \coloneqq k_1 k_2$. It is the determinant of the shape operator, equivalently, in any coordinate, 
+$$
+K = \frac{det II}{det I}
+$$
+
+Question: what is the Riemann curvature tensor on a surface, how is it related to Gaussian curvature.
+
+\end{document}
