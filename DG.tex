@@ -44,7 +44,7 @@ $\Gamma_{ij}^k$ are called the Christoffel symbols. From this and Leibnitz rule 
 Given a covariant derivative $\nabla$ on $E$, we can extend $d_\nabla: \Gamma(M, \Omega^i(M) \otimes E) \rightarrow \Gamma(M, \Omega^{i+1}(M) \otimes E)$. We also get connection on tensors, direct sums, and duals of a vector bundle.
 
 %%%%%%%%%%%%%%
-\subsection{curvature}
+\subsection{Curvature}
 
 \todo[inline]{Mean curvature, scalar curvature etc, Ricci curvature, the symmetry of the Riemann curvature tensor}
 From this, we can define the curvature of a connection:
@@ -54,11 +54,20 @@ Given a connection $\nabla$ on $E$, we have the curvature:
 $$
 R(\mu, \nu) s  \coloneqq \nabla_{\mu} \nabla_{\nu} s - \nabla_{\nu} \nabla_{\mu} s  - \nabla_{[\mu, \nu]} s
 $$
-In fact, $R: \Gamma(E) \rightarrow \Gamma(\Omega^2(M) \otimes E)$ is precisely $d_\nabla ^2$. It is in fact a tensor (that is it is linear in $\mu, \nu$ and $s$.
+In fact, $R: \Gamma(E) \rightarrow \Gamma(\Omega^2(M) \otimes E)$ is precisely $d_\nabla ^2$. It is in fact a tensor (that is it is linear in $\mu, \nu$ and $s$).
+
+In coordinates, 
+$$
+R^l _{k, i, j} = dx^l (R(\partial_i, \partial_j) \partial_k) = \partial_i \Gamma_{jk}^l - \partial_j \Gamma_{ik}^l + \Gamma_{im}^l \ \Gamma_{jk}^m   -  \Gamma_{jm}^l \  \Gamma_{ik}^m 
+$$
+
+
 
 A connection is flat if its curvature is 0. Thus gives local systems on the manifold.
 \end{definition}
 
+
+\subsection{Torsion}
 The most interesting connections are the ones on the tangent bundle, which is what we called a connection on a manifold.
 
 \begin{definition}Given a connection $\nabla$ on $M$ ($TM$), then its torsion tensor is 
@@ -73,7 +82,7 @@ $$
 \Gamma_{ij}^k = \Gamma_{ji}^k
 $$
 %%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Parallel transport}
+\subsection{Parallel Transport}
 Given a bundle $E$ over the interval $[0,1] \in \mathbb{R}$, together with a connection $\nabla$. At any point $v \in E|_0$, there exists a unique section $s_v : [0,1] \rightarrow E$ with starting point $v$ such that $\nabla_{\partial_x} s_v = 0$.
 
 Locally, write a basis for $E$ with $s_v$ being an basis element (ofc, when $s_v$ is nonzero), and we have Christoffel symbol:
@@ -98,8 +107,7 @@ Note that this is $n$ 2nd order ODE in $n$ variables, and the existence and uniq
 %%%%%%%%%%%%%%%%%%%%
 \section{Riemannian Geometry: General Theory}
 Let $(M, g)$ be a Riemannian manifold, then we have an inner product 
-$(-,-)$ on $T_p M$ for every point $p \in M$.
-
+$(-,-)$ on $T_p M$ for every point $p \in M$. This identifies vectors with covectors, and gives us a way to turn $(i, j)$ tensors to $(i-1, j+1)$ tensors and vice versa. This is the raising and lowering of indicies.
 
 Given a Riemnnian metric $g$ on a vector bundle $E$, a connection $\nabla$ on $E$ is compatible with the metric if $\nabla g = 0$. In formula, this means that for any $X \in TM$, $s, t$ sections of $E$, we have 
 $$
@@ -113,6 +121,28 @@ In local coordinates,
 $$
 \Gamma_{ij}^k = \frac{1}{2} g^{kl}(\partial_i g_{jl} + \partial_j g_{il} - \partial_l g_{ij})
 $$
+
+\subsection{Curvature of Riemannian manifolds}
+Recall that we have the curvature tensor $R_{ijk}^l$. We can also lower the $l$ to get the tensor $R_{ijkl}$. This tensor has a lot of symmetries:
+$$
+R_{ijkl} = R_{klij}, R_{ijkl} = -R_{jikl} (R_{ijkl} = - R_{ijlk}), R_{ijkl} + R_{iljk} + R_{iljk} = 0
+$$
+In dimension $n$, it has 
+$$
+\frac{n^2 (n^2 - 1)}{12}
+$$
+components.
+Taking trace gives us the Ricci curvature:
+\begin{definition}
+The Ricci curvature tensor is 
+$$
+R_{jk} = R^i _{kij}
+$$
+It is symmetric in j and k. 
+\end{definition}
+
+Taking trace once more, we get the scalar curvature
+$S = R^j _j = g^{ij} R_{ij}$.
 
 %%%%%%%%%%%%%%%%%%%%
 \section{Riemannian Geometry: Submanifolds}
@@ -138,6 +168,11 @@ S_{\mathfrak{n}}: TN &\rightarrow TN \\
 X  \mapsto & - (\nabla_{X} \mathfrak{n}) 
 \end{align*}
 \end{definition}
+
+In coordinates, we have 
+$$
+S^i _j =  II^{ik} g_{kj}
+$$
 One can check that $\nabla_{X} \mathfrak{n}$ lies on the tangent space of $M$
 
 As the shape operator is symmetric (with respect to the Riemannian inner product of $N$), its eigenvalues are all real, and they are all orthogonal, no generalize eigenspaces. Thus there are eigenvalues and eigensubspaces of $S$. The eigenvalues are called the principal curvatures and the tangent vector there curve in circle around the normal vector.
@@ -149,9 +184,34 @@ Let $S \subset \mathbb{R}^3$ be an embedded smooth surface, and $\mathfrak{n}$ a
 
 Since there is a canonical choice of normal vector, we get the second fundamental form. At any point $p$, the shape has two (not necessarily distinct) eigenvalues, $k1$ and $k2$, and they are the maximal point of the curvature of the normal planes intersecting with the curve. The Gaussian curvature $K \coloneqq k_1 k_2$. It is the determinant of the shape operator, equivalently, in any coordinate, 
 $$
-K = \frac{det II}{det I}
+K = det S = \frac{det II}{det I}
 $$
 
-Question: what is the Riemann curvature tensor on a surface, how is it related to Gaussian curvature.
+The mean curvature is $k_1 + k_2$ and it is the trace of the shape operator:
+$$
+H = tr(S) = g_{ij} II^{ij}
+$$
 
+For the Euclidean space $\mathbb{R}^n$ with its standard coordinates $x^i$, the covariant derivative is simply taking derivative, that is, all the Christoffel symbol are all zero.
+
+In three dimensions, there are vector calculus calculations we can use, namely the cross product. Given a parametrized surface $\Phi: U \rightarrow \mathbb{R}^3$, to find the normal vector, we take two independent local vector field $\mu$, $\nu$ on $U$, then we $\Phi_* {\mu}$ and $\Phi_* \nu$ spans the tangent spaces of the surfaces, and the cross product $\Phi_* \mu \times \Phi_* \nu$ is perpendicular to both, those spans the normal line bundle. Therefore 
+$$
+\mathfrak{n} \coloneqq \frac{\Phi_* \mu \times \Phi_* \nu}{|\Phi_* \mu \times \Phi_* \nu|}
+$$
+is a unit length normal vector. 
+
+\subsection{Curvature in 2 space}
+
+In two dimensions, the Riemann curvature tensor only have 1 degree of freedom and is determined by 
+$R^1 _{212}$. 
+\todo[inline]{
+Question: what is the Riemann curvature tensor on a surface, how is it related to Gaussian curvature.}
+
+
+\todo[inline]{Orthonormal frame and Cartan's structure equation, also using the connection 1-form $\omega$}
+
+
+
+\section{Calculus of differential forms}
+\todo[inline]{Cartan's magic formula}
 \end{document}
