@@ -159,6 +159,9 @@ $$
 Given a 1-form $\alpha$, its covariant derivative $\nabla \alpha$ is the dual of $\nabla V_\alpha$, where $V_\alpha$ is the dual of $\alpha$.
 \end{remark}
 
+\begin{remark}
+On a Riemannian manifold $M$, the holonomy around a loop $C$ is the parallel transport of the tangent vector around the loop.
+\end{remark}
 
 \subsection{Curvature of Riemannian manifolds}
 Recall that we have the curvature tensor $R_{ijk}^l$. We can also lower the $l$ to get the tensor $R_{ijkl}$. This tensor has a lot of symmetries:
@@ -199,6 +202,18 @@ $$
 X, Y \mapsto (\nabla_{X} Y, \mathfrak{n}) = - (\nabla_{X} \mathfrak{n}, Y)
 $$
 Note that the equation is by the compatibility of $\nabla$ with $g$ as well as the fact that $(Y, \mathfrak{n}) = 0$ as $\mathfrak{n}$ is normal.
+
+The compatibility conditions implies that 
+$\nabla_X v$ is perpedicular to $v$ when $v$ is unit lenghth. Thus the holonomy are in $SO(T_pM)$. 
+
+Here's some equivalent definition for $\nabla$ to be compatible with $g$:
+\begin{enumerate}
+    \item $\nabla g = 0$.
+    \item the pairing $(-,-): TM \times TM \rightarrow \underline{\mathbb{R}}$ is map of bundles with connections.
+    \item the iso $TM \iso T^*M$ arising from $g$ is a map of bundles with connections.
+\end{enumerate}
+
+Note the last one tells us how to compute covariant derivative for 1-forms: just dualize.
 
 Dually, we have the shape operator associated to $\mathfrak{n}$: 
 \begin{align*}
@@ -305,6 +320,9 @@ $$
 S = 2K
 $$
 
+\begin{remark}
+Note that holonomies of loops on a surface are rotations as $SO(2) = U(1)$.
+\end{remark}
 \subsection{Gauss-Bonnet, Theorem-Egrenium}
 \todo[inline]{State those theorem, at least know the proof of Theorem-Egrenium, and how does Guass-Bonnet relate to the first chern class of the tangent bundle?}
 
@@ -318,6 +336,18 @@ On the other hand, the Gauss-Bonnet theorem says that the integral of the Gaussi
 $$
 \int_S K dA = 2 \pi \chi(M)
 $$
+
+It has an extension to compact Riemannian manifold $S$ with boundary:
+$$
+\int_S K dA + \int_{\partial S}k_g ds = 2\pi \chi(M)
+$$
+where $k_g$ is the geodesic curvature of the boundary of $S$ (as a curve in $S$).
+
+Given a curve $\gamma$, then 
+$$
+\delta_\dot{\gamma} \dot{\gamma}
+$$
+is the normal vector of the curve. In dimension 2, this is a multiple of the normal vector, thus we get a scalar $k_g$.
 
 \subsection{Orthonormal method to compute curvature of surfaces}
 This is a standard method for computing curvature in 2-dimensions. First we take a orthonormal coframe $\theta^i$ and the dual frame $\theta_i$. We have the connection 2-form $\omega_j ^k$. From above, we have that 
@@ -372,4 +402,25 @@ $$
 There is a formula expressing $d\omega$ as evaluation of $\omega$ and lie brackets.
 Using the Cartan's magic formula as well as expanding $\mathcal{L}_X$ on pairings of vectors and covectors.
 
+\section{Standard Coordinates}
+The polar coordinates on $\mathbb{R}^2 - {0}$:
+$$
+x = r cos \theta, y = r sin \theta
+$$
+. The standard metric becomes 
+$$
+ds^2 = dr^2 + r^2 d\theta^2
+$$
+with $r \in \mathbb{R}^{>0}$ and $\theta \in [0,2\pi)$
+The spherical coordinate on $S^2$ is 
+$$
+x = cos \phi \ sin \theta, 
+y = sin \phi \ sin \theta, 
+z = cos \theta 
+$$
+with $\phi \in [0,2\pi)$ and $\theta \in (0, \pi)$
+the sphere metric becomes 
+$$
+ds^2 = d\theta^2 + sin^2 \theta \ d\phi^2
+$$
 \end{document}
