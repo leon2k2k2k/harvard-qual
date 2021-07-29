@@ -40,8 +40,38 @@ Equivalently,
 $$
 \nabla_{\partial_i} s_j = \Gamma_{ij}^k s_k
 $$
-$\Gamma_{ij}^k$ are called the Christoffel symbols. From this and Leibnitz rule we can determine the formula for any local section.
-Given a covariant derivative $\nabla$ on $E$, we can extend $d_\nabla: \Gamma(M, \Omega^i(M) \otimes E) \rightarrow \Gamma(M, \Omega^{i+1}(M) \otimes E)$. We also get connection on tensors, direct sums, and duals of a vector bundle.
+$\Gamma_{ij}^k$ are called the Christoffel symbols.
+
+Alternatively, one can write
+$$
+\omega(s_j) = \omega_j ^k s_k
+$$
+where $\omega_j ^k = \Gamma_{ij}^k dx^i$ are connection 1-forms.
+
+From this and Leibnitz rule we can determine the formula for any local section.
+Given a covariant derivative $\nabla$ on $E$, we can extend $d_\nabla: \Gamma(M, \Omega^i(M) \otimes E) \rightarrow \Gamma(M, \Omega^{i+1}(M) \otimes E)$. 
+
+We also get connection on tensors, direct sums, and duals of a vector bundle:
+\begin{construction}
+Given $(E, \nabla')$, $(F, \nabla'')$, we get a connection $\nabla$ on $E \sum F$ as follows:
+$$
+\nabla(s, t) = (\nabla' s, \nabla'' t)
+$$
+
+Similarly, we have connection $\nabla$ on $E \otimes F$:
+$$
+\nabla s\otimes t = \nabla's \otimes t + s \otimes \nabla'' t
+$$
+
+The formula on the symmetric and exterior powers are the same.
+
+lastly, there is a connection on the dual, defined by:
+$$
+\nabla \alpha (s) \coloneqq d (\alpha(s)) -  \alpha (\nabla' s) 
+$$
+This is uniquely determined by making the pairing map $(E \otimes E^*, \nabla' \otimes \nabla) \rightarrow (\underline{\mathbb{R}}, d)$ a map of bundles with connections (that is, taking connection commutes).
+\end{construction}
+
 
 %%%%%%%%%%%%%%
 \subsection{Curvature}
@@ -61,7 +91,11 @@ $$
 R^l _{k, i, j} = dx^l (R(\partial_i, \partial_j) \partial_k) = \partial_i \Gamma_{jk}^l - \partial_j \Gamma_{ik}^l + \Gamma_{im}^l \ \Gamma_{jk}^m   -  \Gamma_{jm}^l \  \Gamma_{ik}^m 
 $$
 
-
+Using connection 1-forms $\omega$, we have 
+$$
+R \coloneqq d\omega + \omega \wedge \omega
+$$
+Note $\omega \wedge \omega$ does matrix multiplication on the $(k,l)$ components. 
 
 A connection is flat if its curvature is 0. Thus gives local systems on the manifold.
 \end{definition}
@@ -121,6 +155,10 @@ In local coordinates,
 $$
 \Gamma_{ij}^k = \frac{1}{2} g^{kl}(\partial_i g_{jl} + \partial_j g_{il} - \partial_l g_{ij})
 $$
+\begin{remark}
+Given a 1-form $\alpha$, its covariant derivative $\nabla \alpha$ is the dual of $\nabla V_\alpha$, where $V_\alpha$ is the dual of $\alpha$.
+\end{remark}
+
 
 \subsection{Curvature of Riemannian manifolds}
 Recall that we have the curvature tensor $R_{ijk}^l$. We can also lower the $l$ to get the tensor $R_{ijkl}$. This tensor has a lot of symmetries:
@@ -145,7 +183,7 @@ Taking trace once more, we get the scalar curvature
 $S = R^j _j = g^{ij} R_{ij}$.
 
 %%%%%%%%%%%%%%%%%%%%
-\section{Riemannian Geometry: Submanifolds}
+\subsection{Riemannian Geometry: Submanifolds}
 
 Given an immersion of manifold $i: N \rightarrow M$, then a Riemannian metric $g$ on $M$ pullback to a Riemannian metric $g'$ on $N$. However, we can define the Levi-Civita connection
 $\nabla'$ on $N$ more easily:
@@ -177,8 +215,31 @@ One can check that $\nabla_{X} \mathfrak{n}$ lies on the tangent space of $M$
 
 As the shape operator is symmetric (with respect to the Riemannian inner product of $N$), its eigenvalues are all real, and they are all orthogonal, no generalize eigenspaces. Thus there are eigenvalues and eigensubspaces of $S$. The eigenvalues are called the principal curvatures and the tangent vector there curve in circle around the normal vector.
 
+\subsection{Geodesics in a Riemannian manifold}
+Given a Riemann manifold $(M, g)$, since it has a Levi-Civita connection, thus we can ask for geodesics. But in fact there is a more direct interpretation (and use more often for quals), which is using the Lagrangian formulism.
+
+Given any path $\gamma: [0,1] \rightarrow M$, we have the following functional 
+$$
+\mathcal{L} \coloneqq \int_{[0,1]} g_{ab} \dot{\gamma^a} \dot{\gamma b}
+$$, this is a form of length (or energy) of the path.
+
+whose Euler Lagrange equation is precisely the geodesic equation. 
+
+Recall the Euler-Lagrange equation, whose solution are the local extrema of the variation problem is given by 
+$$
+\frac{\partial \mathcal{L}}{\partial x^i} - \frac{d}{dt} \frac{\partial \mathcal{L}}{\partial \dot{x^i}} = 0
+$$
+
+\subsection{Covariant derivative in Orthogonal frames}
+
+On a Riemannian manifold $(M, g)$, given an orthogonal frame $theta_i$ and coframe $\theta^i$, we would like to calculate the covariant derivative (Christoffel symbols) of the Levi-Civita connection $\nabla$ from the frame. Using torsion-free and compatibility property.
+
+\todo[inline]{Orthonormal frame and Cartan's structure equation, also using the connection 1-form $\omega$}
+
+
+
 \section{Riemannian Geometry: Surfaces in $\mathbb{R}^3$}
-\todo[inline]{There is a lot of classical theory here: computation of second fundamental form, Curvature, principal curvature, Gaussian curvature, mean curvature, scalar curvature lol. Shape operator, Gauss map.}
+\todo[inline]{Gauss map, interpreting the curvature from the Gauss map, Gauss-Bonnet theorem.}
 
 Let $S \subset \mathbb{R}^3$ be an embedded smooth surface, and $\mathfrak{n}$ a normal vector (this implicitly assumed a co-orientation of $S$, equivalently, an orientation of $S$, since $\mathbb{R}^3$ is oriented).
 
@@ -204,11 +265,28 @@ is a unit length normal vector.
 
 In two dimensions, the Riemann curvature tensor only have 1 degree of freedom and is determined by 
 $R^1 _{212}$. 
+
+The relationship between Riemann curvature and Gaussian curvature is as follows:
+$$
+R_{1212} = det(g) K
+$$
+Thus in with orthonormal frames they are the same. Coordinate independently, we have 
+$$
+R_{klij} = K (g_{ki}g_{lj} - g_{kj}g_{lj})
+$$
+and multiple with $g^{ki}$, we get 
+$$
+Ric_{lj} = K g_{lj}
+$$
+Multiple with $g^{lj}$, we get that the scalar curvature:
+$$
+S = 2K
+$$
+
+
 \todo[inline]{
 Question: what is the Riemann curvature tensor on a surface, how is it related to Gaussian curvature.}
 
-
-\todo[inline]{Orthonormal frame and Cartan's structure equation, also using the connection 1-form $\omega$}
 
 
 
