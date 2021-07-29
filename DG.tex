@@ -308,6 +308,41 @@ $$
 \subsection{Gauss-Bonnet, Theorem-Egrenium}
 \todo[inline]{State those theorem, at least know the proof of Theorem-Egrenium, and how does Guass-Bonnet relate to the first chern class of the tangent bundle?}
 
+Given a surface $S \subset \mathbb{R}^3$, Theorem Egregium relates the Gaussian curvature, an external curvature invariant, with the Riemann curvature tensor coefficients (or the scalar curvature). It says that 
+$$
+K = R(X, Y) X Y
+$$
+for $X, Y$ local orthonormal vector fields. 
+
+On the other hand, the Gauss-Bonnet theorem says that the integral of the Gaussian curvature is a topological invariant:
+$$
+\int_S K dA = 2 \pi \chi(M)
+$$
+
+\subsection{Orthonormal method to compute curvature of surfaces}
+This is a standard method for computing curvature in 2-dimensions. First we take a orthonormal coframe $\theta^i$ and the dual frame $\theta_i$. We have the connection 2-form $\omega_j ^k$. From above, we have that 
+$$
+\omega_j ^k = - \omega_k ^j
+$$
+This tells us right away that we only have to calculate 
+$$
+\omega_1 ^2 = - \omega_2 ^1
+$$
+Then using Cartan's structural equation we have $$
+d\theta^k = \omega^k _i \wedge \theta^i
+$$
+and this gives us two equations
+$$
+d\theta^1 = \omega^1 _2 \wedge \theta^i
+$$ and 
+$$
+d\theta^2 = \omega^2 _1 \wedge \theta^1
+$$. 
+Hopefully this is enough to compute $\omega^1_2$. Then we have 
+$$
+R = d \omega + \omega \wedge \omega
+$$
+
 
 \section{Calculus of differential forms}
 Lie brackets and exterior derivatives are in some sense dual.
