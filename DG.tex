@@ -232,7 +232,7 @@ $$
 
 \subsection{Covariant derivative in Orthogonal frames}
 
-On a Riemannian manifold $(M, g)$, given an orthogonal frame $theta_i$ and coframe $\theta^i$, we would like to calculate the covariant derivative (Christoffel symbols) of the Levi-Civita connection $\nabla$ from the frame. Using torsion-free and compatibility property.
+On a Riemannian manifold $(M, g)$, given an orthogonal frame $\theta_i$ and coframe $\theta^i$, we would like to calculate the covariant derivative (Christoffel symbols) of the Levi-Civita connection $\nabla$ from the frame. Using torsion-free and compatibility property.
 
 \todo[inline]{Orthonormal frame and Cartan's structure equation, also using the connection 1-form $\omega$}
 
@@ -242,7 +242,7 @@ $$
 $$
 with 
 $$
-\omega_j ^k = \Gamma_{ij}^k dx^i
+\omega_j ^k = \Gamma_{ij}^k \theta^i
 $$
 As $(s_i, s_j) = \delta_{i,j}$, the compatibility condition says that 
 $$
@@ -252,6 +252,13 @@ On coordinates, this means that
 $$
 \omega_j ^k = - \omega_k ^j
 $$
+
+Using the torsion free assumption, we also have the 1st Cartan's structural formula:
+$$
+d\theta^k = \omega_i ^k \wedge \theta^i
+$$
+This formula is super important in calculating covariant derivatives. This is a part of the orthonormal decomposition method!
+(evaluating both sides at $(\theta_m, \theta_l)$, then the left hand side is given by $-\theta^k([\theta_m, \theta_l])$ while the right hand side gives the corresponding $k$-th Christoffel symbol for $\nabla_{\theta_m} \theta_l - \nabla_{\theta_m}\theta_l \ d\theta^k= \omega^k _{ml} - \omega^k _{lm}$.
 
 \section{Riemannian Geometry: Surfaces in $\mathbb{R}^3$}
 \todo[inline]{Gauss map, interpreting the curvature from the Gauss map, Gauss-Bonnet theorem.}
@@ -298,13 +305,36 @@ $$
 S = 2K
 $$
 
-
-\todo[inline]{
-Question: what is the Riemann curvature tensor on a surface, how is it related to Gaussian curvature.}
-
-
+\subsection{Gauss-Bonnet, Theorem-Egrenium}
+\todo[inline]{State those theorem, at least know the proof of Theorem-Egrenium, and how does Guass-Bonnet relate to the first chern class of the tangent bundle?}
 
 
 \section{Calculus of differential forms}
-\todo[inline]{Cartan's magic formula}
+Lie brackets and exterior derivatives are in some sense dual.
+
+The Lie bracket has the unique properties  that 
+\begin{enumerate}
+    \item $\mathcal{L}_X \sigma \otimes \tau = \mathcal{L}_X \sigma \otimes \tau + \sigma \otimes \mathcal{L}_X \tau$
+    \item $\mathcal{L}_X f = X f = df (X)$
+    \item $\mathcal{L}_X \sigma(Y_1, ..., Y_n) = \mathcal{L_X} (\sigma)(Y_1, ..., Y_n) + \sigma (\mathcal{L_X}Y_1, Y_2,...) + ...$
+\end{enumerate}
+
+For a 0-form $f$, we have 
+$$
+df(X) = X(f) = \mathcal{L}_X f
+$$
+
+For a 1-form $\omega$, we have 
+$$
+d\omega(X,Y) = X(\omega(Y)) - Y(\omega(X)) - \omega([X,Y])
+$$
+
+We have the Cartan's magic formula:
+$$
+\mathcal{L}_X \omega = (\iota_X d + d \iota_X) \omega
+$$
+
+There is a formula expressing $d\omega$ as evaluation of $\omega$ and lie brackets.
+Using the Cartan's magic formula as well as expanding $\mathcal{L}_X$ on pairings of vectors and covectors.
+
 \end{document}
