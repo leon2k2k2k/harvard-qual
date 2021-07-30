@@ -1,0 +1,86 @@
+\documentclass[main.tex]{subfiles}
+\usepackage[utf8]{inputenc}
+
+\title{AT}
+\date{July 2021}
+
+\begin{document}
+
+\maketitle
+
+\section{Overview}
+There is a lot of specific things to remember for the AT quals, like exicision, Mayer-Vietoris, etc. I will try to write some of them down as I am reviewing them.
+
+\section{Covering space}
+The theory of covering spaces is strongly related to the theory of groups. Super high-level wise, this is the Koszul duality between connected pointed spaces and $E_1$ spaces.
+
+Let $(X,x)$ be a pointed space
+In this case, here's the fundamental theorem/construction:
+
+\begin{construction}
+Given a covering space $(P, p) \rightarrow (X,x)$, then we have an injection of fundamental groups $\pi_1 (P, p) \rightarrow \pi_1 (X,x)$. Inversely, given a subgroup, then then we can construct $(P, p)$ as follows:
+
+Let $(\tilde{X}, \tilde{x})$ be the universal cover of $(X,x)$ (the universal cover can be constructed as homotopic equivalent classes of path), this space as a $\pi_1(X,x)$ action (in fact it is a $\pi_1(X,x)$ fiber bundle over $X$), and simply take the $\pi_1(P, p)$ quotient.
+\end{construction}
+
+The dual construction gives the following equivalence of categories:
+\begin{theorem}
+There is an equivalence of categories between connected pointed covering spaces over $(X, x)$ and the opposite poset category of subgroups of $\pi_1(X,x)$.
+\end{theorem}
+
+The unpointed version is more interesting:
+\begin{construction}
+Given a connected space $(X,x)$, then any covering space $p: P \rightarrow X$ gives an action of $G = \pi_1(X,x)$ on the fibers $p^{-1} x$. Conversely, given any set $S$ with a $G$ action, we can construct a covering space $\tilde(X) \times_G S$. 
+\end{construction}
+
+Here's the fundamental theorem:
+\begin{theorem}
+The construction above gives an equivalence of category between the category of covering spaces and the category of $G$-sets.
+\end{theorem}
+
+\begin{remark}
+From the equivalence, we can start translating notions on both side:
+
+\begin{enumerate}
+    \item A covering space $P$ is connected iff $G$ acts transitively on the fibers.
+    \item The group of deck transformations (automorphisms) of a covering space $P$ is (with a choice of basepoint $p$) $N(\pi_1(P,p))/\pi_1(P,p)$, $NH$ is the normalizer of $H$ (in the ambient group $G$.
+    \item A connected covering is called normal if the group of deck transformation acts transitively on the fibers. This is equivalent to $\pi_1(P,p)$ being a normal subgroup (easily shown from above).
+\end{enumerate}
+\end{remark}
+
+Given $X, Y$ spaces, then 
+$$
+\pi_1(X \vee Y) \cong \pi_1(X) * \pi_1(Y)
+$$
+where $*$ is the free product (the coproduct in the category of spaces).
+
+We also have the Van Kampen theorem:
+\begin{theorem}
+Let $X = U_1 \cup U_2$, $U_1, U_2, U = U_1 \cap U_2$ are all connected, take $x \in U$, then we have the pushout diagram of fundamental groups:
+\begin{equation}
+    \begin{tikzcd}
+\pi_1 (U, x) \arrow[r] \arrow[d]
+& \pi_1 (U_1, x) \arrow[d] \\
+\pi_1(U_2, x) \arrow[r]
+& \pi_1(X,x)
+\end{tikzcd}
+\end{equation}
+\end{theorem}
+
+For product it is much easier:
+$\pi_n(X \times Y) \cong \pi_n(X) \times \pi_n(Y)$.
+
+\section{Homology, Cohomology}
+\subsection{Standard long exact sequences}
+\todo[inline]{cofiber sequence, Mayer-Vietoris, excision}
+
+\subsection{Universal Coefficients theorem}
+
+
+\subsection{Poincare duality}
+
+
+\subsection{Standard spaces}
+\todo[inline]{S^n, CP^n, RP^n, Klein bottle, gluing of genus g curves, their chain complex, homology, and homotopy group of the genus g curves.}
+
+\end{document}
