@@ -30,7 +30,7 @@ where $f \in C^{\infty}M$ and $s \in \Gamma(M)$. Given $X \in \Gamma(M)$, we can
 $\nabla_X(s) \coloneqq \nabla(s) (\mu)$. Note that this is $C^{\infty}M$-linear in $X$, that is, $\nabla_{fX}(s) = f \nabla_{X}(s)$
 \end{definition}
 
-Naturally, if I have a connection $\nabla$ on $p: E \rightarrow M$, and a map $f : N \rightarrow M$, then we get pullback connection $f^*\nable$ on $f^*E \rightarrow N$.
+Naturally, if I have a connection $\nabla$ on $p: E \rightarrow M$, and a map $f : N \rightarrow M$, then we get pullback connection $f^*\nabla$ on $f^*E \rightarrow N$.
 
 In local coordinates, we have basis $s_j$ for $E$ and $dx^i$ for $T^*M$, then we have 
 $$
@@ -210,7 +210,7 @@ Here's some equivalent definition for $\nabla$ to be compatible with $g$:
 \begin{enumerate}
     \item $\nabla g = 0$.
     \item the pairing $(-,-): TM \times TM \rightarrow \underline{\mathbb{R}}$ is map of bundles with connections.
-    \item the iso $TM \iso T^*M$ arising from $g$ is a map of bundles with connections.
+    \item the iso $TM \cong T^*M$ arising from $g$ is a map of bundles with connections.
 \end{enumerate}
 
 Note the last one tells us how to compute covariant derivative for 1-forms: just dualize.
@@ -345,7 +345,7 @@ where $k_g$ is the geodesic curvature of the boundary of $S$ (as a curve in $S$)
 
 Given a curve $\gamma$, then 
 $$
-\delta_\dot{\gamma} \dot{\gamma}
+\nabla_{\dot{\gamma}} \dot{\gamma}
 $$
 is the normal vector of the curve. In dimension 2, this is a multiple of the normal vector, thus we get a scalar $k_g$.
 
