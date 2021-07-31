@@ -1,16 +1,9 @@
 \documentclass[main.tex]{subfiles}
-\usepackage[utf8]{inputenc}
-
-\title{DG}
-\date{July 2021}
 
 \begin{document}
 
-\maketitle
-
-
 %%%%%%%%%%%%%%%%%%%%
-\section{Overview}
+\section{Differential Geometry}
 There is a lot of equation and stuff to remember for DG. A lot of connection stuff, but I think (thankfully) no gauge theory.
 
 %%%%%%%%%%%%%%%%%%%%
@@ -276,7 +269,7 @@ This formula is super important in calculating covariant derivatives. This is a 
 (evaluating both sides at $(\theta_m, \theta_l)$, then the left hand side is given by $-\theta^k([\theta_m, \theta_l])$ while the right hand side gives the corresponding $k$-th Christoffel symbol for $\nabla_{\theta_m} \theta_l - \nabla_{\theta_m}\theta_l \ d\theta^k= \omega^k _{ml} - \omega^k _{lm}$.
 
 \subsection{Gauss map}
-Given a immersion $i: M \rightarrow \mathbb{R}^{n+1}$ where $M$ is a compact oriented $n$-dimensional manifold (aka a hypersurface), then taking the (oriented) normal vector gives a map $N_i: M \rightarrow S^n$. The differential of this map is the shape operator (because we have doing $\parital_i \mathfrak{n} = \nabla_{\partial_i} \mathfrak{n}$). 
+Given a immersion $i: M \rightarrow \mathbb{R}^{n+1}$ where $M$ is a compact oriented $n$-dimensional manifold (aka a hypersurface), then taking the (oriented) normal vector gives a map $N_i: M \rightarrow S^n$. The differential of this map is the shape operator (because we have doing $\partial_i \mathfrak{n} = \nabla_{\partial_i} \mathfrak{n}$). 
 If $n=2$, then the Jacobian (the determinant of the differential) it thus the Gaussian curvature. 
 Moreoever, the degree of this map is 1/2 of the Euler characteristic of $M$. This is because the Euler characteristic is the Euler class of the tangent bundle of the sphere, which pulls back to the tangent bundle of the manifold. And taking Euler class intertwines between vector bundles and cohomology classes. Lastly the Euler class of the sphere is $1 = \frac{1}{2} \chi(S^2)$.
 

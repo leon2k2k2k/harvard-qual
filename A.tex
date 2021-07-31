@@ -1,22 +1,12 @@
 \documentclass[main.tex]{subfiles}
-\usepackage[utf8]{inputenc}
-
-\title{DG}
-\date{July 2021}
-
 \begin{document}
-
-\maketitle
-
-
 %%%%%%%%%%%%%%%%%%%%
-\section{Overview}
+\section{Algebra}
 For algebra, the problem seems to fall into three categories: group theory, rep theory, and ring/Galois theory.
 
-\section{Group Theory}
+\subsection{Group Theory}
 The most important thing here is the Sylow theorems and how they are used. Sylow's theorem is about subgroups of prime orders. The idea is looking at the orbits of the conjugation action of $G$ on $G$.
 
-We are following:  \url{http://math.uchicago.edu/~may/REU2016/REUPapers/Idelhaj.pdf}
 
 
 \begin{definition}
@@ -68,13 +58,13 @@ Let $G$ acts on $G$ by conjugation, then the orbits are conjugacy classes.
 Then the class equations says that $|G| = |Z(G)| + k_1 + k_2 ..$, where $|Z(G)|$ is the center of $G$ (those that commutes with all elements those belong to a single orbit), and $k_1$ are the size of distinct non-singlet orbits.
 
 
-\subsection{Groups of order $p^2$}
+\subsubsection{Groups of order $p^2$}
 Groups of order $p$ are isomorphic to $\mathbb{Z}/p\mathbb{Z}$, namely abelian. Similar thing is true for groups of order $p^2$, they are all abelian, so either $\mathbb{Z}/p\mathbb{Z} \sum \mathbb{Z}/p\mathbb{Z}$ or $\mathbb{Z}/p^2$
 
-\subsection{Groups of order $p^3$}
+\subsubsection{Groups of order $p^3$}
 There are ofc abelian once $3, (2,1), (1,1,1)$, and there are two non-isomorphic nonabelian. 
 
-\subsection{Groups of order $pq$}
+\subsubsection{Groups of order $pq$}
 This uses semidirect products: 
 \begin{definition}
 Given $N, K$ groups and an action $K$ on $N$ ($K \rightarrow Aut(N)$), then the semidirect product of $N$ and $K$ $N \rtimes K$ as set is $N \times K$, with multiplication:
@@ -108,7 +98,7 @@ For any odd prime $p$ there are two non-isomorphic groups of order $2p$:
 
 
 
-\subsection{Dihedral Groups}
+\subsubsection{Dihedral Groups}
 
 This leads us right into the dihedral group $D_n$. 
 \begin{definition}
@@ -122,18 +112,18 @@ This is the group of symmetry of the regular $n$ polygon, with $r$ being the a m
 The group of rotation is normal, and all reflections are conjugate when $n$ is odd and there are two conjugacy classes when $n$ is even (easy to see there are two different kinds of reflections)
 \end{definition}
 
-\subsection{$GL_n(\mathbb{F}_p)$}
+\subsubsection{$GL_n(\mathbb{F}_p)$}
 The size of finite group $GL_n(\mathbb{F}_p)$ is
 $$
 (p^n -1) (p^n - p) ...
 $$
 as this is number of choosing a nonzero vector, then choosing another vector away from the first one (the size of a $\mathbb{F}_p$ line is $p$)...
 
-\section{Rep Theory}
+\subsection{Representation Theory}
 This concerns $\mathbb{C}$-linear representation theory of finite groups, via the character theory.
 
 
-\subsection{Basics}
+\subsubsection{Basics}
 Let $G$ be a finite group.
 The category of (complex) finite dimensional representation $Rep(G)$ is quite simple, literally, it is a simple category:
 
@@ -176,7 +166,7 @@ where $V_i$ are the distinct irreducible representations.
 \end{theorem}
 
 Next we need the character theory:
-\subsection{Character Theory}
+\subsubsection{Character Theory}
 This is the crux of the theory of finite dimensional reps. First we define characters:
 
 \begin{definition}
@@ -227,16 +217,29 @@ Given a finite group $G$, we can write down a table, with columns indexed by con
 
 
 
-\section{Galois Theory}
-\todo[inline]{Review the basics of field extensions and Galois theory, discriminants. How to know if a Galois extension is in $A_n$ etc. Examples of basic construction of Galois extensions that are like $\mathbb{Z}/2\mathbb{Z} \tiems \mathbb{Z}/2 \mathbb{Z}$ etc.}
+\subsection{Galois Theory}
+
+Galois theory is very similar to covering space theory, however in this case the (absolute) Galois group is profinite, so a bit harder to understand. 
+
+\subsubsection{Basics}
+Let $k$ be a field. We will consider finite field extensions over $k$. We can find them as $k[x]/f(x)$ where $f$ is an irreducible polynomial over $k$. 
+
+\begin{definition}
+
+\end{definition}
 
 
 
-\section{Ring Theory and Algebraic Number Theory}
+
+\todo[inline]{Review the basics of field extensions and Galois theory, discriminants. How to know if a Galois extension is in $A_n$ etc. Examples of basic construction of Galois extensions that are like $\mathbb{Z}/2\mathbb{Z} \times \mathbb{Z}/2 \mathbb{Z}$ etc.}
+
+
+
+\subsection{Ring Theory and Algebraic Number Theory}
 \todo[inline]{Write about integrally closed, UFD etc. Prime factorization in a Dedekind domain, quadratic extensions $\mathbb{Z}[\sqrt{n}]$ and rather is it is integrally closed/UFD.}
 
 
-\section{Linear Algebra}
+\subsection{Linear Algebra}
 \todo[inline]{Things like characteristic polynomial, minimal polynomial, rational canonical form, Jordan normal form, a vector that $v, Tv, T^2v ... $ spans the vector spaces etc.}
 
 Given a finite dimensional vector space $V$ over a field $k$ and $T: V \rightarrow T$, then we want to understand how to decompose $T$. The idea is simple: use algebraic geometry: consider $T$ as $x$ in $k[x]$, then we can view $V$ as a coherent sheave over $\mathbb{A}^1 = spec k[x]$. Being finite dimensional, $V$ is supported at finite points. It is supported on the closed sub-scheme cut out by a polynomial $f$ on $k[x]$. This $f$ is the mininal polynomial on $x$ such that $f(T) = 0$. This is called the minimal polynomial of $T$: 
@@ -262,12 +265,19 @@ In fact, using the classification theory of finitely generated modules over a PI
 
 Using the invariant factor decomposition, we see that $V \cong k[x]/(f_1) \oplus k[x]/(f_2) .. \oplus k[x]/(f_n)$ with $f_1 | f_2 | ... | f_n$. $f_n$ in this case will be the minimal polynomial. 
 
-In linear algebra, this means that we can find direct summands $V_i$ for $V$ such that $T$ sends $V_i$ to $V_i$ ($T$ looks block diagonal).For each $V_i$, we have basis for the $T$ on all but last basis is off diagonal 1: just think about how $x$ acts on $k[x]/(f(x))$ with basis $1, x, x^2, ...$. This is the rational canonical form. The minimal polynomial of $T|V_i$ is ofc $f_i$, equaling the characteristic polynomial of $T|V_i$ (just by degree reasons). 
+In linear algebra, this means that we can find direct summands $V_i$ for $V$ such that $T$ sends $V_i$ to $V_i$ ($T$ looks block diagonal).For each $V_i$, we have basis for the $T$ on all but last basis is off diagonal 1: just think about how $x$ acts on $k[x]/(f(x))$ with basis $1, x, x^2, ...$. This is the rational canonical form. The minimal polynomial of $T|V_i$ is ofc $f_i$, equaling the characteristic polynomial of $T|V_i$ (just by degree reasons). Note that the first basis vector $v$ has $v, T\ v, T^2 v $ spans $V_i$.
 
 This off diagonal form is called the rational canonical form. Note that this exists for any field $k$. 
 
 Now if $k$ is algebraically closed, then we know that we can factor each $f$ to $(x-a_1)^{e_1} (x - a_2)^{e_2}...$,
 
+So we have the case now $T$ has characteristic polynomial (equals minimal polynomial) is $(x-a)^n$. This means that $T ' = T - a Id$ has characteristic polynomial $x^n$. There is a basis here $x^{n-1} = (T')^{n-1} 1,... x = T' 1, 1$, in this basis, $x^{n-1}$ is the eigenvector for $T'$ with eigenvalue $0$, thus it is an eigenvector for $T$ with eigenvalue $a$. Moreoever, the $i$-th basis vector gets annihilated by $(T')^i$ (this is all theory for nilpotent matricies). Thus we see that in this basis, $T'$ can be written as diagonal $0$, one up than diagonal $1$. Therefore $T$ can be written as diagonal $a$, one up that diagonal $1$. 
+
+For a more general $T$, then we see that we can find a basis with blocks looking like such above. This is called the Jordan normal form of $T$.
+
+\begin{remark}
+Note that this is true for any matrix whose characteristic polynomial factors into linear polynomials. Ofc this is true for any matrix over algebraically closed fields.
+\end{remark}
 
 \todo[inline]{
 Understand rational canonical and Jordan normal form in turns of $k[x]/(x^n - a_{n-1} x^{n-1}...$and $k[x]/(x^n-a)$}
