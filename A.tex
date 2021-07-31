@@ -14,13 +14,49 @@
 For algebra, the problem seems to fall into three categories: group theory, rep theory, and ring/Galois theory.
 
 \section{Group Theory}
-the most important thing here is the Sylow theorems and how they are used. Sylow's theorem is about subgroups of prime orders.
+The most important thing here is the Sylow theorems and how they are used. Sylow's theorem is about subgroups of prime orders. The idea is looking at the orbits of the conjugation action of $G$ on $G$.
 
-Here's a good link: \url{http://math.uchicago.edu/~may/REU2016/REUPapers/Idelhaj.pdf}
+We are following:  \url{http://math.uchicago.edu/~may/REU2016/REUPapers/Idelhaj.pdf}
 
-\begin{theorem}[Sylow's theorem]
-Let $G$ be a fintie group and $p$ a prime number. If $p^n$ divides the order of $G$, then $G$ has a subgroup of order $p^n$.
+
+\begin{definition}
+Let $G$ be a finite group of order $p^n m$ where $m$ is coprime to $p$ to $p$. A Sylow $p$-subgroups of $G$ is a subgroup of order $p^n$. They are the maximal $p$-subgroups.
+\end{definition}
+
+Here the Sylow theorems:
+
+\begin{theorem}[Sylow's 1st Theorem]
+If $p$ is a prime number and $p | |G|$, then there exists a Sylow $p$-subgroup of $G$.
 \end{theorem}
+
+\begin{proof}
+We find the group by looking at orbits of $G$ on subset of $G$ of size $p^n$, and then finding one $w$ with orbit size coprime to $p$. Then the stabilizer of this is $H$, which as it stabilizes it must act on the elements of the set (very confusing sentence). As it acts on the elements of $w$ freely, $H | |w| = p^n$. On the other hand, $|G|/|H| = orb(w)$ has size coprime to $p$, this means that $|H| = p^n$. (In fact $w = H$ as sets.
+\end{proof}
+
+\begin{theorem}[Sylow's 2nd Theorem]
+For a given prime $p$, all Sylow $p$-subgroups are conjugate to each other.
+\end{theorem}
+
+\begin{corollary}
+A Sylow $p$-subgroup of $G$ is unique iff it is normal in $G$. Thus it is unique iff it is abelian.
+\end{corollary}
+
+\begin{theorem}[Sylow's 3rd Theorem]
+Let the number of Sylow $p$-subgroups to be $n_p$. Then the floowing results hold:
+\begin{enumerate}
+    \item $n_p = 1\ mod\ p$
+    \item If $|G| = p^n m$ so that $m$ and $p$ are coprime, then $n_p | m$
+    \item If $P$ is any Sylow $p$-subgroup of $G$, then $n_p = [G: N(P)]$, where $N(P)$ is the normalizer of $P$ in $G$
+\end{enumerate}
+
+
+\end{theorem}
+\begin{remark}
+part 2 and 3 of Sylow's 3rd theorem follows direct from  the facts that $G$ acts on the set of Sylow $p$-groups by conjugation, Sylow's 2nd theorem says that the action is transitive, and the stabilizer of this action at $P$ is exactly $N(P)$.
+\end{remark}
+\begin{corollary}
+Let $G$ be a fintie group and $p$ a prime number. If $p^n$ divides the order of $G$, then $G$ has a subgroup of order $p^n$.
+\end{corollary}
 
 We also have the Cauchy's theorem:
 
@@ -33,28 +69,161 @@ Then the class equations says that $|G| = |Z(G)| + k_1 + k_2 ..$, where $|Z(G)|$
 
 
 \subsection{Groups of order $p^2$}
-Groups of order $p$ are isomorphic to $\mathbb{Z}/p\mathbb{Z}$, namely abelian. Similar thing is true for groups of order $p^2$:
-
-\begin{theorem}
-
-\end{theorem}
-
-\subsection{Groups of order $pq$}
+Groups of order $p$ are isomorphic to $\mathbb{Z}/p\mathbb{Z}$, namely abelian. Similar thing is true for groups of order $p^2$, they are all abelian, so either $\mathbb{Z}/p\mathbb{Z} \sum \mathbb{Z}/p\mathbb{Z}$ or $\mathbb{Z}/p^2$
 
 \subsection{Groups of order $p^3$}
+There are ofc abelian once $3, (2,1), (1,1,1)$, and there are two non-isomorphic nonabelian. 
+
+\subsection{Groups of order $pq$}
+This uses semidirect products: 
+\begin{definition}
+Given $N, K$ groups and an action $K$ on $N$ ($K \rightarrow Aut(N)$), then the semidirect product of $N$ and $K$ $N \rtimes K$ as set is $N \times K$, with multiplication:
+$$
+(a_1, b_1) (a_2, b_2) \coloneqq (a_1 (b_1 \dot a_2), b_1 b_2)
+$$
+\end{definition}
+
+We have inclusion $K \rightarrow N \rtimes K$ and projection $N \rtimes K \rightarrow K$. Conversely,
+Splitting of groups gives action of $N$ on the kernel of the projection, and exhibits the total group to be the semidirect sum.
+
+\begin{proposition}
+Let $p \geq q$, if $q \nmid (p-1)$ then there are only one iso class of groups of order $pq$, namely the abelian group $\mathbb{Z}/pq\mathbb{Z}$. If $q | (p-1)$, then there are two groups of order $pq$:
+\begin{enumerate}
+    \item The abelian one: $\mathbb{Z}/pq\mathbb{Z}$
+    \item The nonabelian one given by any non-trivial 
+    $$
+    \phi: \mathbb{Z}/q\mathbb{Z} \rightarrow Aut(\mathbb{Z}/p\mathbb{Z}) \cong \mathbb{Z}/(p-1)\mathbb{Z}
+    $$
+\end{enumerate}
+\end{proposition}
+
+\begin{corollary}
+For any odd prime $p$ there are two non-isomorphic groups of order $2p$:
+\begin{enumerate}
+    \item The cyclic group $\mathbb{Z}/2p\mathbb{Z}$
+    \item The dihedral group $D_p = \mathbb{Z}/p\mathbb{Z} \rtimes \mathbb{Z}/2\mathbb{Z}$ with the sign action.
+\end{enumerate}
+\end{corollary}
+
 
 
 
 \subsection{Dihedral Groups}
-\todo[inline]{Their generator and relations, as well as their conjugacy classes and representations}
 
+This leads us right into the dihedral group $D_n$. 
+\begin{definition}
 
+For any $n \geq 1$, we have the Dihedral group 
+$$
+D_n \coloneqq <r, s| r^n = 1, s^2 = 1, s r s = r^{-1} >
+$$
+This is the group of symmetry of the regular $n$ polygon, with $r$ being the a mininum rotation and $s$ being a reflection.
+
+The group of rotation is normal, and all reflections are conjugate when $n$ is odd and there are two conjugacy classes when $n$ is even (easy to see there are two different kinds of reflections)
+\end{definition}
+
+\subsection{$GL_n(\mathbb{F}_p)$}
+The size of finite group $GL_n(\mathbb{F}_p)$ is
+$$
+(p^n -1) (p^n - p) ...
+$$
+as this is number of choosing a nonzero vector, then choosing another vector away from the first one (the size of a $\mathbb{F}_p$ line is $p$)...
 
 \section{Rep Theory}
 This concerns $\mathbb{C}$-linear representation theory of finite groups, via the character theory.
 
 
-\subsection{Characters table for specific groups}
+\subsection{Basics}
+Let $G$ be a finite group.
+The category of (complex) finite dimensional representation $Rep(G)$ is quite simple, literally, it is a simple category:
+
+\begin{theorem}[Maschke's Theorem]
+
+Any short exact sequences of representations splits, and irreducibles are simples. 
+
+\end{theorem}
+
+One can show this by the following proposition:
+\begin{proposition}
+For any $G$-rep $V$ there is a $G$-equivariant Hermitian structure on $V$.
+\end{proposition}
+This is done by choosing any hermitian structure and then add its $G$-orbits.
+
+
+The maps between irreducible representations are also simple:
+
+\begin{theorem} [Schur's Lemma]
+let $V$ and $W$ be irreducible representations, and $f : V \rightarrow W$, then $f$ is either an isomorphism or 0. Moreover, endormorphism of a irreducible representation $V$ is scalar multiplication by $\mathbb{C}$.
+\end{theorem}
+
+\begin{proof}
+As $V$ and $W$ are irreducible, then the kernel of $f$ is either $V$ or 0, similiarly, the cokernel is then $0$ or $W$.
+
+As for the second part, given $f : V \rightarrow V$, then it must have one eigenvector $v$ with eigenvalue $\lambda$ (this is why we are in $\mathbb{C}$ and not in say $\mathbb{R}$, think rotation), then $f - \lambda Id$ has a nonzero kernel, thus it is $V$. So $f = \lambda Id$.
+\end{proof}
+
+The most important representation is the regular representation, that is, $G$ act on $\mathbb{C}[G]$ by left translation.
+
+Here's the decomposition theorem, which we can easily prove using character theory:
+\begin{theorem}
+There are finitely many non-isomorphic irreducible representations, in fact there are the number of conjugacy classes of $G$ many. Moreover:
+$$
+\mathbb{C}[G] = \bigoplus_i V_i ^{dim V_i}
+$$
+where $V_i$ are the distinct irreducible representations.
+
+
+\end{theorem}
+
+Next we need the character theory:
+\subsection{Character Theory}
+This is the crux of the theory of finite dimensional reps. First we define characters:
+
+\begin{definition}
+Let $\rho$ be a $G$ rep on $V$. Then the character associated to $\rho$ is a complex-valued map on the set $\frac{G}{G}$ of conjugacy classes of $G$:
+$$
+\chi_V(g) \coloneqq tr(\rho(g))
+$$
+\end{definition}
+Note that $\chi_V(1) = dim V$. It turns out they encode all the info about a rep $V$. 
+
+As $tr$ is conjugate-invariant, this is well-defined on conjugacy classes. A complex-valued map on $\frac{G}{G}$ is called a class function on $G$.
+
+There is an inner product on class functions:
+$$
+(f_1, f_2) \coloneqq \frac{1}{|G|}\sum_{g \in G} f_1(g) \overline{f_2(g)}
+$$
+
+It turns out the characters of irreducible representations are orthogonal to this decomposition:
+
+\begin{lemma}
+Let $V$ and $V'$ be irreducible representations, if $V \cong V'$, then 
+$$
+(\chi_V, \chi_{V'}) = \delta_{V, V'}
+$$
+
+\end{lemma}
+
+We also have another orthogonal condition:
+\begin{lemma}
+Given $g, h$, 
+$$
+\frac{1}{|G|} \sum_{V_i}\chi_{V_i}(g) \overline{\chi_{V_i}(h)} = \delta_{[g], [h]}
+$$
+\end{lemma}
+
+Moreover, we have the delta functions $\delta_{[g]}$ on conjugacy classes, then we have 
+$$
+(\delta_{[g]}, \delta_{[h]}) = \delta_{g,h}
+$$
+and $\chi_{V_i}(g) = (\chi, g)$ tells us that $\chi_{V_i}$ forms an orthonormal basis for the space of class functions!!!
+
+This, for example, tells us that there are $|\frac{G}{G}|$ many irreducible representations.
+
+This also means that we can easily compute the irreducibles in a rep $V$: $(\chi_V, \chi_{V_i})$ is the number of $V_i$ in $V$.
+
+Given a finite group $G$, we can write down a table, with columns indexed by conjugacy classes of $G$ and rows indexed by irreducible representations. The valued at $(i,j)$ is $\chi_{V_i}(g_j)$. The orthogonal condition exists for both rows and columns (for rows need to multiply by the size of the conjugacy class). This can be used to find the characters of the irreducible reps.
+
 
 
 
@@ -66,4 +235,40 @@ This concerns $\mathbb{C}$-linear representation theory of finite groups, via th
 \section{Ring Theory and Algebraic Number Theory}
 \todo[inline]{Write about integrally closed, UFD etc. Prime factorization in a Dedekind domain, quadratic extensions $\mathbb{Z}[\sqrt{n}]$ and rather is it is integrally closed/UFD.}
 
+
+\section{Linear Algebra}
+\todo[inline]{Things like characteristic polynomial, minimal polynomial, rational canonical form, Jordan normal form, a vector that $v, Tv, T^2v ... $ spans the vector spaces etc.}
+
+Given a finite dimensional vector space $V$ over a field $k$ and $T: V \rightarrow T$, then we want to understand how to decompose $T$. The idea is simple: use algebraic geometry: consider $T$ as $x$ in $k[x]$, then we can view $V$ as a coherent sheave over $\mathbb{A}^1 = spec k[x]$. Being finite dimensional, $V$ is supported at finite points. It is supported on the closed sub-scheme cut out by a polynomial $f$ on $k[x]$. This $f$ is the mininal polynomial on $x$ such that $f(T) = 0$. This is called the minimal polynomial of $T$: 
+
+\begin{definition}
+The minimal polynomial $f$ of $T$ is the unique lowest degree polynomial in $T$ such that $f(T) = 0$.
+\end{definition}
+
+On the other hand, we also have the characteritic polynomial, which is a degree $n$ polynomial in T:
+\begin{definition}
+$char(x) coloneqq det (xId - T)$ is called the characteritic polynomial in T
+\end{definition}
+
+It's $x^{n-1}$ coefficient is $-tr(T)$ and the $x^0$ coefficient is $(-1)^{n-1} \ det \ T$. 
+
+The Cayley-Hamilton theorem says that 
+\begin{theorem}[Cayley-Hamilton]
+$char(T) = 0$
+\end{theorem}
+Thus the mininal polynomial factors the characteristic polynomial.
+
+In fact, using the classification theory of finitely generated modules over a PID (in this case $k[x]$), we can do more:
+
+Using the invariant factor decomposition, we see that $V \cong k[x]/(f_1) \oplus k[x]/(f_2) .. \oplus k[x]/(f_n)$ with $f_1 | f_2 | ... | f_n$. $f_n$ in this case will be the minimal polynomial. 
+
+In linear algebra, this means that we can find direct summands $V_i$ for $V$ such that $T$ sends $V_i$ to $V_i$ ($T$ looks block diagonal).For each $V_i$, we have basis for the $T$ on all but last basis is off diagonal 1: just think about how $x$ acts on $k[x]/(f(x))$ with basis $1, x, x^2, ...$. This is the rational canonical form. The minimal polynomial of $T|V_i$ is ofc $f_i$, equaling the characteristic polynomial of $T|V_i$ (just by degree reasons). 
+
+This off diagonal form is called the rational canonical form. Note that this exists for any field $k$. 
+
+Now if $k$ is algebraically closed, then we know that we can factor each $f$ to $(x-a_1)^{e_1} (x - a_2)^{e_2}...$,
+
+
+\todo[inline]{
+Understand rational canonical and Jordan normal form in turns of $k[x]/(x^n - a_{n-1} x^{n-1}...$and $k[x]/(x^n-a)$}
 \end{document}
