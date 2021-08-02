@@ -353,7 +353,6 @@ $$
 
 Thus we see that the $\mathbb{Q}[\zeta]$, where $\zeta$ is a primitive $n$-th root of unity,  is a degree $\phi(n)$ extension over $\mathbb{Q}$. Easy to see that this is the splitting field of $x^n -1$ as all other roots are powers of $\zeta$. The Galois group is $(\mathbb{Z}/n\mathbb{Z})^\times \cong \mathbb{Z}/\phi(n)\mathbb{Z}$, acting on $\zeta$ as $\zeta \mapsto \zeta^i$ for $i$ coprime to $n$. Ofc this determined where all other powers of $\zeta$ goes to.
 
-\todo[inline]{Primitive element theorem and normal element theorem.}
 \subsubsection{Primitive Element and Normal Basis Theorems}
 
 Here's two nice theorems:
@@ -362,7 +361,7 @@ For any separable field extension $K/F$, there exists an element of $k \in K$ su
 \end{theorem}
 
 \begin{remark}
-The counterexample is the degree $p^2$ extension $\mathbb{F}_p(U^\frac{1}{p}, T^\frac{1}{p})$ over $\mathbb{F}_p(U,T)$, any rational polynomial on $U^\frac{1}{p}, T^\frac{1}{p}$ has $p$-th power in $\mathbb{F}^p(U,T)$.
+The counterexample is the degree $p^2$ extension $\mathbb{F}_p(U^\frac{1}{p}, T^\frac{1}{p})$ over $\mathbb{F}_p(U,T)$, any rational polynomial on $U^\frac{1}{p}, T^\frac{1}{p}$ has $p$-th power in $\mathbb{F}_p(U,T)$.
 \end{remark}
 
 Here's the normal basis theorem:
@@ -412,19 +411,28 @@ Note that $F$ fixes. It is a isomorphism for $K$ as it is injective. As before, 
 \end{proof}
 
 \begin{corollary}
-Let $F$ be a field of order $p^m$ and $K/F$ is a degree $n$ extension. Then $Gal(K/F) \cong \mathbb{Z}/n\mathbb{Z}$ with generator $F^m$.
+Let $F$ be a field of order $p^m$ and $K/F$ is a degree $n$ extension. Then $Gal(K/F) \cong \mathbb{Z}/n\mathbb{Z}$ with generator $F^m$. 
 \end{corollary}
 
 
 \subsubsection{Examples of Galois Extensions with a given Galois Group}
 
-\todo[inline]{We will see how important this section is. Like a $Z2 \times Z2$, A_3, S_3, etc.}
+\todo[inline]{We will see how important this section is. Like a $Z2 \times Z2$, $A_3, S_3,$ etc.}
 
 \subsection{Ring Theory and Algebraic Number Theory}
 
 We will first start with some ring theory:
 
 
+\subsubsection{ANT: finite extensions over $\mathbb{Z}$}
+
+Here's the general theory: 
+
+This is curve theory over mixed characteristics, aka finite extensions over $\mathbb{Z}$. Given a finite extension of $K$ over $\mathbb{Q}$, then let $\mathcal{O}_K$ be the integral closure of $\mathbb{Z}$ over $K$.
+
+We will look at integrally closed domains (Dedekind domain) $R$, finite over $\mathbb{Z}$. Geometrically, they are one dimensional curves. We can study them by looking at the fibers over points of $\mathbb{Z}$, aka primes. Algebraically, they are spectrum of the quotient ring $R/pR$. This is a finite extension ring of $\mathbb{F}_p$, of a constant rank across $p$.
+
+There is 
 
 \todo[inline]{Write about integrally closed, UFD etc. Prime factorization in a Dedekind domain, quadratic extensions $\mathbb{Z}[\sqrt{n}]$ and rather is it is integrally closed/UFD.}
 
@@ -438,9 +446,9 @@ Given a finite dimensional vector space $V$ over a field $k$ and $T: V \rightarr
 The minimal polynomial $f$ of $T$ is the unique lowest degree polynomial in $T$ such that $f(T) = 0$.
 \end{definition}
 
-On the other hand, we also have the characteritic polynomial, which is a degree $n$ polynomial in T:
+On the other hand, we also have the characteristic polynomial, which is a degree $n$ polynomial in T:
 \begin{definition}
-$char(x) coloneqq det (xId - T)$ is called the characteritic polynomial in T
+$char(x) coloneqq det (xId - T)$ is called the characteristic polynomial in T
 \end{definition}
 
 It's $x^{n-1}$ coefficient is $-tr(T)$ and the $x^0$ coefficient is $(-1)^{n-1} \ det \ T$. 
