@@ -5,5 +5,131 @@
 \begin{document}
 
 \section{Real Analysis}
+
 Oh man I need a lot a lot of work here. 
+
+\subsection{General Measure Theory}
+
+\subsubsection{$\sigma$ Algebras, Measureable Spaces, and Measures}
+The story of measure theory is about trying to generalize the notion of volume or size. 
+We are following these notes: \url{https://www.math.ucdavis.edu/~hunter/measure_theory/measure_notes.pdf}
+We first start with the notion of outer measure:
+
+\begin{definition}
+An outer measure $\mu_^*$ on a set $X$ is a function 
+
+$$
+\mu^* : 2^X \rightarrow [0, \infty]
+$$ 
+such that 
+\begin{enumerate}
+    \item $\mu^*(\emptyset) = 0$;
+    \item if $E \subset F \subset X$, then $\mu^*(E) \leq \mu^*(F)$;
+    \item (Countable subadditivity) if $E_i$ are countable collection of subsets of $X$, then 
+    $$
+    \mu^*(\bigcup_{i + 1} ^{\infty} E_i)\leq \sum_{i = 1} ^{\infty} \mu^*(E_i)
+    $$
+\end{enumerate}
+\end{definition}
+Note that $\mu^*$ is not assumed to be additive even if ${E_i}$ are disjoint. In fact, they often are not.
+
+The condition we really want is countable additivity, which is that when $E_i$ are disjoint subset, then the it is additive rather than subadditive (aka it is an equal sign). However, this can't always happen (not true over the real line $\mathbb{R}$). So we instead restrict on the subset that we are looking at. This is where we need $\sigma$-algebras:
+
+\begin{definition}
+A $\sigma$-algebra on a set $X$ is a connection $\mathcal{A}$ of subsets of $X$ such that
+\begin{enumerate}
+    \item $\empty, X \in A$;
+    \item if $A \in \mathcal{A}$, then so is $A^c \in \mathcal{A}$. $A^c$ is the complement.
+    \item if $A_i \in \mathcal{A}$ for $i \in \mathbb{N}$, then 
+    $$
+    \bigcup_{i=1} ^{\infty} A_i,  \ \bigcap_{i=1} ^{\infty} A_i
+    $$
+    are in $\mathcal{A}$
+\end{enumerate}
+\end{definition}
+Those is is a collection of subsets that is contains the empty set, close under taking complements and countable unions.
+Examples are $\{ \emptyset, X \}$, and $\mathcal{P}(X) = 2^X$.
+
+Now we can define a measureable space, that is, a setting where we can define measures:
+
+\begin{definition}
+A measureable space is a pair $(X, \mathcal{A})$, where $X$ is a set and $\mathcal{A}$ is a $\sigma$-algebra on $X$.
+\end{definition}
+
+Any topological space gives a measureable space:
+
+\begin{definition}
+Given a topolgical space $X$ with topology $\tau$, then the Borel topology is the smallest measureable space containing all the open sets (thus also close sets) of $X$. 
+\end{definition}
+
+Given a measureable space $(X, \mathcal{A})$, we can now define a measure:
+
+\begin{definition}
+A measure $\mu$ on $(X, \mathcal{A})$ is a function 
+$$
+\mu: \mathcal{A} \rightarrow [0, \infty]
+$$
+such that 
+\begin{enumerate}
+    \item $\mu(\emptyset) = 0$;
+    \item It is countably additive.
+\end{enumerate}
+\end{definition}
+
+Ofc measures restricts to a measureable subset. 
+
+\begin{example}
+Let $X$ be a set, then $\nu: \mathcal{P}(X) \rightarrow [0, \infty]$ by cardinality is a measure, called the counting measure. 
+\end{example}
+
+A measure zero set, is a measureable net $N$ such that $\mu(N) = 0$. A property hold for all element away from a measure zero set is called to hold almost everywhere, or a.e..
+
+\begin{definition}
+A measures space $(X, \mathcal{A}, \mu)$ is complete if every subset of a set of measure zero is measureable.
+\end{definition}
+
+There is a completion which takes a measure space to a complete measureable space.
+
+\subsubsection{Measure Functions}
+A measureable functions is similiar to a continuous functions. A continuous functions pull back open sets to open setes, a measureable functions pulls back measureable sets to measureable sets.
+
+
+The once we care about are the real-valued functions. We equipped the target $\mathbb{R}$ with the Borel $\sigma$-algebra. 
+
+\begin{definition}
+Let $(X, \mathcal{A})$ be a measureable space, then $f : X \rightarrow \mathbb{R}$ if it pulls back Borel sets to to measureable subsets.
+\end{definition}
+
+\todo[inline]{ Finish chapter 3 in this subsubsection}
+
+\subsubsection{Integration}
+
+We develope the general theory of integration of a real-valued function on an measure space. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\subsection{Lebesgue Measure and Lebesgue Integrable Functions}
+
+
+
+Let $\mu$ be the Lebesgue Measure on the Real number line $\mathbb{R}$. We want to study how integration on the real number work:
+
+\begin{definition}
+Let $f$ be a non-negative function on $\mathbb{R}$, it is Lebesgue measureable if 
+\end{definition}
+
+
+
+
+
+\begin{remark}
+The $sigma$ algebra of Lebesgue measureable sets is the completion of the Borel $\sigma$-algebra on $\mathbb{R}^n$. Thus any Borel-measureable function is Lebesgue measureable (inverse is not true!).
+\end{remark}
+
+
+
+
+
+
 \end{document}
