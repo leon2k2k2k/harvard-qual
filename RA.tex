@@ -212,11 +212,139 @@ Of course, we can generalize all of the above to complex-valued functions.
 \begin{theorem}
 Of course any Riemann integrable function is Lebesgue integrable and its Riemann integral is equal to Lebesgue intergral. Moreoever, a Lebesgue measureable function is Riemann integrable iff it is bounded and the set of discontinuities has Lebesgue measure zero.
 \end{theorem}
+
+\subsubsection{$L^p$ spaces}
+
+\begin{definition}
+Given a measure space $X, \mathcal{A}, \mu$ and $1 \leq p < \infty$, the space $L^p(X)$ is equivalence classes of measureable functions $f: X \rightarrow \mathbb{R}$. such that
+$$
+\int |f|^p d\mu < \infty
+$$, 
+where two measureable functions are equivalent if they are equal $\mu$-a.e... The $L^p$-norm of $f$ is 
+$$
+\norm{f}_{L_p} = (\int |f|^p d\mu )^{1/p}
+$$
+
+\end{definition}
+We also have the $L^\infty$ norm:
+\begin{definition}
+Let $f$ be a measureable function. The essential supremum is 
+$$
+ess sup f = inf \{a \in \mathbb{R}: \mu \{x \in X : f(x) > a \} = 0 \}
+$$
+
+It is essentailly bounded if $ess sup|f| < \infty$
+
+The space of $L^\infty(X)$ consists of point-wise a.e.-equivalence classes of essentially bounded function with norm $ess sup|f|$.
+\end{definition}
+
+Here's are two important inequalies:
+
+\begin{theorem}[Minkowski inequility]
+If $f, g \in L^p(X)$ for $1 \leq p \leq \infty$, then $f + g \in L^p(X)$ and 
+$$
+\norm{f + g}_{L^p} \leq \norm{f}_{L^p} + \norm{g}_{L^p}
+$$
+\end{theorem}
+
+\begin{definition}
+For $p$ with $1 \leq p \leq \infty$, 
+The Holder conjuage of $p$ if $p'$ with 
+$$
+\frac{1}{p} + \frac{1}{p'} = 1
+$$
+$1' = \infty$ and $\infty' = 1$.
+\end{definition}
+
+\begin{theorem}[Holder's inequality]
+If $f \in L^p(X)$ and $g \in L^{p'}(X)$, then $fg \in L^1(X)$ and 
+$$
+\int |fg| d\mu \leq \norm{f}_{L^p}\norm{g}_{L^{p'}}
+$$
+\end{theorem}
+
+Simple functions are dense in $L^p$ for all $p$:
+
+\begin{theorem}
+The simple functions that belong to $L^p(X)$ are dense in $L^p(X)$.
+\end{theorem}
+
+Note that a simple function $\phi = \sum_{i=1} ^n c_i \chi_{A_i}$ belong in $L^p$ for $p < \infty$ iff $\mu(A_i) < \infty$. Every simple function belong in $L^\infty$.
+
+In addition, $L^p(X)$ are also complete:
+
+\begin{theorem}[Riesz-Fischer Theorem]
+If $X$ is a measure space and $1 \leq p \leq \infty$, then $L^p(X)$ is complete.
+\end{theorem}
+
+Note that for $1 \leq p < \infty$, any converging sequence has a pointwise converging subsequence.
+
+%%%%%%%%%%%%%%%%%%%%%
+We also have duality for $L^p$ spaces:
+The dual $X^*$ of a Banach space $X$, as a set, is all bounded linear functionals on $X$.
+
+\begin{theorem}[Duality of $L^p$ spaces]
+Given $1 < p \leq \infty$, if $f \in L^{p'}(X)$, then 
+$$
+F(g) = \int fg d\mu 
+$$
+defines a bounded linear functional $F: L^p(X) \rightarrow \mathbb{R}$ with 
+$$
+\norm{F} = \norm{f}_{L^{p'}}
+$$.
+For $1 < p < \infty$, this defines an isomorphism $L^{p'}(X) \cong L^p(X)^*$
+\end{theorem}
+
+\begin{corollary}
+For those $p$, $L^p(X)$ is reflexive, that is, the canonical map $L^p(X) \rightarrow L^p(X)^{**}$ is an isomorphism.
+\end{corollary}
+
+
 \subsection{Lebesgue measure on $\mathbb{R}$}
 
-Any integrable functions on $\mathbb{R}^n$ can be approximated by continuous function with compact support. That is, $L^1(\mathbb{R}^n)$ is the completion of $C_c(\mathbb{R}^n$ with respect to the $L^1(\mathbb{R}^n)$:
+The Lebesgue measure is constructed from elementary geometrical object like cubes.
+
+The Lebesgue $\sigma$-algebra is simply the completion of the Borel $\sigma$-algebra on $\mathbb{R}^n$.
+
+Here's are the measure zero sets:
+\begin{lemma}
+A subset $N \subset \mathbb{R}^n$ has Lebesgue measure zero if for every $\epsilon > 0$, there exists a countable collection of rectanges $R_i$ such that $N \subset \bigcup_{i = 0}^\infty R_i$, and $\sum_{i = 1} ^\infty \mu(R_i) < \epsilon$.
+\end{lemma}
+
+Every countable set has measure zero, the Cantor set is an uncountable measure zero set.
+
+The Lebesgue measure is translational invariant, it is the Haar measure. It is also translational invariant. 
+
+
+%%%%%%%%%%%%%%%%
+\subsubsection{Regularity Results}
+We also have regularity results for the Lebesgue measure. 
+
 \begin{theorem}
-The space of compactly supported functions is dense in $L^1(\mathbb{R}^n)$.
+If $A \subset \mathbb{R}^n$, then 
+$$
+\mu^*(A) = inf\{\mu(G): A \subset G, G open\},
+$$
+and if $A$ is Lebesgue measurable, then 
+$$
+\mu(A) = sup \{\mu(K): K \subset A, K compact\}.
+$$
+\end{theorem}
+
+A subset $A$ is Lebesgue measureable iff there are open sets containing $A$ and difference is arbitrary small.
+
+Here's another characterization, which says the Lebesgue measureable sets are the ones that can be "squeezed" between open and closed sets:
+
+\begin{theorem}
+A subset $A$ is Lebesgue measurable iff if for every $\epsilon > 0$ there is an open set $G$ and closed set $F$ s.y. $F \subset A \subset G$ and $\mu(G\\F)< \epsilon.$ If $\mu(A) < \infty$, then $F$ can be chosen to be compact.
+\end{theorem}
+
+Thus we can approximate a Lebesgue measureable set by an open containing it and a closed contained in it, with arbitrary small, but generally nonzero difference.
+
+
+\subsubsection{$L^p$ functions on $\mathbb{R}^n$}
+\begin{theorem}
+For $1 \leq p < \infty$, we have that the space of compactly supported functions is dense in $L^p(\mathbb{R}^n)$.
 \end{theorem}
 
 Let $\mu$ be the Lebesgue Measure on the Real number line $\mathbb{R}$. We want to study how integration on the real number work:
