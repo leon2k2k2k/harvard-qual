@@ -4,8 +4,13 @@
 
 \section{Real Analysis}
 
+We review over Banach and Hilbert spaces, measure theory and Lebesgue integration, Fourier theory (series and functions). 
 
-\subsection{Inequalities}
+We are following these notes: \url{https://www.math.ucdavis.edu/~hunter/measure_theory/measure_notes.pdf}
+
+\todo[inline]{Fourier series and Fourier transform theory. Heat equation stuff. Hilbert space theory. Sobolev theory.}
+
+\subsection{Inequalities and Basic Theorems}
 
 We have the important Cauchy's inequality:
 let $V$ be an inner product space, then 
@@ -14,8 +19,23 @@ $$(u,v)^2 \leq (u,u) (v,v)$$
 with equality iff $u,v$ are linear dependent.
 \end{theorem}
 
+We also have Holder's inequality:
+
+\begin{theorem}[Holder's inequality]
+If $f \in L^p(X)$ and $g \in L^{p'}(X)$, then $fg \in L^1(X)$ and 
+$$
+\int |fg| d\mu \leq \norm{f}_{L^p}\norm{g}_{L^{p'}}
+$$
+\end{theorem}
+
+We also have the Urysohn lemma, which gives a continuous function that is 1 on one closed set and 0 on other closed set in nice situation.
+
 \subsection{Banach Spaces}
 In analysis there is a lot of infinite dimensional spaces, by themselves they are hard to control. Banach spaces are vector spaces complete to a norm and they are easier to control. 
+
+\begin{remark}
+Given a Banach space and its norm, we have a notion of convergence. Normally the Banach space comes from the metric completion of an dense subset, which is normally nice (like compact supported smooth (infinitely differentiable). Therefore the space is entirely controlled by these nice function together with the notnio of convergence.
+\end{remark}
 
 \subsubsection{Basics}
 
@@ -46,7 +66,7 @@ A closed subspace of a Banach space is always Banach. However, there might be op
 For linear maps between normed spaces, there is a notion of bounded linear maps:
 
 \begin{definition}
-$T: X \rightarrow Y$ is bounded if exists $M \gep 0$ such that 
+$T: X \rightarrow Y$ is bounded if exists $M \geq 0$ such that 
 $$
 \norm{Tx} \leq M \norm{x}
 $$
@@ -55,6 +75,7 @@ $$
 \norm{T} \coloneqq inf \{ M | \norm{Tx} \leq M \norm{x}
 $$
 \end{definition}
+
 
 Many linear maps are not bounded, such as taking derivatives, such as taking derivative on smooth functions. 
 
@@ -142,7 +163,7 @@ Hans-Banach says that we can extend bounded linear operator defined on a subspac
 If $Y$ is a linear subspace of normed space $X$ and $\phi: Y \rightarrow \mathbb{R}$ is a bounded linear functional on $Y$ with norm $M$, then exists an extension $\phi': X \rightarrow \mathbb{R}$ that restricts to $\phi$ on $Y$ and has the same norm.
 \end{theorem}
 
-This gives us a notion of weak equivalence:
+This gives us a notion of weak convergence:
 \begin{definition}
 A sequence $x_n$ in Banach space $X$ converges weakly to $x$ if 
 $$
@@ -151,366 +172,621 @@ $$
 for every bounded linear functional $\phi$ in $X^*$.
 \end{definition}
 
-% \subsection{General Measure Theory}
+We also have weak $*$ convergence for the dual space $X^*$:
+\begin{definition}
+A sequence $\phi_n$ in the dual Banach space $X^*$ weakly $*$ converge to $\phi$ if
+$$
+\phi_n(x) \rightarrow \phi(x)
+$$
+for every $x \in X$.
+\end{definition}
+It generates the weakest topology such that the pairing $X \times X^* \rightarrow \mathbb{R}$ is continuous.
+
+\subsection{Hilbert Spaces}
+Banach spaces are pretty nice spaces, however, they are still not very intuitive. Hilbert spaces are Banach spaces with the norm coming from an inner product. They behave closer to finite dimensional vector spaces. And as we will see, in some sense, there are "only one" Hilbert space of a given (orthonormal basis) size.
+
+
+\subsubsection{Basics}
+We will define it or complex linear spaces, for real vector spaces just omit the complex conjugates:
+
+\begin{definition}
+An inner product on $V$ is a map 
+$$
+(-, -): X \times X \rightarrow \mathbb{C}
+$$
+such that:
+\begin{enumerate}
+    \item It is linear in the second factor.
+    \item $(y,x) = \overline{(x,y)}$ (Hermitian symmetric)
+    \item $(x,x) \geq 0$
+    \item $(x,x)$ = 0 iff $x = 0$
+\end{enumerate}
+\end{definition}
+
+From an inner product, we can define a norm by 
+$$
+\norm{x} = \sqrt{(x,x)}
+$$
+
+\begin{definition}
+A Hilbert space is a complete inner product space.
+\end{definition}
+
+\begin{example}
+The standard inner product on $\mathbb{C}^n$ makes $\mathbb{C}^n$ a Hilbert Space. $L^2(X)$ is an inner product space with inner product
+$$
+(f,g) = \int_a ^b \overline{f}g d\mu
+$$
+The other $L^p$ spaces are not Hilbert spaces.
+
+Let $C^k([a,b])$ the space of functions with $k$ continuous derivatives. We have an inner product:
+$$
+(f,g) = \sum_{j=0} ^k \int_a ^b \overline{f^{(j)}(x)} g^{(j)}(x) dx,
+$$
+$f^{(j)}$ is the $j$-th derivative. Then the completion is called the Sobolev space $H^k((a,b)) = W^{k,2}((a,b))$.
+\end{example}
+
+From a norm, it is a condition if it comes from an inner product or not:
+
+\begin{theorem}
+A norm comes from an inner product iff 
+$$
+\norm{x + y}^2 + \norm{x - y}^2 = 2\norm{x}^2 + 2\norm{y}^2
+$$
+\end{theorem}
+
+Lastly, the inner product $X \times X \rightarrow \mathbb{C}$ is a continuous map.
+
+In Hilbert spaces, we have the notion of orthogonality. The orthogonal complement of a subset if a closed linear subspace.
+
+\begin{theorem}[Projection]
+For a closed subspace $M \subset X$, for any point $x$, there is a unique closest point. It is the point $y$ where $(x - y)$ is orthogonal to $M$. This also means that $\mathcal{H} = M \oplus M^\perp$.
+
+\subsubsection{Orthonormal Bases}
+Orthonormal basis are nice. Two hilbert spaces with orthonormal bases have the same cardinality are isomorphic. A separable Hilbert space has a finite or countably infinite orthonormal basis. For infinite dimensional Hilbert spaces, the notion of orthonormal basis is about infinite sums, not finite sums. There is a notion of absolute convergence and sum over an (possibly uncountable) elements. 
+However, we have the Bassel's inequality:
+
+\begin{theorem}[Bassel's inequality]
+Given an orthonormal set $u_\alpha$ and $x \in H$, then \begin{enumerate}
+    \item $\sum_{\alpha} |(u_\alpha, x)|^2 \leq \norm{x}^2$
+    \item $x_U = \sum_\alpha (u_\alpha, x)u_\alpha$ is a convergent sum
+    \item $x - x_U \in U^\perp$
+\end{enumerate}
+\end{theorem}
+
+Given a subset $U$ of $H$, there is a notion of the closed linear span, being the infinite sums that converges unconditionally. It is the smallest closed linear subspace that contains $U$.
+
+Now we can define orthonormal basis (this is really a theorem):
+
+\begin{definition}
+A set of orthonormal element $u_\alph$ is complete (an orthonormal basis) if one of the following equivalent condition is satisfied:
+\begin{enumerate}
+    \item $(u_\alpha, x) = 0$ for all $\alpha$ implies $x = 0$
+    \item $x = \sum_\alpha (u_\alpha, x) u_\alpha$
+    \item $\norm{x}^2 = \sum_\alpha |(u_\alpha, x)|^2$
+    \item the closed linear span $[U] = H$
+    \item $U$ is a maximal orthonormal set.
+\end{enumerate}
+\end{definition}
+
+\begin{remark}
+the first condition is the easiest to verify, and second is used most often. 
+\end{remark}
+
+We have the Parseval's identity:
+\begin{theorem}[Parseval's Identity]
+Suppose $u_\alpha$ is an orthonormal basis of $H$, if $x = \sum_\alpha a_\alpha u_\alpha$, $y = \sum_\alpha b_\alpha u_\alpha$, then 
+$$
+(x,y) = \sum_\alpha \overline{a_\alpha} b_{\alpha}
+$$
+\end{theorem}
 
-% \subsubsection{$\sigma$ Algebras, Measureable Spaces, and Measures}
-% The story of measure theory is about trying to generalize the notion of volume or size. 
-% We are following these notes: \url{https://www.math.ucdavis.edu/~hunter/measure_theory/measure_notes.pdf}
-% We first start with the notion of outer measure:
+A corollary of this is that any Hilbert space $H$ with orthonormal basis $U$  is isomorphic to $l^2(U)$. By Zorn's lemma, any Hilbert space has an orthonormal basis.
+
+The Gram-Schmidt orthonormalization procedure constructs orthonormal basis from any countable linearly independent set whose linear span is dense in H.
+
+
+Examples of orthonormal basis is the standard basis of $\mathbb{C}^n$, the delta basis of $l^2(\mathbb{Z})$, 
+$$
+e_n(x) = \frac{1}{\sqrt{2\pi}} e^{inx}
+$$
+is an orthonormal basis of $L^2(T)$. 
+
+
+\end{theorem}
+
+\subsection{Fourier Series}
+Fourier Series takes a function on $T = S^1$ (periodic function) to a series. It turns out the behavior of the series says a lot about the function.
+
+\subsubsection{Basics}
+Let $C(T)$ be the space of continuous functions, and $L^2(T)$ the completion to the $L^2$-norm.
+It can be concretely realized as equivalence class of Lebesgue measureable, square integrable functions from $T$ to $\mathbb{C}$. It is a Hilbert space. 
+
+The Fourier basis elements are functions
+$$
+e_n(x) = \frac{1}{\sqrt{2 \pi}} e^{inx}
+$$
 
-% \begin{definition}
-% An outer measure $\mu_^*$ on a set $X$ is a function 
+\begin{theorem}
+They form an orthonormal basis of $L^2(T)$, thus $L^2(T) \cong l^2(\mathbb{N})$ by sending $f$ to its Fourier coefficients.
+\end{theorem}
 
-% $$
-% \mu^* : 2^X \rightarrow [0, \infty]
-% $$ 
-% such that 
-% \begin{enumerate}
-%     \item $\mu^*(\emptyset) = 0$;
-%     \item if $E \subset F \subset X$, then $\mu^*(E) \leq \mu^*(F)$;
-%     \item (Countable subadditivity) if $E_i$ are countable collection of subsets of $X$, then 
-%     $$
-%     \mu^*(\bigcup_{i + 1} ^{\infty} E_i)\leq \sum_{i = 1} ^{\infty} \mu^*(E_i)
-%     $$
-% \end{enumerate}
-% \end{definition}
-% Note that $\mu^*$ is not assumed to be additive even if ${E_i}$ are disjoint. In fact, they often are not.
+This means that the partial Fourier sum converges to $f$ in the $L^2$ norm. 
 
-% The condition we really want is countable additivity, which is that when $E_i$ are disjoint subset, then the it is additive rather than subadditive (aka it is an equal sign). However, this can't always happen (not true over the real line $\mathbb{R}$). So we instead restrict on the subset that we are looking at. This is where we need $\sigma$-algebras:
+The Fourier coefficients $\hat{f}_n$ is 
+$$
+\hat{f}_n = \frac{1}{\sqrt{2 \pi}} \int_T f(x) e^{\inx} dx
+$$
+We have the Parseval's identity:
+$$
+\int_T \overline{f(x)} g(x) dx = \sum_{n = -\infty} ^{\infty} \overline{\hat{f}_n} \hat{g}_n
+$$
+In particular, we can find the $L^2$ norm $f$ by its Fourier coefficients:
+$$
+\int_T |f(x)|^2 dx = \sum_{n = -\infty} ^{\infty} |\hat{f}_n|^2
+$$
 
-% \begin{definition}
-% A $\sigma$-algebra on a set $X$ is a connection $\mathcal{A}$ of subsets of $X$ such that
-% \begin{enumerate}
-%     \item $\empty, X \in A$;
-%     \item if $A \in \mathcal{A}$, then so is $A^c \in \mathcal{A}$. $A^c$ is the complement.
-%     \item if $A_i \in \mathcal{A}$ for $i \in \mathbb{N}$, then 
-%     $$
-%     \bigcup_{i=1} ^{\infty} A_i,  \ \bigcap_{i=1} ^{\infty} A_i
-%     $$
-%     are in $\mathcal{A}$
-% \end{enumerate}
-% \end{definition}
-% Those is is a collection of subsets that is contains the empty set, close under taking complements and countable unions.
-% Examples are $\{ \emptyset, X \}$, and $\mathcal{P}(X) = 2^X$.
+We have the convolution (which is really just the group algebra multiplication on $L^2(T)$ induced by the group structure on $T$):
+$$
+f * g(x) \coloneqq \int_T f(x-y)\ g(y)\  dy
+$$
+
+Convolution of $L^2$ functions is $L^2$. And we can calculate its Fourier coefficients:
+
+Fourier transform maps convolution of two functions to the pointwise product. A classic part of abelian duality:
+\begin{theorem}
+$$
+\overline{f * g}_n = \sqrt{2\pi} \hat{f}_n \hat{g}_n
+$$
+\end{theorem}
+
+We can also ask for other part of convergence. for $L^2$, it converges pointwise a.e., and for continuous differentiable, the convergence is uniform.
+
+The behavior of the partial sums near a point of discontinuity is interesting, not converge uniformly, it oscillate in an interval contains the point of discontinuity. Width of interval shrinks to zero as $N \rightarrow \infty$, but the size of the oscillations does not, the magnitude is approximately $9$ the jump in $f$ at the jump discontinuity.
+
+We have real-valued orthogonal basis 
+
+$$
+1, cos\ nx, sin\ nx
+$$
+This is good for real-valued function as they have real Fourier coefficients. If $f$ is even, then it has a cosine expansion, and $f$ is odd then it has a Fourier sine expansion.
+
+We can also extend to general toruses. Then the theory says that $L^2(T)$ is iso to $l^2(\hat{\Gamma})$, where $\hat{\Gamma}$ is the dual of the lattice $\Gamma$ associated to $T$.
+
+\subsubsection{Smoothness and decay of Fourier coefficients}
+
+The smoother a function is (the more times it is differentiable), the faster its Fourier coefficients decay. That is, smooth function contains a small amount of high frequency components.
+
+If $f \in C^1(T)$ is continuously differentiable, then we can calculate the coefficients of $f'$:
+$$
+\hat{f'}_n = in\hat{f}_n
+$$
+Generally $\hat{f^{(k)}}_n= (in)^k \hat{f}_n$
+
+We can use this to define the notion of a function whose derivative is square integrable, not continuous. They are called weak derivative. The space of $L^2$ function whose weak derivative is $L^2$ is called $H^1$, a Sobolev space:
+
+\begin{definition}
+The Sobolev space $H^1(T)$ is functions $f \in L^2(T)$ such that 
+$$
+\sum_{n = -\infty} ^{\infty} n^2 |\hat{f}_n|^2 < \infty
+$$
+The weak $L^2$ derivative $f' \in L^2(T)$ for $f \in H^1(T)$ is the $L^2$-convergent Fourier series
+$$
+f'(x) = \frac{1}{\sqrt{2\pi}} \sum_{n = -\infty} ^{\infty} n^2 in \hat{f}_n e^{inx}
+$$
+\end{definition}
+
+It is a Hilbert space with respect to the inner product 
+$$
+(f, g)_{H^1} = \int_T \overline{f(x)}g(x) + \overline{f'(x)}g'(x) dx
+$$
+By Parseval's theorem, the inner product is 
+$$
+(f,g)_{H^1} = \sum_{n = -\infty} ^{\infty} (1 + n^2)\overline{\hat{f}_n} \hat{g}^n
+$$
+
+We can also define weak derivative and $H^1(T)$ by integrating against a smooth test function:
+
+Let $f \in L^2(T)$ and the linear functional $F(\phi): C^1(T) \rightarrow \mathbb{C}$
+$$
+F(\phi) = - \int_T f\phi' dx
+$$
+is bounded. Then it uniquely extends to a bounded linear functional on $L^2(T)$, and by Riesz representation theorem, we have a unique function $f' \in L^2(T)$ such that $F(\phi) = (\overline{f}', \phi)$ for all $\phi \in C^1(T)$. This can be taken as our definition of a weak $L^2$ derivative.
+
+For any $k \geq 0$, we define the Sobolev space
+$$
+H^k(T) = \{f \in L^2(T) | f(x) = \sum_{n = -\infty} ^{\infty} c_n e^{inx}, \sum_{n = -\infty} ^{\infty} |n|^{2k}|c_n|^2 \leq \infty \}
+$$
+
+Note this even make sense when $k$ is not a natural number.
+
+Here's a version of Sobolev embedding theorem, which means that if a function on $T$ has a square-integrable weak derivative, then it is continuous. Ofc the only way to show continuity is by showing that the partial Fourier sums (which are ofc continuous) converges uniformly.
+
+\begin{theorem}[Soboloev embedding]
+If $f \in H^k(T)$ for $k > 1/2$, then $f \in C(T)$.
+\end{theorem}
+
+Generally speaking, if $f \in H^k(T)$, then the Fourier series for $f^{(j)}$ converge uniformly when $k + j + 1/2$, so $f \in C^l(T)$, where $l$ is the greatest integer strictly less than $k - 1/2$. For function of several variable, $f$ is continuous when $k > d/2$ and $j$-times continuous differentiable when $k > j + d/2$. THere is a loss of slight more than one-half a derivative per space dimension in passing from $L^2$ derivatives to continuous derivatives.
 
-% Now we can define a measureable space, that is, a setting where we can define measures:
+\todo[inline]{Tomorrow morning (8/4): wake up and finish studying the Fourier series chapter, skim through the non-heat equation applications and wavelets.
+Then let's go back to qual and try to F12!!!!}
+\subsection{General Measure Theory}
 
-% \begin{definition}
-% A measureable space is a pair $(X, \mathcal{A})$, where $X$ is a set and $\mathcal{A}$ is a $\sigma$-algebra on $X$.
-% \end{definition}
+\subsubsection{$\sigma$ Algebras, Measureable Spaces, and Measures}
+The story of measure theory is about trying to generalize the notion of volume or size. 
 
-% Any topological space gives a measureable space:
+We first start with the notion of outer measure:
 
-% \begin{definition}
-% Given a topolgical space $X$ with topology $\tau$, then the Borel topology is the smallest measureable space containing all the open sets (thus also close sets) of $X$. 
-% \end{definition}
+\begin{definition}
+An outer measure $\mu_^*$ on a set $X$ is a function 
 
-% Given a measureable space $(X, \mathcal{A})$, we can now define a measure:
+$$
+\mu^* : 2^X \rightarrow [0, \infty]
+$$ 
+such that 
+\begin{enumerate}
+    \item $\mu^*(\emptyset) = 0$;
+    \item if $E \subset F \subset X$, then $\mu^*(E) \leq \mu^*(F)$;
+    \item (Countable subadditivity) if $E_i$ are countable collection of subsets of $X$, then 
+    $$
+    \mu^*(\bigcup_{i + 1} ^{\infty} E_i)\leq \sum_{i = 1} ^{\infty} \mu^*(E_i)
+    $$
+\end{enumerate}
+\end{definition}
+Note that $\mu^*$ is not assumed to be additive even if ${E_i}$ are disjoint. In fact, they often are not.
 
-% \begin{definition}
-% A measure $\mu$ on $(X, \mathcal{A})$ is a function 
-% $$
-% \mu: \mathcal{A} \rightarrow [0, \infty]
-% $$
-% such that 
-% \begin{enumerate}
-%     \item $\mu(\emptyset) = 0$;
-%     \item It is countably additive.
-% \end{enumerate}
-% \end{definition}
+The condition we really want is countable additivity, which is that when $E_i$ are disjoint subset, then the it is additive rather than subadditive (aka it is an equal sign). However, this can't always happen (not true over the real line $\mathbb{R}$). So we instead restrict on the subset that we are looking at. This is where we need $\sigma$-algebras:
 
-% Ofc measures restricts to a measureable subset. 
+\begin{definition}
+A $\sigma$-algebra on a set $X$ is a connection $\mathcal{A}$ of subsets of $X$ such that
+\begin{enumerate}
+    \item $\empty, X \in A$;
+    \item if $A \in \mathcal{A}$, then so is $A^c \in \mathcal{A}$. $A^c$ is the complement.
+    \item if $A_i \in \mathcal{A}$ for $i \in \mathbb{N}$, then 
+    $$
+    \bigcup_{i=1} ^{\infty} A_i,  \ \bigcap_{i=1} ^{\infty} A_i
+    $$
+    are in $\mathcal{A}$
+\end{enumerate}
+\end{definition}
+Those is is a collection of subsets that is contains the empty set, close under taking complements and countable unions.
+Examples are $\{ \emptyset, X \}$, and $\mathcal{P}(X) = 2^X$.
 
-% \begin{example}
-% Let $X$ be a set, then $\nu: \mathcal{P}(X) \rightarrow [0, \infty]$ by cardinality is a measure, called the counting measure. 
-% \end{example}
+Now we can define a measureable space, that is, a setting where we can define measures:
 
-% A measure zero set, is a measureable net $N$ such that $\mu(N) = 0$. A property hold for all element away from a measure zero set is called to hold almost everywhere, or a.e..
+\begin{definition}
+A measureable space is a pair $(X, \mathcal{A})$, where $X$ is a set and $\mathcal{A}$ is a $\sigma$-algebra on $X$.
+\end{definition}
 
-% \begin{definition}
-% A measures space $(X, \mathcal{A}, \mu)$ is complete if every subset of a set of measure zero is measureable.
-% \end{definition}
+Any topological space gives a measureable space:
 
-% There is a completion which takes a measure space to a complete measureable space.
+\begin{definition}
+Given a topolgical space $X$ with topology $\tau$, then the Borel topology is the smallest measureable space containing all the open sets (thus also close sets) of $X$. 
+\end{definition}
 
-% \subsubsection{Measure Functions}
-% A measureable functions is similiar to a continuous functions. A continuous functions pull back open sets to open setes, a measureable functions pulls back measureable sets to measureable sets.
+Given a measureable space $(X, \mathcal{A})$, we can now define a measure:
 
+\begin{definition}
+A measure $\mu$ on $(X, \mathcal{A})$ is a function 
+$$
+\mu: \mathcal{A} \rightarrow [0, \infty]
+$$
+such that 
+\begin{enumerate}
+    \item $\mu(\emptyset) = 0$;
+    \item It is countably additive.
+\end{enumerate}
+\end{definition}
 
-% The once we care about are the real-valued functions. We equipped the target $\mathbb{R}$ with the Borel $\sigma$-algebra. 
+Ofc measures restricts to a measureable subset. 
 
-% \begin{definition}
-% Let $(X, \mathcal{A})$ be a measureable space, then $f : X \rightarrow \mathbb{R}$ if it pulls back Borel sets to to measureable subsets.
-% \end{definition}
+\begin{example}
+Let $X$ be a set, then $\nu: \mathcal{P}(X) \rightarrow [0, \infty]$ by cardinality is a measure, called the counting measure. 
+\end{example}
 
-% As the Borel $\sigma$-algebra is generated by $(-\infty, b)$, $(-\infty, b]$, $(a, \infty)$, $[a, \infty)$, the pull back of those sets being measureable is suffice for a function to be measureable.
+A measure zero set, is a measureable net $N$ such that $\mu(N) = 0$. A property hold for all element away from a measure zero set is called to hold almost everywhere, or a.e..
 
-% Of course, products, sums, and inverse of a measureable function is measureable. So is $|f|$, $max(f,g)$, $min(f, g)$.
+\begin{definition}
+A measures space $(X, \mathcal{A}, \mu)$ is complete if every subset of a set of measure zero is measureable.
+\end{definition}
 
-% \todo[inline]{ Finish chapter 3 in this subsubsection}
+There is a completion which takes a measure space to a complete measureable space.
 
+\subsubsection{Measure Functions}
+A measureable functions is similiar to a continuous functions. A continuous functions pull back open sets to open setes, a measureable functions pulls back measureable sets to measureable sets.
 
 
-% \begin{lemma}
+The once we care about are the real-valued functions. We equipped the target $\mathbb{R}$ with the Borel $\sigma$-algebra. 
 
-% Pointwise limits ($sup, inf, lim sup, lim inf$) of measurable (extended) functions are measureable (extended) real-valued functions. 
-% \end{lemma}
+\begin{definition}
+Let $(X, \mathcal{A})$ be a measureable space, then $f : X \rightarrow \mathbb{R}$ if it pulls back Borel sets to to measureable subsets.
+\end{definition}
 
-% Therefore if a sequence of measureable functions are pointwise convergent, then its pointwise limit is measureable (as it is lim sup = lim inf).
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+As the Borel $\sigma$-algebra is generated by $(-\infty, b)$, $(-\infty, b]$, $(a, \infty)$, $[a, \infty)$, the pull back of those sets being measureable is suffice for a function to be measureable.
 
-% Measureable functions are limits of simple functions:
-% A characteristic function of $E \subset X$ is a function $\chi_E: X \rightarrow \mathbb{R}$ defined as $\chi_E(x) = 1$ iff $x \in E$ and else $0$. It is measureable iff $E$ is a measureable set.
+Of course, products, sums, and inverse of a measureable function is measureable. So is $|f|$, $max(f,g)$, $min(f, g)$.
 
-% \begin{definition}
-% A simple function $\phi: X \rightarrow \mathbb{R}$ is a finite $\mathbb{R}$ linear combination of measureable characteristic functions.
-% \end{definition}
+\todo[inline]{ Finish chapter 3 in this subsubsection}
 
 
-% \begin{theorem}
-% Any positive measurable function is the pointwise limit of a monotone increasing positive simple functions. 
-% \end{theorem}
 
-% \begin{remark}
-% In Lebesgue integral we approximate by simple functions , in Riemann integral we partition the domain. So Lebesgue integral we partition the range, in Riemann integral we partition the domain.
-% \end{remark}
+\begin{lemma}
 
-% %%%%%%%%%%%%%%%%%%%%%%%%%
-% In a complete measure space, then all the proposition above we only need almost every property, such as if $f_n \rightarrow f$ almost everywhere (away from a measure-zero set), then $f$ is measureable.
+Pointwise limits ($sup, inf, lim sup, lim inf$) of measurable (extended) functions are measureable (extended) real-valued functions. 
+\end{lemma}
 
+Therefore if a sequence of measureable functions are pointwise convergent, then its pointwise limit is measureable (as it is lim sup = lim inf).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% \subsubsection{Integration}
+Measureable functions are limits of simple functions:
+A characteristic function of $E \subset X$ is a function $\chi_E: X \rightarrow \mathbb{R}$ defined as $\chi_E(x) = 1$ iff $x \in E$ and else $0$. It is measureable iff $E$ is a measureable set.
 
-% We develope the general theory of integration of a real-valued function on an measure space. Since every measureable function is the pointwise limit of simple functions, we define the simple ones first and extend from there:
+\begin{definition}
+A simple function $\phi: X \rightarrow \mathbb{R}$ is a finite $\mathbb{R}$ linear combination of measureable characteristic functions.
+\end{definition}
 
-% For a simple function $\phi = \sum_{i = 1} ^N c_i \chi_{E_i}$, the integral with respect to measure $\mu$ is 
-% $$
-% \int \phi d\mu = \sum_{i = 1} ^N c_i \mu(E_i).
-% $$
 
-% \begin{example}
-% The characteristic function of the rations $\chi_\mathbb{Q}: \mathbb{R} \rightarrow \mathbb{R}$ is not Riemann integrable, but they are Lebesgue integrable with $\int \chi_\mathbb{Q} d\mu = 0$.
-% \end{example}
+\begin{theorem}
+Any positive measurable function is the pointwise limit of a monotone increasing positive simple functions. 
+\end{theorem}
 
-% For a positive function $f$, then 
-% $$
-% \int f d\mu = sup{\int \phi d\mu: 0 \leq \phi \leq f, \phi \ simple}
-% $$
-% It is integrable if it is measureable and $\int f d\mu < \infty$
-
-
-% Let $A$ be a measureable set, then 
-% $$
-% \int_A f d\mu = \int f_{\chi_A}d\mu
-% $$
-
-% Here's the important Monotone Convergence Theorem:
-
-% \begin{theorem}[Monotone Convergence Theorem]
-% If $\{f_n\}$ is a monotone increasing sequence of positive, measureable, extended real-valued functions, and 
-% $$
-% f = lim_{n\rightarrow \infty} f_n,
-% $$
-% then 
-% $$
-% lim_{n \rightarrow \infty} \int f_n d\mu = \int f d\mu
-% $$
-% \end{theorem}
+\begin{remark}
+In Lebesgue integral we approximate by simple functions , in Riemann integral we partition the domain. So Lebesgue integral we partition the range, in Riemann integral we partition the domain.
+\end{remark}
 
-% This means that $f$ is the limit of integrals of an increasing sequence of simple functions. This means the following:
+%%%%%%%%%%%%%%%%%%%%%%%%%
+In a complete measure space, then all the proposition above we only need almost every property, such as if $f_n \rightarrow f$ almost everywhere (away from a measure-zero set), then $f$ is measureable.
 
-% \begin{lemma}
-% In the $L^1$ norm, the space of simple functions are dense. That is, any measureable function is a limit of simple functions in the $L^1$ norm.
-% \end{lemma}
 
-% The measure of an extended real-valued function is its positive part  + the negative part.
-% It is integrable iff $\int |f| d\mu < \infty$. Note that absolutely convergence of a series is a version of integrable functions.
+\subsubsection{Integration}
 
-% An important question of integration theory is given $f_n$, does $$
-% lim_{n \rightarrow \infty} f_n d \mu = \int lim_{n \rightarrow \infty} f_n d \mu
-% $$.
-% It is definitely not true in general. 
+We develope the general theory of integration of a real-valued function on an measure space. Since every measureable function is the pointwise limit of simple functions, we define the simple ones first and extend from there:
 
-% Here's two important theorems about it:
-
-% \begin{theorem}[Fatou's lemma]
-% Let $f_n$ be sequence of positive measureable functions, then 
-% $$
-% \int lim\ inf f_n d\mu \leq lim in \int f_n d\mu
-% $$
-% \end{theorem}
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-% We also have the dominated convergence theorem:
-% \begin{theorem}[Dominated Convergence Theorem]
-% if $f_n$ is a sequence of measureable functions $f_n: X \rightarrow \mathbb{R}$ such that $f_n \rightarrow f$ pointwise, and $|f_n| \leq g$ for $g$ integrable, then
-% $$
-% \int f_n d\mu \rightarrow \int f d\mu 
-% $$
-% \end{theorem}
+For a simple function $\phi = \sum_{i = 1} ^N c_i \chi_{E_i}$, the integral with respect to measure $\mu$ is 
+$$
+\int \phi d\mu = \sum_{i = 1} ^N c_i \mu(E_i).
+$$
 
-% Of course, we can generalize all of the above to complex-valued functions.
+\begin{example}
+The characteristic function of the rations $\chi_\mathbb{Q}: \mathbb{R} \rightarrow \mathbb{R}$ is not Riemann integrable, but they are Lebesgue integrable with $\int \chi_\mathbb{Q} d\mu = 0$.
+\end{example}
 
-% \begin{theorem}
-% Of course any Riemann integrable function is Lebesgue integrable and its Riemann integral is equal to Lebesgue intergral. Moreoever, a Lebesgue measureable function is Riemann integrable iff it is bounded and the set of discontinuities has Lebesgue measure zero.
-% \end{theorem}
+For a positive function $f$, then 
+$$
+\int f d\mu = sup{\int \phi d\mu: 0 \leq \phi \leq f, \phi \ simple}
+$$
+It is integrable if it is measureable and $\int f d\mu < \infty$
 
-% \subsubsection{$L^p$ spaces}
 
-% \begin{definition}
-% Given a measure space $X, \mathcal{A}, \mu$ and $1 \leq p < \infty$, the space $L^p(X)$ is equivalence classes of measureable functions $f: X \rightarrow \mathbb{R}$. such that
-% $$
-% \int |f|^p d\mu < \infty
-% $$, 
-% where two measureable functions are equivalent if they are equal $\mu$-a.e... The $L^p$-norm of $f$ is 
-% $$
-% \norm{f}_{L_p} = (\int |f|^p d\mu )^{1/p}
-% $$
+Let $A$ be a measureable set, then 
+$$
+\int_A f d\mu = \int f_{\chi_A}d\mu
+$$
 
-% \end{definition}
-% We also have the $L^\infty$ norm:
-% \begin{definition}
-% Let $f$ be a measureable function. The essential supremum is 
-% $$
-% ess sup f = inf \{a \in \mathbb{R}: \mu \{x \in X : f(x) > a \} = 0 \}
-% $$
+Here's the important Monotone Convergence Theorem:
 
-% It is essentailly bounded if $ess sup|f| < \infty$
+\begin{theorem}[Monotone Convergence Theorem]
+If $\{f_n\}$ is a monotone increasing sequence of positive, measureable, extended real-valued functions, and 
+$$
+f = lim_{n\rightarrow \infty} f_n,
+$$
+then 
+$$
+lim_{n \rightarrow \infty} \int f_n d\mu = \int f d\mu
+$$
+\end{theorem}
 
-% The space of $L^\infty(X)$ consists of point-wise a.e.-equivalence classes of essentially bounded function with norm $ess sup|f|$.
-% \end{definition}
+This means that $f$ is the limit of integrals of an increasing sequence of simple functions. This means the following:
 
-% Here's are two important inequalies:
+\begin{lemma}
+In the $L^1$ norm, the space of simple functions are dense. That is, any measureable function is a limit of simple functions in the $L^1$ norm.
+\end{lemma}
 
-% \begin{theorem}[Minkowski inequility]
-% If $f, g \in L^p(X)$ for $1 \leq p \leq \infty$, then $f + g \in L^p(X)$ and 
-% $$
-% \norm{f + g}_{L^p} \leq \norm{f}_{L^p} + \norm{g}_{L^p}
-% $$
-% \end{theorem}
+The measure of an extended real-valued function is its positive part  + the negative part.
+It is integrable iff $\int |f| d\mu < \infty$. Note that absolutely convergence of a series is a version of integrable functions.
 
-% \begin{definition}
-% For $p$ with $1 \leq p \leq \infty$, 
-% The Holder conjuage of $p$ if $p'$ with 
-% $$
-% \frac{1}{p} + \frac{1}{p'} = 1
-% $$
-% $1' = \infty$ and $\infty' = 1$.
-% \end{definition}
+An important question of integration theory is given $f_n$, does $$
+lim_{n \rightarrow \infty} f_n d \mu = \int lim_{n \rightarrow \infty} f_n d \mu
+$$.
+It is definitely not true in general. 
 
-% \begin{theorem}[Holder's inequality]
-% If $f \in L^p(X)$ and $g \in L^{p'}(X)$, then $fg \in L^1(X)$ and 
-% $$
-% \int |fg| d\mu \leq \norm{f}_{L^p}\norm{g}_{L^{p'}}
-% $$
-% \end{theorem}
+Here's two important theorems about it:
 
-% Simple functions are dense in $L^p$ for all $p$:
+\begin{theorem}[Fatou's lemma]
+Let $f_n$ be sequence of positive measureable functions, then 
+$$
+\int lim\ inf f_n d\mu \leq lim in \int f_n d\mu
+$$
+\end{theorem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% \begin{theorem}
-% The simple functions that belong to $L^p(X)$ are dense in $L^p(X)$.
-% \end{theorem}
 
-% Note that a simple function $\phi = \sum_{i=1} ^n c_i \chi_{A_i}$ belong in $L^p$ for $p < \infty$ iff $\mu(A_i) < \infty$. Every simple function belong in $L^\infty$.
+We also have the dominated convergence theorem:
+\begin{theorem}[Dominated Convergence Theorem]
+if $f_n$ is a sequence of measureable functions $f_n: X \rightarrow \mathbb{R}$ such that $f_n \rightarrow f$ pointwise, and $|f_n| \leq g$ for $g$ integrable, then
+$$
+\int f_n d\mu \rightarrow \int f d\mu 
+$$
+\end{theorem}
 
-% In addition, $L^p(X)$ are also complete:
+Of course, we can generalize all of the above to complex-valued functions.
 
-% \begin{theorem}[Riesz-Fischer Theorem]
-% If $X$ is a measure space and $1 \leq p \leq \infty$, then $L^p(X)$ is complete.
-% \end{theorem}
+\begin{theorem}
+Of course any Riemann integrable function is Lebesgue integrable and its Riemann integral is equal to Lebesgue intergral. Moreoever, a Lebesgue measureable function is Riemann integrable iff it is bounded and the set of discontinuities has Lebesgue measure zero.
+\end{theorem}
 
-% Note that for $1 \leq p < \infty$, any converging sequence has a pointwise converging subsequence.
+\subsubsection{$L^p$ spaces}
 
-% %%%%%%%%%%%%%%%%%%%%%
-% We also have duality for $L^p$ spaces:
-% The dual $X^*$ of a Banach space $X$, as a set, is all bounded linear functionals on $X$.
+\begin{definition}
+Given a measure space $X, \mathcal{A}, \mu$ and $1 \leq p < \infty$, the space $L^p(X)$ is equivalence classes of measureable functions $f: X \rightarrow \mathbb{R}$. such that
+$$
+\int |f|^p d\mu < \infty
+$$, 
+where two measureable functions are equivalent if they are equal $\mu$-a.e... The $L^p$-norm of $f$ is 
+$$
+\norm{f}_{L_p} = (\int |f|^p d\mu )^{1/p}
+$$
 
-% \begin{theorem}[Duality of $L^p$ spaces]
-% Given $1 < p \leq \infty$, if $f \in L^{p'}(X)$, then 
-% $$
-% F(g) = \int fg d\mu 
-% $$
-% defines a bounded linear functional $F: L^p(X) \rightarrow \mathbb{R}$ with 
-% $$
-% \norm{F} = \norm{f}_{L^{p'}}
-% $$.
-% For $1 < p < \infty$, this defines an isomorphism $L^{p'}(X) \cong L^p(X)^*$
-% \end{theorem}
+\end{definition}
+We also have the $L^\infty$ norm:
+\begin{definition}
+Let $f$ be a measureable function. The essential supremum is 
+$$
+ess sup f = inf \{a \in \mathbb{R}: \mu \{x \in X : f(x) > a \} = 0 \}
+$$
 
-% \begin{corollary}
-% For those $p$, $L^p(X)$ is reflexive, that is, the canonical map $L^p(X) \rightarrow L^p(X)^{**}$ is an isomorphism.
-% \end{corollary}
+It is essentailly bounded if $ess sup|f| < \infty$
 
+The space of $L^\infty(X)$ consists of point-wise a.e.-equivalence classes of essentially bounded function with norm $ess sup|f|$.
+\end{definition}
 
-% \subsection{Lebesgue measure on $\mathbb{R}^n$}
+Here's are two important inequalies:
 
-% The Lebesgue measure is constructed from elementary geometrical object like cubes. First we describe the Lebesgue $\sigma$-algebra.
+\begin{theorem}[Minkowski inequility]
+If $f, g \in L^p(X)$ for $1 \leq p \leq \infty$, then $f + g \in L^p(X)$ and 
+$$
+\norm{f + g}_{L^p} \leq \norm{f}_{L^p} + \norm{g}_{L^p}
+$$
+\end{theorem}
 
-% \begin{theorem}
-% The Lebesgue $\sigma$-algebra is simply the completion of the Borel $\sigma$-algebra on $\mathbb{R}^n$.
-% \end{theorem}
+\begin{definition}
+For $p$ with $1 \leq p \leq \infty$, 
+The Holder conjuage of $p$ if $p'$ with 
+$$
+\frac{1}{p} + \frac{1}{p'} = 1
+$$
+$1' = \infty$ and $\infty' = 1$.
+\end{definition}
 
-% Here's are the measure zero sets:
-% \begin{lemma}
-% A subset $N \subset \mathbb{R}^n$ has Lebesgue measure zero if for every $\epsilon > 0$, there exists a countable collection of rectanges $R_i$ such that $N \subset \bigcup_{i = 0}^\infty R_i$, and $\sum_{i = 1} ^\infty \mu(R_i) < \epsilon$.
-% \end{lemma}
+\begin{theorem}[Holder's inequality]
+If $f \in L^p(X)$ and $g \in L^{p'}(X)$, then $fg \in L^1(X)$ and 
+$$
+\int |fg| d\mu \leq \norm{f}_{L^p}\norm{g}_{L^{p'}}
+$$
+\end{theorem}
 
-% Every countable set has measure zero, the Cantor set is an uncountable measure zero set.
+Here's a immediate generalization, which is even better:
 
-% The Lebesgue measure is translational invariant, it is the Haar measure. It is also translational invariant. 
+\begin{theorem}[Holder's Inequality]
+Given $r, p, q$ with $\frac{1}{r} = \frac{1}{p} + \frac{1}{q}$, then 
+$$
+\norm{fg}_r ^r \leq \norm{f}_{p} ^r \norm{f}_q ^r
+$$
 
+\end{theorem}
 
-% %%%%%%%%%%%%%%%%
-% \subsubsection{Regularity Results}
-% We also have regularity results for the Lebesgue measure. 
+Simple functions are dense in $L^p$ for all $p$:
 
-% \begin{theorem}
-% If $A \subset \mathbb{R}^n$, then 
-% $$
-% \mu^*(A) = inf\{\mu(G): A \subset G, G open\},
-% $$
-% and if $A$ is Lebesgue measurable, then 
-% $$
-% \mu(A) = sup \{\mu(K): K \subset A, K compact\}.
-% $$
-% \end{theorem}
+\begin{theorem}
+The simple functions that belong to $L^p(X)$ are dense in $L^p(X)$.
+\end{theorem}
 
-% A subset $A$ is Lebesgue measureable iff there are open sets containing $A$ and difference is arbitrary small.
+Note that a simple function $\phi = \sum_{i=1} ^n c_i \chi_{A_i}$ belong in $L^p$ for $p < \infty$ iff $\mu(A_i) < \infty$. Every simple function belong in $L^\infty$.
 
-% Here's another characterization, which says the Lebesgue measureable sets are the ones that can be "squeezed" between open and closed sets:
+In addition, $L^p(X)$ are also complete:
 
-% \begin{theorem}
-% A subset $A$ is Lebesgue measurable iff if for every $\epsilon > 0$ there is an open set $G$ and closed set $F$ s.y. $F \subset A \subset G$ and $\mu(G\\F)< \epsilon.$ If $\mu(A) < \infty$, then $F$ can be chosen to be compact.
-% \end{theorem}
+\begin{theorem}[Riesz-Fischer Theorem]
+If $X$ is a measure space and $1 \leq p \leq \infty$, then $L^p(X)$ is complete.
+\end{theorem}
 
-% Thus we can approximate a Lebesgue measureable set by an open containing it and a closed contained in it, with arbitrary small, but generally nonzero difference.
+Note that for $1 \leq p < \infty$, any converging sequence has a pointwise converging subsequence.
 
+%%%%%%%%%%%%%%%%%%%%%
+We also have duality for $L^p$ spaces:
+The dual $X^*$ of a Banach space $X$, as a set, is all bounded linear functionals on $X$.
 
-% \subsubsection{$L^p$ functions on $\mathbb{R}^n$}
-% \begin{theorem}
-% For $1 \leq p < \infty$, we have that the space of compactly supported functions is dense in $L^p(\mathbb{R}^n)$.
-% \end{theorem}
+\begin{theorem}[Duality of $L^p$ spaces]
+Given $1 < p \leq \infty$, if $f \in L^{p'}(X)$, then 
+$$
+F(g) = \int fg d\mu 
+$$
+defines a bounded linear functional $F: L^p(X) \rightarrow \mathbb{R}$ with 
+$$
+\norm{F} = \norm{f}_{L^{p'}}
+$$.
+For $1 < p < \infty$, this defines an isomorphism $L^{p'}(X) \cong L^p(X)^*$
+\end{theorem}
 
-% Let $\mu$ be the Lebesgue Measure on the Real number line $\mathbb{R}$. We want to study how integration on the real number work:
+\begin{corollary}
+For those $p$, $L^p(X)$ is reflexive, that is, the canonical map $L^p(X) \rightarrow L^p(X)^{**}$ is an isomorphism.
+\end{corollary}
 
-% \begin{definition}
-% Let $f$ be a non-negative function on $\mathbb{R}$, it is Lebesgue measureable if 
-% \end{definition}
+For $X$ a finite measure space, for $p < q$, we have that $L^q(X) \xrightarrow{} L^p(X)$:
 
-% \subsection{Fourier Transform and Fourier Series}
+\begin{theorem}
+For $X$ a finite measure space, for $1 \leq p \leq q \leq \infty$, then the $L^q$ norm bounds $L^p$ norm. Thus we have inclusion $L^q(X) \xrightarrow{} L^p(X)$. 
+\end{theorem}
 
+Thus we have uniform convergence implies $L^\infty$ implies $L^p$ ... implies $L^1$.
 
-% Let $L^2(\mathbb{R})$ be the Hilbert space of $L^2$ functions on $\mathbb{R}$ with its standard inner product. We have the Fourier transform defined on compact supported functions:
-% $$
-% f \mapsto \hat{f}(k) \coloneqq \sqrt{\frac{1}{2\pi}}\int f(x)e^{ikx} dx
-% $$
+\subsection{Lebesgue measure on $\mathbb{R}^n$}
 
-% \todo[inline]{There is some interplay between how nice a function $f$ is and its Fourier series, like derivative, continuous etc.}
+The Lebesgue measure is constructed from elementary geometrical object like cubes. First we describe the Lebesgue $\sigma$-algebra.
 
-% This is an $L^2$ function.
+\begin{theorem}
+The Lebesgue $\sigma$-algebra is simply the completion of the Borel $\sigma$-algebra on $\mathbb{R}^n$.
+\end{theorem}
 
-% Similiarly, let $L^2(S^1)$ be the space of $L^2$ functions of $S^1$
+Here's are the measure zero sets:
+\begin{lemma}
+A subset $N \subset \mathbb{R}^n$ has Lebesgue measure zero if for every $\epsilon > 0$, there exists a countable collection of rectanges $R_i$ such that $N \subset \bigcup_{i = 0}^\infty R_i$, and $\sum_{i = 1} ^\infty \mu(R_i) < \epsilon$.
+\end{lemma}
+
+Every countable set has measure zero, the Cantor set is an uncountable measure zero set.
+
+The Lebesgue measure is translational invariant, it is the Haar measure. It is also translational invariant. 
+
+
+%%%%%%%%%%%%%%%%
+\subsubsection{Regularity Results}
+We also have regularity results for the Lebesgue measure. 
+
+\begin{theorem}
+If $A \subset \mathbb{R}^n$, then 
+$$
+\mu^*(A) = inf\{\mu(G): A \subset G, G open\},
+$$
+and if $A$ is Lebesgue measurable, then 
+$$
+\mu(A) = sup \{\mu(K): K \subset A, K compact\}.
+$$
+\end{theorem}
+
+A subset $A$ is Lebesgue measureable iff there are open sets containing $A$ and difference is arbitrary small.
+
+Here's another characterization, which says the Lebesgue measureable sets are the ones that can be "squeezed" between open and closed sets:
+
+\begin{theorem}
+A subset $A$ is Lebesgue measurable iff if for every $\epsilon > 0$ there is an open set $G$ and closed set $F$ s.y. $F \subset A \subset G$ and $\mu(G\\F)< \epsilon.$ If $\mu(A) < \infty$, then $F$ can be chosen to be compact.
+\end{theorem}
+
+Thus we can approximate a Lebesgue measureable set by an open containing it and a closed contained in it, with arbitrary small, but generally nonzero difference.
+
+
+\subsubsection{$L^p$ functions on $\mathbb{R}^n$}
+\begin{theorem}
+For $1 \leq p < \infty$, we have that the space of compactly supported functions is dense in $L^p(\mathbb{R}^n)$.
+\end{theorem}
+
+Let $\mu$ be the Lebesgue Measure on the Real number line $\mathbb{R}$. We want to study how integration on the real number work:
+
+\begin{definition}
+Let $f$ be a non-negative function on $\mathbb{R}$, it is Lebesgue measureable if 
+\end{definition}
+
+\subsection{Fourier Transform and Fourier Series}
+
+
+Let $L^2(\mathbb{R})$ be the Hilbert space of $L^2$ functions on $\mathbb{R}$ with its standard inner product. We have the Fourier transform defined on compact supported functions:
+$$
+f \mapsto \hat{f}(k) \coloneqq \sqrt{\frac{1}{2\pi}}\int f(x)e^{ikx} dx
+$$
+
+\todo[inline]{There is some interplay between how nice a function $f$ is and its Fourier series, like derivative, continuous etc.}
+
+This is an $L^2$ function.
+
+Similiarly, let $L^2(S^1)$ be the space of $L^2$ functions of $S^1$
 
 
 
