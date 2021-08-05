@@ -21,14 +21,34 @@ with equality iff $u,v$ are linear dependent.
 
 We also have Holder's inequality:
 
-\begin{theorem}[Holder's inequality]
-If $f \in L^p(X)$ and $g \in L^{p'}(X)$, then $fg \in L^1(X)$ and 
+\begin{theorem}[Holder's Inequality]
+Given $r, p, q$ with $\frac{1}{r} = \frac{1}{p} + \frac{1}{q}$, then 
 $$
-\int |fg| d\mu \leq \norm{f}_{L^p}\norm{g}_{L^{p'}}
+\norm{fg}_r \leq \norm{f}_{p}  \norm{f}_q
 $$
+
+A space is compact iff every family of closed subset having the finite intersection property  has non-empty intersection.
+
 \end{theorem}
 
 We also have the Urysohn lemma, which gives a continuous function that is 1 on one closed set and 0 on other closed set in nice situation.
+
+We also have the Arzela-Ascoli
+To show that a family of continuous functions on the interval uniformly converges (this is use for example to show that the sequence converges in $L^p$ norm for any $p$), it gives sufficient conditions:
+
+\begin{theorem}[Arzela-Ascoli Theorem]
+Consider a sequence of real-valued continuous functions ${f}_n$ defined on a closed and bounded interval [a, b] of the real line. If this sequence is uniformly bounded and uniformly equicontinuous, then there exists a subsequence ${f}_k$that converges uniformly.
+\end{theorem}
+
+Unifomrly bounded means that exists $M$ such that $$
+f_n(x) \leq M
+$$
+for all $n$ and $x$. Uniformly equicontinuous means that for every $\epsilon > 0$ there exists a delta such that for all $x, y$ with $|x - y| < \delta$ and all $n$ we have 
+$$
+|f_n(x) - f_n(y)| < \epsilon
+$$
+
+To show that a function is analytic, it is suffice to show that $|f^{(j)}(x)| \leq C^{k + 1} k!$.
 
 \subsection{Banach Spaces}
 In analysis there is a lot of infinite dimensional spaces, by themselves they are hard to control. Banach spaces are vector spaces complete to a norm and they are easier to control. 
@@ -58,8 +78,15 @@ Example of normed spaces are $L^p$ spaces. Inner product $(-,-)$ also gives norm
 
 
 \begin{definition}
-A Banach space $V$ is a normed vector space that is complete with respect to the metric derived from the norm.
+A Banach space $V$ is a normed vector space that is complete with respect to the metric derived from the norm. A Banach space is separable if there exists a countable dense subset of it.
 \end{definition}
+
+The dual of a separable Banach space is not necessarily separable, however, 
+
+\begin{proposition}
+If $X^*$ is separable, then so is $X$.
+\end{proposition}
+
 
 A closed subspace of a Banach space is always Banach. However, there might be open dense subspaces (and the Banach space is the completion).
 
@@ -259,7 +286,7 @@ Given a subset $U$ of $H$, there is a notion of the closed linear span, being th
 Now we can define orthonormal basis (this is really a theorem):
 
 \begin{definition}
-A set of orthonormal element $u_\alph$ is complete (an orthonormal basis) if one of the following equivalent condition is satisfied:
+A set of orthonormal element $u_\alpha$ is complete (an orthonormal basis) if one of the following equivalent condition is satisfied:
 \begin{enumerate}
     \item $(u_\alpha, x) = 0$ for all $\alpha$ implies $x = 0$
     \item $x = \sum_\alpha (u_\alpha, x) u_\alpha$
@@ -408,8 +435,33 @@ If $f \in H^k(T)$ for $k > 1/2$, then $f \in C(T)$.
 
 Generally speaking, if $f \in H^k(T)$, then the Fourier series for $f^{(j)}$ converge uniformly when $k + j + 1/2$, so $f \in C^l(T)$, where $l$ is the greatest integer strictly less than $k - 1/2$. For function of several variable, $f$ is continuous when $k > d/2$ and $j$-times continuous differentiable when $k > j + d/2$. THere is a loss of slight more than one-half a derivative per space dimension in passing from $L^2$ derivatives to continuous derivatives.
 
-\todo[inline]{Tomorrow morning (8/4): wake up and finish studying the Fourier series chapter, skim through the non-heat equation applications and wavelets.
-Then let's go back to qual and try to F12!!!!}
+\subsection{Fourier Transform}
+For periodic functions we have Fourier series, for non-periodic functions we need all frequency, thus the Fourier transform gives a function on the frequency space.
+
+If $f$ is a compactly supported continuous function, then $\hat{f}$ can be extended to an entire function, that is, a holomorphic function on the entire $\mathbb{C}$ plane.
+
+Here's a useful fact: both $f$ and $\hat{f}$ can't both be compactly supported:
+
+\begin{theorem}
+If a continuous $f \in \mathbb{R}$ has $f$ and $\hat{f}$ compactly supported, then $f = 0$
+\end{theorem}
+
+\begin{proof}
+Here's are three proofs:
+
+1. Note that the Fourier tranform is holomorphic as we can extend to the complex plane in $s$
+$$
+\hat{f}(s) \coloneqq \frac{1}{\sqrt{2\pi}} \int f(x) e^{isx} dx
+$$
+as $f$ is compactly supported. Thus $\hat{f}$ can't have too many zero, definitely not compactly supported.
+
+2. We restricts $f$ to an interval containing its support, then in the interval $f$ is equal to the Fourier series. If $\hat{f}$ is compactly supported, this means that $f$ is a finite sum of trigonometric functions, thus analytic, and can't be compactly supported if not zero.
+
+3. We will show that $f$ is analytic. 
+\end{proof}
+
+
+
 \subsection{General Measure Theory}
 
 \subsubsection{$\sigma$ Algebras, Measureable Spaces, and Measures}
@@ -773,20 +825,6 @@ Let $\mu$ be the Lebesgue Measure on the Real number line $\mathbb{R}$. We want 
 \begin{definition}
 Let $f$ be a non-negative function on $\mathbb{R}$, it is Lebesgue measureable if 
 \end{definition}
-
-\subsection{Fourier Transform and Fourier Series}
-
-
-Let $L^2(\mathbb{R})$ be the Hilbert space of $L^2$ functions on $\mathbb{R}$ with its standard inner product. We have the Fourier transform defined on compact supported functions:
-$$
-f \mapsto \hat{f}(k) \coloneqq \sqrt{\frac{1}{2\pi}}\int f(x)e^{ikx} dx
-$$
-
-\todo[inline]{There is some interplay between how nice a function $f$ is and its Fourier series, like derivative, continuous etc.}
-
-This is an $L^2$ function.
-
-Similiarly, let $L^2(S^1)$ be the space of $L^2$ functions of $S^1$
 
 
 
