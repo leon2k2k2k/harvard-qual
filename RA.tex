@@ -10,7 +10,80 @@ We are following these notes: \url{https://www.math.ucdavis.edu/~hunter/measure_
 
 \todo[inline]{Fourier series and Fourier transform theory. Heat equation stuff. Hilbert space theory. Sobolev theory.}
 
-\subsection{Inequalities and Basic Theorems}
+\subsection{Cheat sheet}
+I begin to realize that this is getting way to long, so I am going to have a cheat sheet of all the most important theorems. 
+
+\subsubsection{Basic Real Analysis}
+Basic questions in real analysis, like continuity and uniform convergence and stuff:
+
+Uniform convergent implies continuity of the limit:
+
+\begin{theorem}
+If $f_n$ uniformly converges to $f$, then if $f_n$ is continuous, then so is $f$.
+\end{theorem}
+
+Also derivatives:
+
+\begin{theorem}
+If $f_n$ are differentiable with $f_n$ uniformly converges to $f$ and $f' _n$ uniformly converges to $g$, then $g = f'$.
+\end{theorem}
+
+We also have the Arzela-Ascoli theorem, which tells us gives us a way to prove a linear operator between Banach spaces is compact.
+
+\begin{theorem}[Arzela-Ascoli Theorem]
+Consider a sequence of real-valued continuous functions ${f}_n$ defined on a closed and bounded interval [a, b] of the real line. If this sequence is uniformly bounded and uniformly equicontinuous, then there exists a subsequence ${f}_k$that converges uniformly.
+\end{theorem}
+
+
+
+\subsubsection{Topology}
+A space is compact iff any decreasing sequence of nonempty closed subset has a nonempty intersection.
+
+\subsubsection{Banach Spaces}
+To show that $f_j \rightarrow f$ implies that they are $L^1$ convergent (ofc with additional hypothesis), normally, we can separate $g_j = |f - f_j|$ into two parts, one part is $h_j = g_j \chi_{g_j < M}$ for some $M$. This part always goes to zero as it is dominated by integrable function $M$ (on a finite measure space). Thus we only have to worry about "the large part" $k_j = g_j - h_j = g_j \chi_{g_j \geq M}$, where hopefully the other hypothesis will help us.
+
+\subsubsection{$L^p$ functions}
+
+$L^p$ function on measure space $X$ can be realized as Lebesgue measureable function that has a finite $L^p$ norm modulo thus those integral is zero.
+
+When $X$ is $\mathbb{R}^n$, regularity of Lebesgue measure tells us that compact generated (smooth) continuous functions are dense in $L^p$.
+
+When $X$ is a finite measure space, then by Holder inequality we see that for $1 \leq p \leq q \leq \infty$, then $L^q \subset L^p$, and this map is continuous, that is, the $L^p$ norm can be bounded by the $L^q$ norm. By above, since compact generated continuous functions are dense in both (with their respective topology), this is not a close map.
+
+Thus we have uniform convergence implies uniform a.e. - $L^\infty$ implies $L^p$ implies $L^1$ implies convergence in measure, for finite measure spaces.
+
+\begin{theorem}[Arzela-Ascoli Theorem]
+Consider a sequence of real-valued continuous functions ${f}_n$ defined on a closed and bounded interval [a, b] of the real line. If this sequence is uniformly bounded and uniformly equicontinuous, then there exists a subsequence ${f}_k$that converges uniformly.
+\end{theorem}
+
+
+
+
+\subsubsection{Fourier series}
+Fourier series gives equivalence of Hilbert spaces between $L^(S^1) \cong l^2$, where $l^2 \coloneqq L^2(\mathbb{Z})$. It takes derivative to multiplication by identity on $\mathbb{Z}$, it takes convolution to pointwise multiplication.
+
+The decay of the Fourier series $a_n$ relates to the smoothness of $f$, namely if $f$ is $k$-times derivable, then $a_n$ are $O(n^{-k})$ as $k a_n$ is bounded. 
+
+If $f$ is piecewise smooth, then the Fourier series converges to $f$ at continuous point and is the average of left and right limit at jump points. So if $f$ is smooth (continuous and first derivative continuous), then the Fourier series converge.
+
+\subsubsection{Fourier Transform}
+If $f$ is compactly generated, then $\hat{f}$ can be extended to a holomorphic function. For example, this implies that if $f$ and $\hat{f}$ is compactly supported, this implies that $f = 0$.
+
+
+Fourier transform of a Gaussian is another Guassian.
+
+We have the Plancherel theorem, a version of Parseval theorem for continuous spectrum:
+
+\begin{theorem}
+If $f$ is both $L^1(\mathbb{R})$ and $L^2(\mathbb{R})$, then $\hat{f}$ is $L^2$ and 
+$$
+\norm{f}_{L^2} = \norm_{\hat{f}}_{L^2}
+$$
+In addition, this map extends to a map $L^2 \rightarrow L^2$ that is an isometry. 
+\end{theorem}
+
+Thus for any function $f \in L^2(\mathbb{R}$, we can approximate it by $L^1$ functions and the Fourier transform of $f$ is the limit of the Fourier transform of the $L^1$ functions. It is an unitary transformation, that is, it is invertible. With the inverse
+\subsubsection{Inequalities}
 
 We have the important Cauchy's inequality:
 let $V$ be an inner product space, then 
@@ -31,24 +104,37 @@ A space is compact iff every family of closed subset having the finite intersect
 
 \end{theorem}
 
-We also have the Urysohn lemma, which gives a continuous function that is 1 on one closed set and 0 on other closed set in nice situation.
+We also have the Jensen's inequality:
 
-We also have the Arzela-Ascoli
-To show that a family of continuous functions on the interval uniformly converges (this is use for example to show that the sequence converges in $L^p$ norm for any $p$), it gives sufficient conditions:
-
-\begin{theorem}[Arzela-Ascoli Theorem]
-Consider a sequence of real-valued continuous functions ${f}_n$ defined on a closed and bounded interval [a, b] of the real line. If this sequence is uniformly bounded and uniformly equicontinuous, then there exists a subsequence ${f}_k$that converges uniformly.
+\begin{theorem}[Jensen's Inequality]
+Given a finite measure space $X$ with total measure $\mu(X) = 1$ and a $L^1$ function $f$ on it. Let $\phi$ be a convex function on $\mathbb{R}$ (like $x log x, x^2$), then 
+$$
+\phi(\int f d\mu) \leq \int (\phi (f)) d\mu
+$$
 \end{theorem}
 
-Unifomrly bounded means that exists $M$ such that $$
-f_n(x) \leq M
-$$
-for all $n$ and $x$. Uniformly equicontinuous means that for every $\epsilon > 0$ there exists a delta such that for all $x, y$ with $|x - y| < \delta$ and all $n$ we have 
-$$
-|f_n(x) - f_n(y)| < \epsilon
-$$
+In probability, that is, we work with a finite measureable space with total measure 1. Given a random variable $X$ (that is a measureable function), we have the Markov's inequality:
 
-To show that a function is analytic, it is suffice to show that $|f^{(j)}(x)| \leq C^{k + 1} k!$.
+\begin{theorem}[Markov's Inequality]
+If $X$ is nonnegative, then 
+$$
+\mathbb{P}(X > a) < \frac{\mathbb{E}(X)}{a}
+$$
+\end{theorem}
+
+From this we have the Chebyshev's Inequality:
+
+\begin{theorem}[Chebyshev's Inequality]
+For any $X$, we have 
+$$
+\mathbb{P}[|X - \mathbb{E}[X]| \leq a] \leq \frac{var(X)}{a^2}
+$$
+\end{theorem}
+
+
+
+
+
 
 \subsection{Banach Spaces}
 In analysis there is a lot of infinite dimensional spaces, by themselves they are hard to control. Banach spaces are vector spaces complete to a norm and they are easier to control. 
@@ -140,6 +226,12 @@ Suppose $T: X \rightarrow Y$ is one-to-one, onto bounded linear map between Bana
 
 Note that every finite dimensional normed vector spaces are Banach spaces and all the norms are equivalent, thus their topology are the same.
 
+Given a Banach space $X$ and a close subspace $M$, then we have the quotient $X/M$ with the qoutient norm:
+$$
+\norm{[x]} = inf_{v \in M} \{\norm_{v + x} \}
+$$
+This in fact makes $X/M$ a Banach space and the projection map $X \rightarrow X/M$ continuous.
+
 \subsubsection{Bounded Operators}
 Now we study bounded operators. 
 
@@ -156,6 +248,8 @@ A linear operator $T: X \rightarrow Y$ is compact if $T(B)$ is precompact subset
 \end{definition}
 
 Equivalently, $T$ is compact iff every bounded sequence $(x_n)$ in $X$ has a subsequence whose image converges in $Y$. A subset is precompact if its closure is compact. 
+
+To show a map is compact, we normally use Ascola theorem. To show it is not, we normally find functions with disjoint support that are bounded, this work really well when we are trying to show that an inclusion Banach spaces generated by diferent norms is not compact.
 
 \begin{proposition}
 $K(X,Y)$ the space of compact linear operators is a close linear subspace. It is also a two sided idea, that is, composition of a compact operator and a bounded operator is compact.
@@ -208,6 +302,8 @@ $$
 for every $x \in X$.
 \end{definition}
 It generates the weakest topology such that the pairing $X \times X^* \rightarrow \mathbb{R}$ is continuous.
+
+
 
 \subsection{Hilbert Spaces}
 Banach spaces are pretty nice spaces, however, they are still not very intuitive. Hilbert spaces are Banach spaces with the norm coming from an inner product. They behave closer to finite dimensional vector spaces. And as we will see, in some sense, there are "only one" Hilbert space of a given (orthonormal basis) size.
@@ -434,6 +530,22 @@ If $f \in H^k(T)$ for $k > 1/2$, then $f \in C(T)$.
 \end{theorem}
 
 Generally speaking, if $f \in H^k(T)$, then the Fourier series for $f^{(j)}$ converge uniformly when $k + j + 1/2$, so $f \in C^l(T)$, where $l$ is the greatest integer strictly less than $k - 1/2$. For function of several variable, $f$ is continuous when $k > d/2$ and $j$-times continuous differentiable when $k > j + d/2$. THere is a loss of slight more than one-half a derivative per space dimension in passing from $L^2$ derivatives to continuous derivatives.
+
+\subsubsection{Convergence}
+Does the Fourier series of $f$ converges to $f$ is an important question. Here are some results:
+
+A function is piece-wise continuous if it is continuous away from finitely many points and has jump discontinuity at those finite points.
+
+A function is piece-wise smooth if it and its derivative are piece-wise continuous.
+\begin{theorem}
+If $f(x)$ is piecewise smooth, then the fourier series converges pointwise on the continuous points, and is $\frac{f^-(x) + f^+(x)}{2}$ on jump discountinuity points.
+\end{theorem}
+
+\begin{theorem}
+If $f(x)$ is continuous and piecewise smooth, then the Fourier series converges uniformly.
+\end{theorem}
+
+Of course, for any $L^2$ integrable function $f$, the Fourier series $L^2$ converges to $f$.
 
 \subsection{Fourier Transform}
 For periodic functions we have Fourier series, for non-periodic functions we need all frequency, thus the Fourier transform gives a function on the frequency space.
@@ -722,7 +834,7 @@ Here's a immediate generalization, which is even better:
 \begin{theorem}[Holder's Inequality]
 Given $r, p, q$ with $\frac{1}{r} = \frac{1}{p} + \frac{1}{q}$, then 
 $$
-\norm{fg}_r ^r \leq \norm{f}_{p} ^r \norm{f}_q ^r
+\norm{fg}_r \leq \norm{f}_{p}  \norm{f}_q 
 $$
 
 \end{theorem}
@@ -771,6 +883,19 @@ For $X$ a finite measure space, for $1 \leq p \leq q \leq \infty$, then the $L^q
 
 Thus we have uniform convergence implies $L^\infty$ implies $L^p$ ... implies $L^1$.
 
+\subsubsection{Convergences}
+On a measure space, there is a notion of convergence in measure:
+
+\begin{definition}
+A sequence $f_n \rightarrow f$ converges in measure if for any $\epsilon > 0$, then the limit 
+$$
+\mu(\{x \in X | |f(x) - f_n(x)| > \epsilon\} \rightarrow 0
+$$
+
+\end{definition}
+So in a measure space, we have uniform convergence, $L^p$ convergences for $1 \leq p \leq \infty$, pointwise convergence a.e. and convergence in measure.
+
+In general, $L^p$ implies convergence in measure. In a finite measure space, pointwise convergence implies convergence in measure. And convergence in measure implies a subsequence that is pointwise convergent.
 \subsection{Lebesgue measure on $\mathbb{R}^n$}
 
 The Lebesgue measure is constructed from elementary geometrical object like cubes. First we describe the Lebesgue $\sigma$-algebra.
@@ -828,11 +953,90 @@ Let $f$ be a non-negative function on $\mathbb{R}$, it is Lebesgue measureable i
 
 
 
+\subsection{Probability}
+In measure theory point-of-view, probability theory is just the study of measure theory on a particular nice measure space, namely, one that's total measure 1. However, they are their own languages, which I will try to describe here.
+
+\begin{defintion}
+
+A probability space $\Omega$ is a finite measure space with total measure 1. A random variable $X$ is a real-valued measureable function.
+\end{defintion}
+
+
+\begin{definition}
+The mean/expectation of $X$, $\mathbb{E}[X]$ is simply the Lebesgue integral 
+$$
+\int X d\mu
+$$
+More generally, given a function $\phi: \mathbb{R} \rightarrow \mathbb{R}$, we have $\mathbb{E}[\phi] \coloneqq \int \phi(X) d\mu$. 
+\end{definition}
+
+We also use $\mathbb{P}$:
+\begin{definition}
+$$
+\mathbb{P}[X < a] \coloneqq \mu (X^{-1}(-\infty, a))
+$$
+\end{definition}
+\begin{definition}
+The variance of $X$ is $var(X) \coloneqq \mathbb{E}[(X - \mathbb{E}[X])^2] = \mathbb{E}[X^2] - (\mathbb{E}[X])^2$
+\end{definition}
+
+Given a random variable $X$, we have its cumulative distribution function $F(X,x)$:
+
+\begin{definition}
+The cumulative distribution function (CDF) $F_X(x)$ is a real-valued function on $\mathbb{R}$: 
+
+$$
+F_X(x) = \mathbb{P}[X \leq x]
+$$
+
+\end{definition}
+
+The derivative of this in the density function, it is the Radon-Nikodym derivative $f = \frac{d X_*\mu}{d \mu_{L}}$, where $\mu_{L}$ is the Lebesgue measure on $\mathbb{R}$. It has the property that
+$$
+\int_a ^b f dx = \mathbb{P}[a < X < b]
+$$
+
+Note that 
+$$
+\mathbb{E}[\phi] = \int_\Omega \phi(X) d\mu = \int_\mathbb{R} \phi d X_*(\mu) = \int_\mathbb{R} \phi f dx
+$$
+
+\begin{example}
+The most important distribution is of course the Gaussian (normal) distribution $N(\mu, \sigma)$, where $\mu$ is the mean and $\sigma$ is the standard deviation. Its density function is 
+$$
+\frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{1}{2} (\frac{x-\mu}{\sigma} )^2}
+$$
+
+\end{example}
+
+
+\begin{definition}
+
+Two random variables are independent iff $F_{X,Y}(x,y) = F_X(x) F_Y(y)$, where $F_{X,Y}(x,y)$ is the probability that $X < x$ and $Y < y$. 
+
+$n$ random variables are pairwise independent if any two are independent. They are mutually independent iff $F_{X_1, ..}(x_1, ..) = F_{X_1}(x_1) ...$.
+\end{definition}
+
+Equivalently, $X_1, ... , X_n$ are independent iff the pushforward measure $(X_1, ..., X_n)_* \mu$ of the map 
+$(X_1, ... X_n): \Omega \rightarrow \mathbb{R}^n$ is the product measure of $X_1_* \mu ... $
+
+Thus by Fubini's theorem, we have that
+$$
+\mathbb{E}[XY] = \mathbb{E}[X] \mathbb{E}[Y]
+$$
+thus 
+$$
+var(XY) = var(X) + var(Y)
+$$
 
 
 
+We have the central limit theorem, which describe what happens when we look at the partial sum of the same independent experiment done again and again, in the limit of infinity experiments:
 
 
 
+\begin{theorem}
+Let $X_1, ...$ be i.i.d (independent identical density) random variables with mean $\mu$ and standard deviation $\sigma$. Let $S_n = \frac{X_1 + X_2 + .. + X_n}{\sqrt{n}}$, then $S_n$ tends to the normal distribution $N(\sqrt{\mu}, \sigma) $ with mean $\sqrt{\mu}$ and standard deviation $\sigma$. 
+\end{theorem}
 
 \end{document}
