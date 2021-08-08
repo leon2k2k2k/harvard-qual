@@ -38,6 +38,13 @@ Consider a sequence of real-valued continuous functions ${f}_n$ defined on a clo
 
 \subsubsection{Topology}
 A space is compact iff any decreasing sequence of nonempty closed subset has a nonempty intersection.
+ 
+We have the all-important contraction mapping theorem:
+\begin{theorem}
+If $T: X \rightarrow X$ is a contraction on a complete metric space $X$, that is, $d(Tx, Ty) \leq c d(x,y)$ for some constant $c \leq 1$, then there exists exactly one solution $x$ for the fix point equation $T(x) = x$.
+\end{theorem}
+
+
 
 \subsubsection{Banach Spaces}
 To show that $f_j \rightarrow f$ implies that they are $L^1$ convergent (ofc with additional hypothesis), normally, we can separate $g_j = |f - f_j|$ into two parts, one part is $h_j = g_j \chi_{g_j < M}$ for some $M$. This part always goes to zero as it is dominated by integrable function $M$ (on a finite measure space). Thus we only have to worry about "the large part" $k_j = g_j - h_j = g_j \chi_{g_j \geq M}$, where hopefully the other hypothesis will help us.
@@ -417,6 +424,191 @@ is an orthonormal basis of $L^2(T)$.
 
 
 \end{theorem}
+
+\subsubsection{Bounded Operator on Hilbert Spaces}
+Bounded operators behave better on Hilbert spaces, because we have the adjoint of a bounded linear map. 
+
+First we have the theory of Orthogonal projections:
+
+\begin{definition}
+An orthogonal projection on Hilbert space $H$ is $P : H \rightarrow H$ such that $P^2= P$ and $<Px, y> = <x, Py>$. 
+\end{definition}
+A projection is bounded with norm $1$. They corresponds to closed subspaces (being the image). The kernel is the orthogonal complement.
+
+\begin{example}
+Take $H = L^2(T)$, $u = \frac{1}{\sqrt{2 \pi}}$ constant function with norm one. Then the projection $P_u$ takes $f$ to its mean $<f> = \frac{1}{2 \pi} \int_0 ^{2\pi} f(x) dx$. The orthogonal decomposition 
+
+$$
+f(x) = <f> + f'(x)
+$$
+with $f'(x)$ the fluctuation around the mean (it is not the derivative).
+\end{example}
+From this we can easily deduce that all bounded linear functionals are of the form $\phi_y(x) \coloneqq <y, x>$ for some $y \in H$:
+
+\begin{theorem}[Riesz representation]
+For any $\phi$ bounded linear functional on $H$, there exists an unique vector $y$ such that 
+$$
+\phi(x) = <y,x>
+$$
+\end{theorem}
+The map $<-, x>: H \rightarrow H^*$ is an isometry isomorphism. For compelx Hilbert spaces, $HJ$ is antilinear. So Hilbert spaces are self-dual, $H$ and $H^*$ are isomorphic as Banach spaces and anti-isomorphic as Hilbert spaces. This is a special aspect of Hilbert spces.
+
+\subsubection{adjoint of an operator}
+From Riesz representation theorem we also get the adjoint of a bounded operator. For $A \in B(H)$, the adjoint statisfies the property that 
+$$
+<x, Ay> = <A^* x, y>
+$$
+This exists and is unique by Riesz representation theorem. The adjoint of a matrix (linear map $\mathbb{R}^n$ to $\mathbb{R}^m$ with standard inner prodcuts) is its transpose matrix. For complex $\mathbb{C}^n$, it is the Hermitian conjuagate.
+
+Adjoint is important for studying the solvaability of $Ax = y$. For any $z$ with $A^* z = 0$, then $z$ is perpendicular to imgaes of $A$. 
+
+\begin{theorem}
+For $A: H \rightarrow H'$, we have 
+$$
+\overline{ran A} = (ker A^*)^\perp, ker A = (ran A^*)^\perp
+$$
+\end{theorem}
+Given $A: H \rightarrow H'$ bounded, then we have direct sum 
+$$
+H' = \overline{ran A} \oplus ker A^*
+$$
+Thus if $A$ has closed image, it is even simpler. Recall that if we have $c \norm{x} \leq \norm{Ax}$ then the map is injective and has closed range. 
+
+A bounded operator with close range can have no kernel and finite cokernel $(ker A^*)$, or vice versa. Think about the right and left shift operator on $l^2$. 
+
+\begin{definition}
+A bounded linear operator $A$ on Hilbert space is Fredholm if
+\begin{enumerate}
+    \item $ran A$ is closed
+    \item $ker A$ and $ker A^*$ are finite-dimensional
+\end{enumerate}
+\end{definition}
+It has an invariant, called index:
+$$
+ind A \coloneqq dim ker A = dim\ ker \ A^*
+$$
+
+If $A$ is Fredholm and $k$ is compact, then $A + K$ is Fredholm and $ind(A + K) = ind A$. So the index is unchanged by compact perturbations. It is actually an topological invariant (we have the space of Fredholm operator, which is open in the Banach space of bounded operators).
+
+\subsubsection{Self-adjoint and unitary operators}
+The two most impiortant classes are self-adjoint and unitary. We fix $H$ and $A: H \rightarrow H$ bounded.
+
+\begin{definition}
+$A$ is self-adjoint if $A^* = A$.
+\end{definition}
+
+\begin{example}
+For $\mathbb{R}^n$, $A$ is self-adjoint iff it is symmetric. On $\mathbb{C}^n$ it is Hermitian.
+\end{example}
+
+Given $A$, we have sesquilinear for $a: H \times H \rightarrow \mathbb{C}$ with $a(x,y) \coloneq <x, Ay>$. If $A$ is self-adjoint, then it is symmetric:
+$$
+a(x,y) = \overline{a(y,x)}
+$$
+so $q(x) = a(x,x) = <x, Ax>$ is real-valued. $A$ is nonnegative if it is self-adjoint and $q \geq 0$. It is positive definite if it is positive and $q(x) > 0$ for non-zero $x$. It defines an inner product on $H$. If $<x, Ax> \geq c \norm{x}^2 = c <x,x>$, it is called bounded from below. The norm associated to $(-,-)$ is equivalent to that of $<-,->$.
+
+The norm of a self-adjoint operator is $\norm{A} = sup_{\norm{x} = 1}|<x, Ax>|$
+Given $A$ bounded, then $A^* A$ is self-adjoint, and $\norm{A^* A} = \norm{A}^2$
+This also shows that $\norm{A} = \norm{A^*}$.
+
+We also have unitary, which is the notion of isomorphism of Hilbert spaces:
+
+\begin{definition}
+A linear map $U: H \rightarrow H$ is unitary if it is invertible and 
+$$
+<Ux, Uy> = <x,y>
+$$
+A map $U$ is unitary iff $U^*U = Id$ and $U U^* = Id$.
+\end{definition}
+For fintie dimensional real, $A$ is orthogonal if $Q^T = Q^{-1}$, for complex it is $U^* = U^{-1}$
+
+Given $A$ a bounded self-adjoint operator, then $e^{iA}$ is unitary. A bounded operator $S$ is sekw-adjoint if $S^* = -S$. $S = iA$ for A self-adjoint. Then Lie algebra of the Lie group of Unitary operators is the space of bounded, skew-adjoint operators with the commutator Lie bracket. 
+
+For example, the translation operator is unitary on $L^2$. A good class of operator is normal:
+
+\begin{definition}
+$T: H \rightarrow H$ is normal if $TT^ * = T^* T$, aka $T$ commutes with adjoint. They have a nice spectral theory.
+\end{definition}
+
+\subsubsection{Weak convergence in Hilbert Space}
+A sequence $(x_n$ in $H$ converges weakly to $x \in H$ if
+$$
+lim_{n \rightarrow \infty}<x_n, y> = <x,y>
+$$
+Strong convergence implies weak convergence but not the other way:
+
+\begin{example}
+Let $H + l^2(N)$ and $e_n$ is the $n$-th standard basis. Then $<e_n, y> = y_n \rightarrow 0$ as the coefficients of $y$ converge to $0$ (as $y$ is $L^2$). Thus $e_n$ converges weakly to $0$ but not strongly.
+\end{example}
+
+We have a criterion for weakly convergent sequence:
+
+\begin{theorem}
+Given $(x_n)$ sequence in $H$ and $D$ a dense subset, then $(x_n)$ converges weakly to $x$ iff 
+\begin{enumerate}
+    \item $\norm{x_n} < M$ for some $M$ independent of $n$
+    \item $<x_n, y) \rightarrow <x,y>$ for all $y \in D$.
+\end{enumerate}
+\end{theorem}
+
+Thus given $e_\alpha$ orthonormal basis, then $x_n$ converges weakly to $x$ iff it is bounded and its coordinates converge for every $\alpha$.
+
+We like weak convergence because it is easier for sets to be compact in the weak topology than the strong one. In fact, a set is weakly precompact iff it is bounded. A version of Heine-Borel theorem for infinite-dimensional spaces. 
+
+\begin{theorem}[Banach-Alaoglu]
+The closed unit ball of a hilbert space is weakly compact, that is, compact in the weak topology.
+\end{theorem}
+
+\subsubsection{Spectrum of Bounded Linear Operator}
+In many cases, we would like to diagonalize a linear map, that is, find its eigenvalues and eigenvectors. This is called the spectral theory. There are continuous and point spectrums. Compact opeartors are nice.
+
+In the finite dimensional case we have that 
+\begin{theorem}
+an $n \times n$ matrix $A$ is normal iff there is an orthonormal basis consists of eigenvectors of $A$.
+\end{theorem}
+
+In the infinite dimensional case, a bounded linear operator might not have eigenvalues at all. We define the spectrum of $A$ as follows
+\begin{definition}
+The resolvent set of $A$ is the set of complex numbers $\lambda$ such that $A - \lambda I: H \rightarrow H$ is an iso. The spectrum of $A$, $\sigma(A)$ is the complement.
+\end{definition}
+
+The points in the spectrum can be divided more:
+\begin{definition}
+\begin{enumerate}
+    \item The point spectrum of $A$ are those $\lambda$ with $A - \lambda I$ not one-to-one, $\lambda$ is called an eigenvalue.
+    \item continuous pectrum of $A$ are $\lambda$ such that $A - \lambda I$ is one-to-one but not onto, and $ran(A - \lambda I)$ is dense.
+    \item residual is one-to-one, not onto, and not dense.
+\end{enumerate}
+\end{definition}
+At resolvent points, we have inverse $R_\lambda$. This is defined on the subset of $|mathbb{C}$ of resolvent point of $A$. An operator-valued function $F: \Omega \rightarrow B(H)$, $\Omega$ open subset of $\mathbb{C}$, is called analyitc at $z_0 \in Omega$ if it has a convergent power series with respect to the operator norm on $B(H)$. It is called analytic or holomophic if it is analytic at every point in $\Omega$.
+
+If $A$ is bounded, then $\rho(A)$ the resolvent set if an open set, and the resulvent is an operator-valued analytic function of $\lambda$. .This is because we can write Neumann series. Thus the spectrum is closed. Its radius is the smallest disk centered at zero containing $\sigma(A)$.
+
+If $A$ is bounded, then $r(A) = lim_{n \rightarrow \infty} \norm{A^n}^{1/n}$, if $A$ is self-adjoint, then $r(A) = \norm{A}$.
+
+This implies that the spectrum of a bounded operator is not empty.
+
+\subsubsection{Spectral theorem for self-adjoint operators}
+For (bounded) self-adjoint operators, the eigenvalues are real and eigenvectors are orthogonal.
+Thus we are looking at invariant subspaces. This implies that the spectrum of $A$ is contained in the interval $-[\norm{A}, \norm{A}]$. In fact, the residual spectrum of a bounded, self-adjoint operator is empty.
+
+
+The bounded, compact, self-adjoint ones behave much more like finite dimensional ones. 
+
+A nonzero eigenvalue of a compat, self-adjoint operator has finite multiplicity. A countable infinite set of nonzero eigenvaluehas zero asn an accumulation point, and no others.
+
+The spectral theorem that says that any compact operator looks like countable sums of projections to finite -dimensional eigenspaces multiply by $\lambda_k$:
+
+\begin{theorem}
+If $A : H \rightarrow H$ bounded, compact, self-adjoint. Then there exists orthonormal basis of $H$ consists of eigenvectors of $A$. The nonzero eigenvectors forms a countable infinite set $\lambda_k$ with $A = \sum_k \lambda_k P_k$ where $P_k$ is orthogonal projection to the finite-dimensional eigenspace with eigenvalues $\lambda_k$. It converges in the operator norm.
+\end{theorem}
+
+\subsection{Compact operators}
+to check an operator is comapct, best to use Ascoli or this:
+
+\begin{theroem}
+A bounded linear operator on Hilbert space is comact iff it map weakly convergent sequences to strongly convergent sequences.
+\end{theroem}
 
 \subsection{Fourier Series}
 Fourier Series takes a function on $T = S^1$ (periodic function) to a series. It turns out the behavior of the series says a lot about the function.
