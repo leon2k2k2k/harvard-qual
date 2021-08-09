@@ -17,7 +17,7 @@ Holomorphic function has many miraculous facts:
 \end{enumerate}
 
 \subsection{List of Theorems}
-\todo[inline]{Cauchy's integration theorem, Cauchy's integration formula, Liouville's theorem, Morera's theorem.}
+\todo[inline]{Cauchy's integration theorem, Cauchy's integration formula, Liouville's theorem, Morera's theorem, Riouche, Open mapping theorem, maximal principal}
 
 \subsection{basics}
 \todo[inline]{What is the definition of a holomorphic, meromorphic function, Riemann ?? theorem, Cauchy's integral formula, residues theorem, Gauss's mean value theorem}
@@ -275,16 +275,6 @@ $$
 then $f$ is holomorphic.
 \end{theorem}
 
-\subsubsection{The residue formula}
-We know consider the residue formula:
-
-\begin{theorem}[Residue formula]
-If $f$ is holomorphic away from $z_1, ... z_N$, on open set, $C$ contractible in the open set containing $z_i$ (the winding number of $C$ around $z_i$ is 1). Then 
-
-$$
-\int_C f(z) dz = 2\pi i \sum_k res_{z_k} f
-$$
-\end{theorem}
 
 \subsection{Meromorphic Functions and Logarithm}
 
@@ -322,7 +312,7 @@ A function $f$ has a pole at $z_0$ if locally $1/f$, with $1/f(z_0) \coloneqq 0$
 \begin{theorem}
 If $f$ has a pole at $z_0$, then exists a nbhd of $z_0$ and a non-vanishing holomorphic function $h$ and unique positive integer $n$ such that 
 $$
-f(z) = (z-z_0)^^{-n} h(z)
+f(z) = (z-z_0)^{-n} h(z)
 $$
 \end{theorem}
 $n$ is the order. Order $1$ pole are simple.
@@ -336,7 +326,100 @@ f(z) = \frac{a_{-n}}{(z-z_0)^n} + ... + \frac{a_{-1}}{z-z_0} + G(z)
 $$
 where $G$ is a holomorphic function in a nbhd of $z_0$.
 \end{theorem}
-The sum $\frac{a_{-n}}{(z-z_0)^n} + ... + \frac{a_{-1}}{z-z_0}$ is called the principal part, with $res_{z_0} f \coloneqq a_{-1}$ called the residue. It is special because the other terms, aka the part with order stricly greater than 1, has primitives in a deleted nbhd around $z_0$. Therefore the residue captures the "non-primitiveness" of $f$, more specifically the 
+The sum $\frac{a_{-n}}{(z-z_0)^n} + ... + \frac{a_{-1}}{z-z_0}$ is called the principal part, with $res_{z_0} f \coloneqq a_{-1}$ called the residue. It is special because the other terms, aka the part with order stricly greater than 1, has primitives in a deleted nbhd around $z_0$. Therefore the residue captures the "non-primitiveness" of $f$, more specifically the monodromy.
+
+\subsubsection{The residue formula}
+We know consider the residue formula:
+
+\begin{theorem}[Residue formula]
+If $f$ is holomorphic away from $z_1, ... z_N$, on open set, $C$ contractible in the open set containing $z_i$ (the winding number of $C$ around $z_i$ is 1). Then 
+
+$$
+\int_C f(z) dz = 2\pi i \sum_k res_{z_k} f
+$$
+\end{theorem}
+
+\subsubsection{Singularities and Meromorphic Functions}
+
+We first give a way to classify removable singularity:
+
+\begin{theorem}
+If $f$ is holomorphic in a neighborhood of $z_0$, and bounded in a nbhd of $z_0$, then $z_0$ is a removable singularity. 
+\end{theorem}
+
+Also one for poles
+\begin{corollary}
+If $f$ has an isolated singularity at $z_0$. Then $z_0$ is a pole iff $|f(z)| \rightarrow \infty$ as $z \rightarrow z_0$.
+\end{corollary}
+
+So removable singularity, $f$ is locally bounded. For poles, $f$ locally goes to infinity. For essential singularity, it has to be wild: the local image is dense:
+
+\begin{theorem}[Casorati-Weierstrass]
+If $f$ is holomorphic at punctured disc 
+$D_r(z_0) - z_0$ and has an essential singularity, then the image of the punctured disc under $f$ is dense.
+\end{theorem}
+
+We can now define a meromorphic function:
+\begin{definition}
+A function on $\Omega$ is meromorphic if there exists a sequence of points $z_i$ with no limits such that $f$ is holomorphic away from $z_i$ and has poles at $z_i$. At infinity, if $f$ is holomorphic for all large values of $z$, then consider $F(z) = f(1/z)$, then $f$ has a pole at infinity if $F$ does. If a meromorphic function in the complex plane that is either holomorphic and pole at infinity is said to be meromorphic in the extended complex plane.
+\end{definition}
+
+Here's a rigidity theorem:
+\begin{theorem}
+The meromorphic functions in the extended complex plane are the rationals. 
+\end{theorem}
+Idea is just to substract out the principal part of each pole.
+
+Note that a rational function is determined up to a constant, by prescribing the locations and the multiplicities of ites zeros and poles.
+
+\subsubsection{Argument principle}
+$log f(z)$ can't be globally defined on $\mathbb{C}^\times$. But its differential $f'/f$ can, and for any zeros of order $n$ (might be negative), $f'/f$ has a simple pole with residue $n$. Thus we have that
+
+\begin{theorem}[Argument Principle]
+Let $f(z)$ be a meromorphic function defined on open set $\Omega \subset \mathbb{C}$. Let $C$ be a closed curve in $\Omega$ which avoids all zeros and poles of $f$ and is contractible. Then for each $z \in \Omega$, let $n(C,z)$ be the winding number of $C$ around $z$. Then 
+$$
+\frac{1}{2\pi i} \int_C \frac{f'(z)}{f(z)} dz = \sum_a n(C,a) - \sum_b n(C,b)
+$$
+where $a, b$ sums over poles and zeros of $f$, weighted with multiplicities.
+\end{theorem}
+
+We have the important following theorem 
+\begin{theorem}[Open mapping theorem]
+$f$ maps open sets to open sets.
+\end{theorem}
+
+And a corollary 
+\begin{corollary}
+If $f$ is non-constant holomorphic function on $\Omega$, then $f$ cannot obtain a maximum in $\Omega$. Its maximum exists on the closure if it is compact.
+\end{corollary}
+
+For any simply connected domain, a holomorphic function has a primitive. 
+
+\subsubsection{The complex logarithm}
+We want to define $log$ but it is not globally defined as $\theta$ the angle is only defined up to $2\pi$. Do make it defined we need to keep a branch or sheet.
+
+\begin{theorem}
+For $\Omega$ simply connected containing $1 \in \Omega$ and $0 \nin Omega$, then exists a branch $F(z) = log(z)$ such that
+\begin{enumerate}
+    \item $F$ is holomorphic
+    \item $e^{F(z)} = z$ for all $z$
+    \item $F(r) = log(r)$ for $r$ real and near 1.
+\end{enumerate}
+\end{theorem}
+It is the primitive of $1/z$.
+
+We can also define $log f(z)$ where $f$ does not vanish:
+
+\begin{theorem}
+If $f$ is nowhere vanishing holomorphic function in a simply connected region $\Omega$, then exists $g$ such that 
+$$
+f(z) = e^{g(z)}
+$$
+\end{theorem}
+
+\subsection{Fourier series}
+
+
 \subsection{Rigidity of holomorphic functions}
 
 We have the maximum modulus principal:
