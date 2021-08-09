@@ -8,7 +8,7 @@ We review over Banach and Hilbert spaces, measure theory and Lebesgue integratio
 
 We are following these notes: \url{https://www.math.ucdavis.edu/~hunter/measure_theory/measure_notes.pdf}
 
-\todo[inline]{Fourier series and Fourier transform theory. Heat equation stuff. Hilbert space theory. Sobolev theory.}
+\todo[inline]{Sobolev theory and Baire category theorem (open mapping theorme, closed graph theorem, and uniform boundedness principal}
 
 \subsection{Cheat sheet}
 I begin to realize that this is getting way to long, so I am going to have a cheat sheet of all the most important theorems. 
@@ -603,12 +603,173 @@ The spectral theorem that says that any compact operator looks like countable su
 If $A : H \rightarrow H$ bounded, compact, self-adjoint. Then there exists orthonormal basis of $H$ consists of eigenvectors of $A$. The nonzero eigenvectors forms a countable infinite set $\lambda_k$ with $A = \sum_k \lambda_k P_k$ where $P_k$ is orthogonal projection to the finite-dimensional eigenspace with eigenvalues $\lambda_k$. It converges in the operator norm.
 \end{theorem}
 
-\subsection{Compact operators}
+\subsubsection{Compact operators}
 to check an operator is comapct, best to use Ascoli or this:
 
 \begin{theroem}
 A bounded linear operator on Hilbert space is comact iff it map weakly convergent sequences to strongly convergent sequences.
 \end{theroem}
+
+\subsection{Linear Differential Operators and Green's functions}
+
+Linear differential operators are important. However, they are often unbounded. There are two approaches to study them, one is use weak topology where differential operators are continuous. This give rise to distribution theory. The other is to consider those that are defined on a dense subspace of a Hilbert or Banach space. 
+
+The inverse of a linear differential operator is an integral operator, the kernel is the Green's function. Use bounded inverse to study the unbounded differential operator. 
+
+\subsubsection{Unbounded operators}
+They are normally defined on a dense subspace $A: D(A) \subset H \rightarrow H$. An extension is an extention of domains. Domain decodes smoothness and boundary conditions.
+
+The adjoint of an unbounded operator $A$ is operator $A^*$, defined on the largest subspace such that 
+$$
+<Ax,y> = <x, A^* y>
+$$
+holds for all $x \in D(A)$. $D(A^*)$ is the space of all $y$ such that $\phi_y \coloneqq <y, A -> $is bounded. It is possible that $D(A^*)$ is not dense so we can't define $A^**$.
+
+\begin{remark}
+Note this $A^*$ depends on the domain, I think.
+\end{remark}
+
+The adjoint of a differential operator is another differential operator, by integration by parts. The domain $D(A)$ defines boundary conditions for $A$ and $D(A^*)$ defines adjoint boundary conditions, they are there to make sure the boundary terms from integration by parts vanish. An important class is self-adjoint ones, $A = A^*$, this also means the domains are equal. This is a self-adjointness of the boundary conditions.
+
+\begin{defintion}
+An unbounded operator is self-adjoint if $A  = A^*$. An unbounded operator $A$ is symmetric if $A^*$ is an extension of $A$.
+\end{defintion}
+
+Differential operators also have the notion of closedness:
+
+\begin{definition}
+An operator $A$ is closed if for every sequence $(x_n)$ in $D(A)$ such that $x_n \rightarrow x$ and $A x_n \rightarrow y$, then $x \in D(A)$ and $Ax = y$.
+\end{definition}
+
+This means the graph of $A$, $\Gamma(A) \subset H \times H$ is a closed subset.
+
+An operator is closable if every $(x_n)$ in $D(A)$ such that $x_n \rightarrow 0$ and $A x_n \rightarrow y$, then $y = 0$. Then we can define the closure of a closable operator. Its graph is the closure of the graph of $A$. Every symmetric operator is closable. Symmetric operator $A$ is essentially self-adjoint if its closure is self-adjoint.
+
+If $A$ is one-to-one and onto, then we have $A^{-1}: H \rightarrow H$. Its range is $D(A)$. If $A$ is closed, then by the closed graph theorem, $A^{-1}$ is bounded. Then $(A^*)^{-1} = (A^{-1})^*$. We also have resolvent set, spectrum, and resolvent operator. By the closed graph theorem, if $A$ is closed, $R_\lambda$ is bounded whenever $A - \lambda I$ is one-to-one and onto. It may have an empty spectrum.
+
+\subsubsection{Adjoint of a differential operator}
+A linear ordinary differential operator of order $n$ is a linear mpa $A$ acts on $n$-times continuously differentiable function $u$ by 
+$$
+Au = \sum_{j=0} ^n a_j u^{(j)}
+$$
+
+We want to study boundary value problems (BVP)
+$$
+Au = f, Bu = 0
+$$
+$Bu = 0$ is a set of linear boundary conditions.
+
+For example, consider functions on $[0,1]$, with 
+$$
+Au = a u'' + b u' + cu,
+$$
+for $a, b, c$ sufficiently smooth. $a(x) > 0$. For second-order, we expect to have two boundary conditions to get unique (sometimes not enough), we also want overdetermined or underdetermined. 
+Examples are 
+\begin{enumerate}
+    \item $u(0) = 0, u(1) = 0$ Dirichlet
+    \item $u'(0) =0, u'(1) = 0$ Neumann
+    \item $u(0) = u(1), u'(0) = u'(1)$ periodic
+    \item $u(0) = u'(0) = 0$ Intial
+    \item $u(1) = u'(1) = 0$ final
+\end{enumerate}
+
+Nonhomogeneous boundary conditions are affine space for the homogeneous ones. 
+
+We first start by formulating the adjoint boundary value problem. We have $A^* v = (\overline(a)v)'' - (\overline(b)v)' + \overline{c}v$, then $<v, Au> - <A^*v, u>$ is some boundary term. It is called the formal adjoint. The formal adjoint of $D = \frac{d}{dx}$ is $-D$, thus $(iD)^* = iD$ and $(D^2)^* = D^2$. 
+
+The dual boundary condition for $B$ is the requirement for the boundary term to vanish. So $B^*v = 0$ iff $<v, Au> = <A^* v, u> $ for all $u \in C^2([0,1])$ with $Bu = 0$.
+
+\begin{example}
+The dual for Dirichlet condition for $A = D^2$ is Dirichlet. So the Dirichlet boundary value problem for $D^2$ is self-adjoint. Same for Neumann, mixed, and periodic are also self-adjoint. However, the adjoint for initial is final. The adjoint of no boundary condition is $v(0) = v'(0) = v(1) = v'(1) = 0$, so adjoint of undertermined BVP is overdetermined. 
+\end{example}
+
+\subsubsection{Green's functions}
+Consider the Dirichlet boundary value problem for $A$:
+$$
+Au = f, u(0) = u(1) = 0
+$$
+We are looking for solution 
+$$
+u(x) = \int_0 ^1 g(x,y) f(y) dy
+$$
+This is called the Green's function. 
+
+We regard $A : D(A) \rightarrow C([0,1])$ as an operator, with 
+$$
+Gf(x) = \int_0 ^1 g(x,y)f(y) dy
+$$
+as the inverse.
+
+\begin{remark}
+So $G$ is one-to-one but not onto, its image is a dense subset. Those are symptons of these inverse operators to unbounded operators.
+\end{remark}
+
+We will use delta function $\delta$ as heuristic (it is really a distribution). It is the derivative of the Heaviside step function.
+
+The Green's function $g(x,y)$ is the solution to the BVP:
+$$
+Ag(x,y) = \delta(x-y), g(0,y) = g(1,y) = 0
+$$
+$A$ is differential operator with respect to $x$. As a function of $x$, we want $g(x,y)$ to satisfies the homogeneous ODE when $x \neq y$, and we want it to jump at $x = y$. 
+
+We can construct the Greens' function: think about the homogenous ODE 
+$$
+au'' + bu' + c = 0
+$$
+has two -dimensional space of solutions. We can find basis $u_1, u_2$ determined by initial conditions $u(0) = 1, u'(0) = 0$ and $u(0) = 0, u'(0) = 1$. 
+
+Note that in nice situations, we have $g^*(x,y)$ the Green's function for the adjoint operator, being $g^*(x,y) = \overline{g(y,x)}$
+
+\subsubsection{Weak derivatives}
+Classical differential operators that act on continuously differentiable functions lack desirable properties such as closed or self-adjoint. To get them, we extend the domains of classical differentiation to include functions whose weak derivatives belong in $L^2$. Weak deriavtieves are defined using integration against test functions. They can be approximated by smooth functions. The space of functions with $k$ square-integrable derivates is the Sobolev $H^k$. They give domains of simple self-adjoint orindary differential operators.
+
+A test function $\phi: \mathbb{R} \rightarrow \mathbb{C}$ is a test function if it has compact support and continuous derivatives of all order, call the space $C^\infty _c(\mathbb{R})$. They are dense in $L^2$. We can approximate an $L^2$ function by its convolution with a smooth approximate idenitty, this is called mollification.
+
+Given $\phi$ a test function with support $[-1, 1]$ and 
+$$
+\int \phi(x) dx = 1
+$$
+example is $\phi(x) = e^{\frac{-1}{(1-x^2}}$. 
+Then $\phi_\epsilon(x) = \frac{1}{\epsilon} \phi(\frac{x}{\epsilon})$ is an approximate identity (for convolution, so delta at $0$) as $\epsilon \rightarrow 0$.  Then the mollification $u_\epsilon = \phi_\epsilon * u$, that is 
+$$
+u_\epsilon(x) = \int_\mathbb{R} \phi_\epsilon(x-y) u(y) dy
+$$
+it is in $C^\infty(\mathbb{R}$ as 
+$$
+u^{(k)} _\epsilon (x) = \int \phi^{(k)} _\epsilon (x-y) u(y) dy
+$$
+It converges to $u$ in $L^2$.
+
+We can use integration by parts to define weak derivative:
+
+\begin{theorem}
+A function $u \in L^2$ has a weak derivative $v \in L^2$ if 
+$$
+<v, \phi> = -<u, \phi'> 
+$$ for all $\phi \in C^\infty _c (\mathbb{R}$. 
+The Sobolev space $H^k(\mathbb{R})$ consists of functions with $k$ square-integrable weak derivatives, equipped with inner product
+$$
+<u,v> = \int_\mathbb{R} \{\overline{u}v + \overline{u}' v' + \overline{u}^{(k)} v^{(k)} \} dx
+$$
+\end{theorem}
+
+Differential operator on weak derivative is now a closed operator.
+
+Closedness of $D$ implies that $H^k(\mathbb{R})$ is complete thus a Hilbert space.
+
+Another way to define $L^2$ derivatives is the $L^2$ limit of smooth derivative. We say $u' = v$ if there is a sequence of smooth function $u_n$ with $u_n \rightarrow u$ and $u' _n \rightarrow v$. They are equivalent as any $H^k$ functions can be approximated in the $H^k$ norm by a test function. Aka $C^\infty _c (\mathbb{R})$ is smooth.
+
+We have that 
+$$
+\int u v' dx = - \int u' v dx
+$$
+for $u, v \in H^1(\mathbb{R})$
+
+Now we can have self-adjoint operators: $A = iD: H^1(\mathbb{R}) \rightarrow L^2(\mathbb{R})$ is self-adjoint. Namely, the domain $D(A^*) = H^1(\mathbb{R})$
+
+
+%%%%%%%%%%
+
 
 \subsection{Fourier Series}
 Fourier Series takes a function on $T = S^1$ (periodic function) to a series. It turns out the behavior of the series says a lot about the function.
