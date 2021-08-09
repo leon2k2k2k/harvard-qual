@@ -73,6 +73,14 @@ The decay of the Fourier series $a_n$ relates to the smoothness of $f$, namely i
 
 If $f$ is piecewise smooth, then the Fourier series converges to $f$ at continuous point and is the average of left and right limit at jump points. So if $f$ is smooth (continuous and first derivative continuous), then the Fourier series converge.
 
+We have the Poisson Summation theorem:
+\begin{theorem}[Poisson Summation Theorem]
+For a large class of functions $f$, we have that 
+$$
+\sum_{n = - \infty}{\infty} f(2\pi n) = \frac{1}{\sqrt{2 \pi}} \sum_{n = - \infty} {\infty} \hat{f}(n)
+$$
+\end{theorem}
+
 \subsubsection{Fourier Transform}
 If $f$ is compactly generated, then $\hat{f}$ can be extended to a holomorphic function. For example, this implies that if $f$ and $\hat{f}$ is compactly supported, this implies that $f = 0$.
 
@@ -767,6 +775,106 @@ for $u, v \in H^1(\mathbb{R})$
 
 Now we can have self-adjoint operators: $A = iD: H^1(\mathbb{R}) \rightarrow L^2(\mathbb{R})$ is self-adjoint. Namely, the domain $D(A^*) = H^1(\mathbb{R})$
 
+We have Sobolev embedding theorem, which says that the elements of the Sobolev spaces are actually continuous (have a continuous representative), and differentiable etc, for nice enough $k$.
+
+\subsection{Distribution}
+A distribution is a continuous linear functional on test functions. They are an extension of functions. Delta function are distributions. Every distributions are differentiable, and differentiation is a continuous operation on spaces of distributions. Fourier tranform work well with tempered distributions. One problem is that there is no product of distributions extending pointwise product of functions (they are homological, not cohomological). 
+
+\subsubsection{Schwartz space}
+It is the space test functions that consists of smooth, rapidly decreasing functions.
+
+\begin{definition}
+A function $\phi \in C^\infty(\mathbb{R}^n)$ is in the Schwartz space $S$ if all of its derivative decay faster than any polynomial as $|x| \rightarrow \infty$.
+\end{definition}
+
+Example is a polynomial $q(x)$ times $e^{-c |x - x_0|^2}$. 
+
+We want convergence and topology on $S$. The appropriate topology is coming from a countable family of seminorms. Given a family of seminorms, we have a topology on $X$ such that a sequence $(x_n)$ converges to $x$ iff $p_\alpha(x - x_n) \rightarrow 0$ for every norm $p_\alpha$.
+
+For countably infinite seminorms, then the topology is metrizable. A metrizable, locally convex space that is complete is called a Frechet space.
+
+Schwartz space $S$ with the countable family of seminorms $p_{\alpha, \beta}: \phi \mapsto sup_{x \in \mathbb{R}^n} |x^\alpha \partial^\beta \phi(x)|$, where $\alpha, \beta \in \mathbb{Z}^m _+$ are in multi-indices.
+
+\begin{remark}
+The basic idea here is that taking derivative goes from $C^k \rightarrow C^{k-1}$. So to keep it at the same $k$ we need $k = \infty$, where we don't have a good notion of norm. So we need this family of norms.
+\end{remark}
+
+\begin{proposition}
+Taking partial differentiation $\partial^\alpha: S \rightarrow S$ is a continuous linear operator on $S$.
+\end{proposition}
+
+\subsubsection{Tempered Distributions}
+The topological dual of $S$, denoted as $S^*$, is the space of continuous linear functionals on $S$> Elements are called tempered distributions. 
+
+$T$ is continuous iff 
+$$
+|T (\phi)| \leq \sum_{|\alpha|, |\beta| \leq d} c_{\alpha, \beta} \norm{\phi}_{\alpha, \beta}
+$$
+
+\begin{example}
+The fundamental example is the delta function: 
+$$
+\delta(\phi) = \phi(0)
+$$
+\end{example}
+
+Given $f$ Lebesgue measureable with 
+$$
+|f(x)| \leq g(x) (1 + |x|^2)^{d/2}
+$$
+a.e. for some $d \geq 0$, $g$ nonnegative, integrable function $g$. Then 
+$$
+T_f(\phi) = \int f(x) \phi(x) dx
+$$
+defines a tempered distribution. We can recover $f$ up to pointwise-a.e. by $T_f$ by convolving with approximate identity like Gaussian.
+
+Distributions that are integration against a function $f$ is called a regular distributions. Those that not of this form is called singular. Tempered distributions is generalization of locally integrable functions with polynomial growth. 
+
+Tempered distributions is a subspace of $D^*$ the space of distributions. It is the continuous linear functionals on $D$ the space of smooth, compactly generated test functions. The distributions in $D^*$ can grow faster than polynomial at infinity, and its Fourier transform not beling in $D^*$. For $S^*$, its Fourier transform stays in $S^*$.
+
+\subsubsection{Operations on distributions}
+Given $f$ such that it and all its derivative have polynomial growth, then $f\phi \in S$ for $\phi \in S$. Thus it also acts on $S^*$ continuously.
+
+$f \delta = f(0) \delta$. 
+
+We can also take derivatives:
+
+\begin{definition}
+$\partial^\alpha T$ is defined as 
+$$
+<\partial^\alpha T, \phi> = (-1)^{|\alpha|}<T, \partial^\alpha \phi>
+$$
+\end{definition}
+Taking derivative is continuous and every tempered distributions has a derivative. It is the minimal extension of the space of functions of polynomial growth that is closed under differentiation:
+
+\begin{theorem}
+For every $T \in S^*$, exists $f$ continuous of polynomial growth and $\alpha$ such that $T = \partial^\alpha f$.
+\end{theorem}
+
+If $_f$ is a regular distribution whose distributional derivative is also regular $T_g$, then $g$ is the weak derivative of $f$, $g = \partial^\alpha f$. Weak $L^2$ derivative is a version of this.
+
+Let $f(x)$ be $0$ for $x \leq 0$ and $x$ for $x \geq 0$. It has no derivative. But it has a weak derivative, which is the step function $H$. The distributional derivative of $H$ is the delta function. So $H$ is not weakly differentiable.
+
+Given a continuous linear transform $K: S \rightarrow S$, ofc we get $K'$ the transpose. For example the translation operator gives a translation on distribution.
+
+Convolution of test function exists. We can also convolve a test function with a distribution:
+$$
+(\phi * T)(x) = <T, R\tau_x \phi>
+$$
+where $R$ is reflection and $\tau_x$ is shift by $x$. It has at most polynomial growth.
+
+Convolving with $delta$ gives identity: $(\phi * \delta) = \phi$.
+
+There is a notion of weak convergence. It is the convergence corresponding to the weakest topology such taht all functional $T \mapsto <T, \phi> $ is continuous. It is called the weak $*$ topology, generated by the semi-norms $p_\phi$:
+$$
+p_\phi(T) = |<T, \phi>|
+$$
+
+\begin{theorem}
+Schwartz space is dense in the space of tempered distributions
+\end{theorem}
+$S$ is also dense in $C_0$ with respect to uniform convergence, and in $L^p$ for all $1 \leq p < \infty$.
+
 
 %%%%%%%%%%
 
@@ -901,6 +1009,78 @@ If $f(x)$ is continuous and piecewise smooth, then the Fourier series converges 
 Of course, for any $L^2$ integrable function $f$, the Fourier series $L^2$ converges to $f$.
 
 \subsection{Fourier Transform}
+
+\subsubsection{FT on Schwartz space and Distributions}
+We define Fourier transform of a Schwartz function, it is continuous, one-to-one mapping from $S$ to $S$. Thus we get a continuous, one-to-one on $S^*$.
+
+\begin{definition}
+Given $\phi$, we have the Fourier transform $\hat{\phi}$:
+$$
+\hat{\phi}(k) = \frac{1}{(2\pi)^{n/2}}\int \phi(x)e^{-i k x} dx
+$$
+The operator is $\mathcal{F}$.
+\end{definition}
+
+It takes derivatives to pointwise multiple by its value, and wise versa. It takes translation by rotation with that frequency and vice versa. It takes convolution to pointwise multiplication.
+
+We have the Fourier inverse transform $\mathcal{F}^*$:
+$$
+\check{\phi}(k) = \frac{1}{(2\pi)^{n/2}}\int \phi(x)e^{i k x} dx
+$$
+
+\subsubsection{Fourier transform of tempered distribution}
+
+We can define Fourier transform on tempered distribution as $\hat{T} = \mathcal{F} T$ :
+$$
+<\hat{T}, \phi> = <T, \hat{\phi}>
+$$
+Note that for regular distribution this agrees with the Fourier transform definition.
+It is an isomorphism. 
+
+The Fourier transform of delta function is a constant.
+
+\subsection{Fourier transform of $L^1$ function}
+
+The Fourier transform of $f$ is well-defined if $f \in L^1$. 
+We have the Riemann-Lebesgue lemma:
+\begin{theorem}[Riemann-Lebesgue]
+For $f \in L^1$, then $\hat{f} \in C_0(\mathbb{R}^n)$, and 
+$$
+(2\pi)^{n/2} \norm{\hat{f}}_\infty \leq \norm{f}_1
+$$
+\end{theorem}
+
+Thus Fourier transform is a bounded linear map $L^1 \rightarrow C_0$. $L^1$ with convolution and $C_0$ with pointwise, then Fourier transform maps convolution to pointwise (up to a factor). 
+
+\subsubsection{Fourier Transform on $L^2$}
+Fourier transform also gives isomorphism on $L^2(\mathbb{R}^n)$.  We need to define Fourier Transform on $L^2$ function by extend from the dense subspace $S$.
+
+Note that Fourier transform preserves in inner prouduct, thus we extend to an isometric extension $\mathcal{F}: L^2 \rightarrow L^2$.
+
+Thus we have the following:
+
+\begin{theorem}
+The Fourier transform $\mathcal{F}$ is a unitary map. 
+Thus $(\hat{f}, \hat{g}) = (f, g)$ and 
+$$
+\int |f(x)|^2 dx = \int |\hat{f}(k)|^2 dk
+$$
+\end{theorem}
+
+It is a unitary operator so its spectrum on the unit circle. It is entirely consist of eigenvalues.
+
+We can use the Fourier transform to define Sobolev spaces of functions with square-integrable derivatives. 
+
+\begin{definition}
+Let $s \in \mathbb{R}$. The Sobolev space $H^s(\mathbb{R}^n)$ consists of all distributions $f \in S^*$ whose Fourier transform $\hat{f}$ is a regular distribution and 
+$$
+\int (1 + |k|^2)^s |\hat{f}(k)|^2 dk < \infty
+$$
+\end{definition}
+
+We have that for $f \in H^s(\mathbb{R}^n)$ with $s > n/2$, then $f \in C_0(\mathbb{R}^n)$.
+%%%%%%%
+\subsubsection{Facts}
 For periodic functions we have Fourier series, for non-periodic functions we need all frequency, thus the Fourier transform gives a function on the frequency space.
 
 If $f$ is a compactly supported continuous function, then $\hat{f}$ can be extended to an entire function, that is, a holomorphic function on the entire $\mathbb{C}$ plane.
