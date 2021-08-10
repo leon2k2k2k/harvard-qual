@@ -646,6 +646,162 @@ Thus we have
 The zeta function has a meromoirphic continuation into the entire complex plane, whose only singularity is a simple pole at $s = 1$.
 \end{theorem}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\subsection{Conformal Mappings}
+This is more of a global subject rather than a local one. The question is that: given $U, V$ open subset of $\mathbb{C}$, does it exists a holomorphic bijection between $U$ and $V$. An important one is when $V$ is the unit disc $\mathbb{D}$.
+
+\subsubsection{Conformal Equivalence}
+A bijective holomorphic funtion $f: U \rightarrow V$ is called a conformal map. We say that $U$ and $V$ are conformally equivalent. Its inverse is automaticlaly holomorphic.
+
+Note that $f'(z)$ can't vanish at any point.
+
+A holomorphic map with $f'(z) \neq 0$ preserves angles (it is conformal).
+
+\begin{example}
+Let $\mathbb{H}$ be the upper plan $|Im (z)| > 0$, then it is conformally equivalent to the unit disc:
+$$
+F(z) = \frac{i -z}{i + z}, G(w) = i \frac{1-w}{1+w}
+$$
+It takes the boundary real line $\mathbb{R}$ of $\mathbb{H}$ to the boundary of the disk, the unit circle. The point $-1$ is the point at infinity of the upper half plane.
+\end{example}
+
+Mapping of the form 
+$$
+z mapsto \frac{az + b}{cz + d}
+$$
+are called fractional linear transforms. The group $PGL(2, \mathbb{C})$ is the automorphism group of the Riemann sphere $\mathbb{C}P^1$.
+
+Translation and dilation and rotation and are examples of fractional linear transforms.
+
+Now we look at sectors:
+
+\begin{example}
+$z \mapsto z^n$ takes the sector $0 < arg(z) < \pi/n$ to upper half-plane.
+Then use $z \mapsto z^\alpha$ for $0 < \alpha < 2$ shows that we can map upper half-plane to any sector in $\mathbb{C}$.
+\end{example}
+
+\begin{example}
+The map 
+$$
+f(z) = (1 + z)/(1 -z)
+$$
+takes the upper half disc to the first quadrant with inverse:
+
+$$
+g(w) = (w-1)/(w+1)
+$$
+\end{example}
+
+\begin{example}
+$z \mapsto log z$, define as the branch obtained by deleting the negative imaginary axis, takes the upper half plane to the strip $0 \leq |im v| \leq \pi$. It takes the upper half-disc to the half-strip $0 \leq |v| \leq \pi$.
+\end{example}
+
+
+\subsubsection{Schwarz lemma and automorphism of disc and upper half-plane}
+
+\begin{lemma}
+Let $f: \mathbb{D} \rightarrow \mathbb{D}$ be holomorphic with $f(0) = 0$, then
+\begin{enumerate}
+    \item $|f(z)| \leq |z|$
+    \item If for some $z_0 \neq 0$, we have $|f(z_0)| = |z_0|$, then $f$ is a rotation
+    \item $|f'(0)| \leq 1$, if equality holds, then $f$ is a rotation.
+\end{enumerate}
+\end{lemma}
+
+Idea is that $f(z)/z$ is holomorphic. Then use the maximum principal.
+
+From here we can figure out the automorphism of the disc:
+
+we have automorphism:
+
+$$
+\phi_\alpha(z) = \frac{\alpha - z}{1 - \overline{\alpha} z}
+$$
+for $|\alpha| < 1$. This takes $\alpha$ to $0$ and $0$ to $\alpha$. By looking at where it takes the unit circle and maximum principle we get that it takes the unit disc to the unit disc.
+
+Combined with the previous lemma, we see that
+\begin{theorem}
+If $f$ is an automorphism of the disc, then exists $\theta$ and $\alpha$ such that 
+
+$$
+f(z) = e^{i\theta}\frac{\alpha - z}{1 - \overline{\alpha} z}
+$$
+\end{theorem}
+
+The automorphism is the group $SU(1,1)$, those matricies that preserves the hermitian product:
+$<Z, W> = z_1 \overline{w_1} - z_2 \overline{w_2}$
+
+From this and the fact that the disc is conformal to the upper half plane we see that this also characterizes the automorphism group of the upper half plane. However, we also have the following:
+
+\begin{theorem}
+The automorphism group of $\mathbb{H}$ is the $PSL(2, \mathbb{R})$, acting as 
+$$
+z \mapsto \frac{az +b}{cz + d}
+$$
+\end{theorem}
+
+\subsubsection{The Riemann Mapping Theorem}
+This gives condition for an open set to be conformal to $\mathbb{D}$. A subset is proper if it is non-empty and not $\mathbb{C}$.
+
+\begin{theorem}[Riemann mapping theorem]
+$\Omega$ proper and simply connected. Given $z_0 \in \Omega$, then there exists a unique conformal map $F: \Omega \rightarrow \mathbb{D}$ such that 
+$$
+F(z_0) = 0, and F'(z_0) > 0
+$$
+\end{theorem}
+So any two proper simply connected open subsets in $\mathbb{C}$ are conformally equivalent.
+
+The idea of the proof is that we want to find a map whose image fills out all of $\mathbb{D}$, by making $f'(z_0)$ as uch as possible.
+
+We also have the uniformization theorem:
+
+\begin{theorem}
+Any simply connected open subset $U$ of a Riemann surface is conformally equivalent to $\mathbb{C}$, $S^2$, or $\mathbb{D}$.
+\end{theorem}
+
+\subsection{Introduction to Elliptic Functions}
+
+We are interested in doubly periodic meromorphic functions. Let $\omega_1, \omega_2$ be the periods, then we can choose $\tau = \omega_2/\omega_1$ with $Im(\tau)> 0$, and normalize so that we consider $f$ having periods $1$ and $\tau$ (we are really thinking about meromorphic function on the elliptic curve $\mathbb{C}/\mathbb{Z} \oplus \tau \mathbb{Z}$.
+
+By Liouville's theorem, we see that all entire doubly periodic functions are constant as they are bounded.
+
+A meromorphic doubly periodic function is called elliptic function. They can have only finite many zeros and poles in a period parallelogram.
+
+A useful trick is that taking the integral of a meromorphic function that doesn't have poles alont the boundary of a fundamental parallelogram is zero as everything cancels.
+
+For example, by residue theorem, this means 
+\begin{theorem}
+The total number of poles of an elliptic function is $\geq 2$ (counted with multiplicities).
+\end{theorem}
+The total number of poles is called the order.
+A meromorphic function has the same number of poles as zeroes (this is true for any Riemann surfaces = algebraic curves):
+
+\begin{theorem}
+Every ellptic function of order $m$ has $m$ zeros.
+\end{theorem}
+
+This is done by using the argument principal to above.
+
+\subsubsection{Weierstrass $\mathcal{P}$ function}
+
+We can construct one with only double pole:
+$$
+\mathcal{P}(z) = \frac{1}{z^2} + \sum [\frac{1}{(z + n + m \tau)^2} - \frac{1}{(n + m\tau)^2}]
+$$
+
+It has period $1$ and $tau$ and double poles at the lattice points.
+
+It is even and $\mathcal{P}'$ is odd, and of order $3$. They satisfy the equations:
+
+\begin{theorem}
+$$
+(\mathcal{P}')^2 = 4(\mathcal{P} - e_1)(\mathcal{P} - e_2)(\mathcal{P} - e_3)
+$$
+\end{theorem}
+And every elliptic function $f$ with periods $1$ and $tau$ is a rational function on $\mathcal{P}$ and $\mathcal{P'}$.
+
+This realize the elliptic curve as a hyperelliptic curve with 3 ramification points (with an additional one at infinity)
 \subsection{Rigidity of holomorphic functions}
 
 We have the maximum modulus principal:
