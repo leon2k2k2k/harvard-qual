@@ -1,5 +1,8 @@
 \documentclass[main.tex]{subfiles}
 
+\newcommand{\F}[1]{
+\mathfrak{F}_{#1}}
+
 \begin{document}
 
 \section{Complex Analysis}
@@ -10,7 +13,7 @@ Holomorphic function has many miraculous facts:
 \begin{enumerate}
     \item Cauchy's integraction: if $f$ is holomorphic in $\Omega$, then for contractible close path $\gamma$ we have 
     $$
-    \ing_\gamma f(z) dz = 0
+    \int_\gamma f(z) dz = 0
     $$
     \item Regularity: If $f$ is holomorphic, then it is indefinitely differentiable. In fact it is analytic
     \item analytic continuation: If $f$ and $g$ are holomorphic, and equal in arbitrary small disc in $\Omega$, then $f = g$ everywhere.
@@ -417,9 +420,232 @@ f(z) = e^{g(z)}
 $$
 \end{theorem}
 
-\subsection{Fourier series}
+\subsubsection{Fourier series}
+Consider $f$ holomorphic in $D_R(z_0)$ with power series expansion:
+$$
+f(z) = \sum a_n(z-z_0)^n
+$$
+The Cauchy integral formula says that
+\begin{theorem}
+$$
+a_n = \frac{1}{2\pi r^n} \int_0 ^{2\pi} f(z_0 + r e^{i\theta} e^{-in\theta} d\theta
+$$
+for all $n \geq 0$ and $0 < r < R$, and for negative $n$ its zero. 
+\end{theorem}
+
+This means that given a holomorphic function, we can consider its restriction on a circle around $z_0$, then its derivatives at $z_0$ are (proportional) to its Fourier coefficients.
+
+Taking the real part, with $f(z_0) = a_0$, we have 
+\begin{corollary}
+For any $u$ harmonic in a disc $D_R(z_0)$, we have that 
+$$
+u(z_0) = \frac{1}{2\pi}\int_0 ^{2\pi} u(z_0 + re^{i \theta} d\theta)
+$$
+for any $0 < r < R$.
+\end{corollary}
+
+\subsection{The Fourier Transform}
+Given a function on $\mathbb{R}$ with appropriate regularity and decay conditions, we have its Fourier transform. An interesting question is whether $f$ can be extended to a holomorphic function is closely related to rapid decay at infinite of its Fourier transform.
+
+2 ways, one is assme $f$ can be analytically continued in a horizontal strip containing the real axis, and see $\hat{f}$ converges exponentially at infinity. Another way, if $\hat{f}$ is compactly supported, then $f$ has a holomorphic extension with an exponential type growth condition.
+
+\subsubsection{The Class $\F{a}$}
+\begin{definition}
+Given $a > 0$, $\F{a}$ is class of all function $f$ satisfies
+\begin{enumerate}
+    \item $f$ holomorphic in horizontal strip $|Im(z)| < a$.
+    \item exists $A> 0$ such that 
+    $$
+    |f(x+iy)| \leq \frac{A}{1 + x^2}
+    $$
+\end{enumerate}
+\end{definition}
+$\mathfrak{F}$ is the union of all $\F{a}$. It is closed under derivatives. 
+
+We now consider its Fourier transform:
+\begin{theorem}
+If $f$ is in $\F{a}$, then $|\hat{f}(\zeta) \leq B e^{-2 \pi b |\zeta|}$
+\end{theorem}
+
+Idea is to use Cauchy's integration over a rectangle which is $-R, R, -R-ib, R  ib$ for $g(z) = f(z) e^{-2\pi i z \zeta}$, 
+so the integration over the real number line is
+the Fourier transform $\hat{f}(\zeta)$, and the two vertical lines are surpressed by the regularity on $f$, and thus we can "lower" the exponential to integrating over the $x -ib $ line, where $g$ is exponentially surpressed by $e^{-2 \pi b \zeta}$.
+
+So $\hat{f}$ has rapid decay at infinity. The more we can extend $f$ (the larget $a$), then larger we can choose $b$, the better the decay. For these function, using the same idea we can prove the Fourier inversion formula and Poisson summation formula.
+
+We can now assume the converse: if $\hat{f}$ satsifes the decay condition $|\hat{f}(\zeta)| \leq A e^{-2\pi a |\zeta|}$, then $f(x)$ is the restriction of a holomorphic function $f(z)$ in the strip $|Im(z)| < b$ for any $0 < b < a$.
+
+Now we have the Paley-Wiener theorem, which gives criterion for when the Fourier transform is supported in an interval $[-M, M]$:
+\begin{theorem}
+Suppose $f$ is continuous and of moderate decrease on $\mathbb{R}$ (so the Fourier transform exists), then $f$ has an extension to the complex plane that is entire with $|f(z)| \leq Ae^{2 \pi M |z|}$ iff $\hat{f}$ is supported in the interval $[-M, M]$.
+\end{theorem}
+
+\subsection{Entire Functions}
+Study functions that are holomorphic in the entire whole complex plane.
+Questions: When can such functions vanish: given $z_n$ sequence of complex numbers having no limit point, then exists an entire function vanishing exactly at those points. How do they grow at infinity? Jensen's formula. And to what extend are functions determined by their zeros.
+
+\subsubsection{Jensen's Formula}
+$D_R$ and $C_R$ open disc and circle of radius $R$ around the origin. $f$ don't vanish identically.
+
+\begin{theorem}
+$f$ holomorphic on an open set containing closure of $D_R$, $f(0) \neq 0$ and vanishes nowhere on $C_R$. If $z_1, .. , z_N$ zeros inside the disc counted with multiplicities, then
+$$
+log |f(0)| = \sum_i ^n log(\frac{|z_k|}{R}) + \frac{1}{2\pi} \int_0 ^{2\pi} log |f (R e^{i\theta} | d\theta
+$$
+\end{theorem}
+
+This gives a link between the growth of $f$ and its zeros in $D_R$, which we denote $\mathfrak{n}(r)$.
+
+If $f(0) \neq 0$ and $f$ not vanish on circle $C_R$, then
+$$
+\int_0 ^R \mathfrak{n}(r) \frac{dr}{r} = \frac{1}{2\pi} \int_0 ^{2 \pi} log |f(Re^{i\theta})| d\theta - log|f(0)|
+$$
+
+\subsubsection{Functions of Finite Order}
+Let $f$ be an entire function, then $f$ has an order of growth $\leq \rho$ if 
+$$
+|f(z)| \leq A e^{B |z|^{\rho}}
+$$
+with the order of $f$ 
+$$
+\rho_f = inf \rho
+$$
+Growth of $e^{z^2}$ is $2$.
+
+\begin{theorem}
+If $f$ is an entire function that has growth $\leq \rho$, then 
+\begin{enumerate}
+    \item $\mathfrak{n}(r) \leq C r^\rho$ for some $C > 0$ and large enough $r$.
+    \item If $z_1, ...$ are the zeros of $f$, with $z_k \neq 0$, then for $s > \rho$ we have 
+    $$
+    \sum_k \frac{1}{|z_k|^s} \leq \infty
+    $$
+\end{enumerate}
+\end{theorem}
+
+$f(z) = sin \pi z$ shows that the convergence in part ii is sharp. 
+
+Now we study given $z_i$ countable, can we find $f$ entire such that it vanishes precisely at $z_i$. This uses infinite product, but the naive product $\Pi(z - z_i)$ is not convergent.
+
+\subsubsection{Infinite Products}
+
+\begin{proposition}
+If $\{F_n\}$ is sequence of holomorphic functions on $\Omega$, if exists $c_n > 0$ such that 
+$\sum c_n < \infty$, and $|F_n(z) - 1| \leq c_n$, then 
+\begin{enumerate}
+    \item the product $\prod F_n(z)$ converges uniformly in $\Omega$ to a holomorphic function $F(z)$.
+    \item If $F_n(z)$ doesn't vanish, then
+    $$
+    \frac{F'(z)}{F(z)} = \sum     \frac{F'_n(z)}{F_n(z)}
+    $$
+\end{enumerate}
+\end{proposition}
+
+An example is 
+$$
+\frac{sin \pi z}{\pi } = z \prod (1 - \frac{z^2}{n^2}
+$$
+
+Here's the theorem:
+\begin{theorem}[Weierestrass infinite products]
+Given $a_n$ with $|a_n| \rightarrow \infty$, then there exists an entire function $f$ such that $f$ vanishes at $z = a_n$ and nowhere else. Any other such entire function is of the form 
+$$
+f(z) e^{g(z)}
+$$
+where $g$ is entire.
+\end{theorem}
 
 
+\subsection{The Gamma and Zeta Functions}
+They are super important, especially Zeta function.
+
+\subsubsection{Gamma Function}
+For $s > 0$, the gamma function is 
+$$
+\Gamma(s) = \int_0 ^{\infty} e^{-t} t^{s-1} dt
+$$
+
+The integral is convergent and extends to an analytic function for half-plane $Re(s) > 0$.
+
+For $Re(s) \leq 0$, then the integral is not absolutely convergent and we need to analytic continue it.
+
+We have the following property:
+\begin{lemma}
+If $Re(s) > 0$, then 
+$$
+\Gamma(s+ 1) = s \Gamma(s)
+$$
+so $\Gamma(n+1) = n!$
+\end{lemma}
+
+\begin{theorem}
+The function $\Gamma(s)$ initially defined for $Re(s) > 0$ has an analytic continuation to a meromorphic function on $\mathbb{C}$ whose only ingularities are simple poles at negative integers $s = 0, -1, ... $, then residue of $\Gamma$ at $s = -n$ is $(-1)^n /n!$.
+\end{theorem}
+The idea is that we simply extend by the identity $\Gamma(s+ 1) = s \Gamma(s)$ to $Re(s) > -1$. By the identity above, for $Re(s) > 0$ it agrees with the old $\Gamma$. Thus this is the analytic continuation.
+
+$\Gamma$ is symmetric about the line $Re(s) = 1/2$:
+
+\begin{theorem}
+$$
+\Gamma(s) \Gamma(1-s) = \frac{\pi}{sin \pi s}
+$$
+\end{theorem}
+Because both sides are holomorphic, we simply have to check in the strip $0 < Re(s) < 1$.
+
+We see that 
+\begin{theorem}
+$\frac{1}{\Gamma(s)}$ is an entire function with simple zeores at $s = 0, -1, ...$. It has growth order $1$.
+\end{theorem}
+
+Thus we have the product formula:
+
+\begin{theorem}
+For all $s \in \mathbb{C}$, 
+$$
+\frac{1}{\Gamma(s)} = e^{\gamma s} s 
+$$
+\end{theorem}
+
+$$\gamma = \lim \sum \frac{1}{n} - log N$$
+
+This means that the function $\frac{1}{\gamma}$ is essentially characterized as the entire function that has simple zeros at $s = 0, -1, -2...$ and vanishes nowhere else, and its order of growth $\leq 1$.
+
+
+\subsubsection{The Zeta Functions}
+
+The Riemann zeta function is defined for $Re|s| > 1$ by 
+$$
+\zeta(s) = \sum \frac{1}{n^s}
+$$
+
+It is uniform as it converges uniformly on any $Re(s) > 1 + \delta + 1$.
+
+To analytically extend it, consider the theta function 
+$$
+v(t) = \sum_{-\infty} ^{\infty} e^{\pi n^2 t}
+$$
+Poisson summation formula gives a functional equation 
+$$
+v(t) = t^{-1/2} v(1/t)
+$$
+
+Let 
+$$
+\xi(s) = \pi^{-s/2}\Gamma(s/2)\zeta(s).
+$$
+Then 
+\begin{theorem}
+The function $\xi$ is holomorphic for $Re(s) > 1$ and has an analytic continuation to all of $\mathbb{C}$ as a meromorphic function with simple poles at $s = 0$ and $s = 1$, with 
+$$
+\xi(s) = \xi(1-s)
+$$
+\end{theorem}
+
+Thus we have 
+\begin{theorem}
+The zeta function has a meromoirphic continuation into the entire complex plane, whose only singularity is a simple pole at $s = 1$.
+\end{theorem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Rigidity of holomorphic functions}
 
 We have the maximum modulus principal:
