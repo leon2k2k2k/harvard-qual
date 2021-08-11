@@ -19,8 +19,21 @@ Holomorphic function has many miraculous facts:
     \item analytic continuation: If $f$ and $g$ are holomorphic, and equal in arbitrary small disc in $\Omega$, then $f = g$ everywhere.
 \end{enumerate}
 
+\subsection{Tips}
+\begin{enumerate}
+    \item Given any disc around $z_0$ we can ask for a taylor series representation of $f$. When the point is infinity then it will be a polynomial in $z^{-1}$, thus a Laurent series, and converge at some disc $|1/z| < a = |z| > 1/a$.
+    which is a polynomial in $z$ and $z^{-1}$, converges away from some disc centered at zero. Thus a Laurent series converges at some annulus $a < |z| < b$.
+    \item If we have a continuous function and integrating it on smaller and smaller loop, then the limit is going to be zero because it is roughly integrating a constant around a loop.
+    \item if $f_n$ holomorphic uniformly converges to $f$ on all compact subset in $\Omega$, then $f$ is holomorphic and $f_n '$ converges to $f'$ etc.
+    \item Cauchy's integral formula is telling us that for holomorphic functions, differentiation is like integral.
+\end{enumerate}
+
 \subsection{List of Theorems}
 \todo[inline]{Cauchy's integration theorem, Cauchy's integration formula, Liouville's theorem, Morera's theorem, Riouche, Open mapping theorem, maximal principal}
+
+\begin{theorem}[Morera's Theorem]
+A complex valued function $f$ with $\int_C f(z) dz = 0$ for all closed loops $C$ is holomorphic. In fact, it is primitive, that is, it has a antiderivative that is holomorphic.
+\end{theorem}
 
 \subsection{basics}
 \todo[inline]{What is the definition of a holomorphic, meromorphic function, Riemann ?? theorem, Cauchy's integral formula, residues theorem, Gauss's mean value theorem}
@@ -428,7 +441,7 @@ $$
 The Cauchy integral formula says that
 \begin{theorem}
 $$
-a_n = \frac{1}{2\pi r^n} \int_0 ^{2\pi} f(z_0 + r e^{i\theta} e^{-in\theta} d\theta
+a_n = \frac{1}{2\pi r^n} \int_0 ^{2\pi} f(z_0 + r e^{i\theta} e^{-in\theta}) d\theta
 $$
 for all $n \geq 0$ and $0 < r < R$, and for negative $n$ its zero. 
 \end{theorem}
@@ -698,7 +711,7 @@ $z \mapsto log z$, define as the branch obtained by deleting the negative imagin
 \end{example}
 
 
-\subsubsection{Schwarz lemma and automorphism of disc and upper half-plane}
+\subsubsection{Schwarz lemma and automorphism of disc}
 
 \begin{lemma}
 Let $f: \mathbb{D} \rightarrow \mathbb{D}$ be holomorphic with $f(0) = 0$, then
