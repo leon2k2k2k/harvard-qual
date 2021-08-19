@@ -14,26 +14,59 @@ CA. Currently working on it. Doing a lot better than RA. Hopefully after this we
 
 %%%%%%%%%%%
 
-plan:
+8/18 status:
 
-By Fri. 13th, finished CA problem review.
+took one full practice test and got pretty satisfying results (pass 5/6 and likely passed RA by my own grading).
 
-Weekend:
-After reviewing through CA, let's go back and take a look at all the questions from 2010-2016 for all subjects and write down topics/things I am not that comfortable with. If have time, also go through 2005-2009 (skim through). 
+Have 4 more practice tests and have 11 days!!!
 
-Then come back with a plan to review through those topics.
-Ideally, I will have covered all of those topics by the time qual comes along.
 
-Monday - Tuesday: 
-take a practice test in an exam like environment. Timed. See how I feel and what strategy works. Get a feeling of how I did and what I should work on.
+8/18: 
+Review F17 practice test and grade it.
+Write out a plan for the reminder of the days before qual, which is 8/31st.
 
-Thrusday - Weekend:
-Take two more of those practice tests (have three left). Continue to review and see how I am doing. 
+Review: pretty good, there are definitely rooms to improve on but I think I am at a good stage for right now.
 
-Monday - Friday:
-Full on review topic prepping, practice exercises. Take one of the practice tests. At this point, I think that I should be fully prepare for the exam.
+Plan: 
 
-Weekend - Monday: 
-Light review for the exam and focus on taking full-time exams. Go through the three hours and really practice thinking/figure things out.
+Testings: I have 4 newest tests still available, so I would like to take one this weekend. 2 next week, and last one the weekend and Monday before the quals.
 
-Then Tuesday morning take a breather, relax, and start the exam!!!!!!
+Right now, let's try to review through all of the problems from 2010-2017 for each subjects and write down things that I feel like I need more work on. Let's try to finish this before the beginning of next week.
+
+Write down not only concepts I need to know, but also keep track of specific (counter)examples I should remember, like how to construct specific groups etc. 
+
+Next week, I would like to go through each subject and learn/work on the specific things that I wrote down. 
+
+
+
+So here's a rough schedule
+
+8/18: 
+Write down the schedule.
+
+8/19 -8/20:
+Review through the questions 2010-2017 and write down topics and examples and counterexamples that i need to review study for. Also review the old qual resources.
+
+
+For example, field extension theory, discriminant in A/AN, residue calculations, entire functions in CA, topological arguments in RA...
+
+For examples: 
+
+A: discriminants, Galois field extensions. Cyclotomic extensions for finite fields.
+
+AG: look through Harris's lecture notes on the projective geometry part.
+
+AT: oriented and unoriented surfaces and the polygon gluing, excision and some other suff.
+
+
+RA: Baire category and open mapping theorem, close graph theorem and something something.
+DG: solving ODE and Gaussian curvature technique and calculations. 
+
+CA: residue calculations, entire functions and infinite products. Standard power series (1/1-z, log(1-z)..., e^z)
+
+8/21-8/22:
+Take another practice exam, use the rest of the time reviewing. Hopefully we can go through say one subject each day.
+
+8/22 - 8/27: finished reviewing. Do another test
+
+8/27-8/30: fini

@@ -1,0 +1,29 @@
+8/19 Algebra review:
+
+Overview: not too much to do honestly. I think I can finish reviewing them in a morning. Namely Galois group stuff, I think there are just the solvability and discrminants thing that I have to know, then do some practice with finding polynomials with specific Galois group.
+
+
+Topics not comfortable with:
+Galois theory:
+1. Galois group of the splitting field of a polynomial is say $A_3$, or pick different coefficients of a polynomial to get a specific Galois group (F10D1, F15D2)
+2. Discriminants of a polynomial, it being a square or not and how the polynomial factors. (F17D1)
+3. Cyclotomic extensions in finite characteristics.
+4. Solvability Galois group of a splitting field of a polynomial. F11D2. 
+5. Eisenstein criterion.
+
+AN:
+3. Quadratic extensions: Which $\mathbb{Z}[\sqrt{n}]$ is integrally closed, which ones are not (I think p = 1 mod 4, p = 3 mod 4 are), what about Z[\sqrt{2}]??. factorization of primes (and prime ideals) in Z[\sqrt{q}] for q = 3 mod 4). Examples of non-PID for Z[\sqrt{-5}]
+4. Norm and trace of an element of an Galois extension.
+
+Group theory:
+1. Remember Sylow's three theorems. 1. a sylow p-group exists. 2. all sylow p-groups are conjugates. 3. the number of sylow p-groups divides m for |G| = p^n m, and it is 1 mod p.
+2. GL_n(\mathbb{F}_p) theory (F12D3, S16D2)
+3. Classification of groups of order pq by Sylow theorem. (namely if q > p then there is only one q-group, then ..., review and remember that argumetn). Also groups of order $p^2$ are all abelian. 
+
+
+
+
+Specific questions that I don't understand and are not listed above:
+S10D3, F11D3, S13D1, S13D2, F15D1, 
+
+
