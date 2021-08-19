@@ -1,0 +1,55 @@
+8/19 Real Analysis review:
+
+Initial thoughts:
+Need to learn the "dark magic" Baire category theorem, and its consequences Open Mapping Theorem, closed graph theorem and uniform boundedness principle. Use it to prove that any self-adjoint operator on a hilbert space is bounded.
+After that I can review the different parts of real analysis.
+Make sure you understand all the inequalities!!!!!
+Write down all the inequality. They are all in the real analysis notes.
+
+
+Overview:
+I feel pretty good about this. First let's review Baire category theory, and commuting derivatives under integral. I would also like to just review commuting limits more.
+
+
+After that, try to remember the important formulas, then 
+just goes through the questions again and make sure you understand how it works.
+Should take 1.5 - 2 days.
+
+specific things:
+define L^p spaces as lebesgue measureable functions whose L^p norm is finite, why is this complete? Aka why does Cauchy sequence converge.
+Make sure to understand the condition for derivative and integral to commute (via dominated convergence theorem) and know how the argument goes.
+
+--------------
+Fourier series and Fourier transform:
+decay of coefficients and smoothness: F10D2, F11D1, F15D3 (got the Sobolev embedding theorem vibe). S15D2 (actual Fourier series calculation), F16D2 (interesting), F17D3, 
+
+
+--------
+Banach spaces:
+Show boundedness and (non)-compactness of specific operators: F10D3, F11D2, S16D2, 
+Topology of Hilbert and Banach spaces:
+    Weak topology, compactness: S10D2, 
+    Baire category theorem:
+    Separablility: F11D3. 
+    Contraction theorem: S16D1, 
+-------
+Hilbert space:
+show the parallelogram rule, F16D3, 
+
+
+
+----
+heat equation: review different boundary conditions. F12D2, F14D1
+
+---
+Measure theory: Remembers all the inequality.
+general: S10D3, S13D2 (Jensen's inequality)
+
+Convergence: F12D1 (dominated convergence), S12D1 (convergence in measure vs a.e. convergence)
+
+Probability:the Chebyshev inequality and other??? F12D3, F14D3, 
+
+
+---
+Miscallenous: S14. do S16D3, F17D3 (green function for the Laplacian in 3 dimension).
+F15D2 is kinda fun.

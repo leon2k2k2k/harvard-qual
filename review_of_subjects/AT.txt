@@ -1,0 +1,38 @@
+8/19 AT review:
+
+Initial thoughts:
+I feel pretty confident about AT, just need to review some specific things like polygon gluing, and homology groups of important spaces (oriented and unoriented surfaces (their fundamental group as well), complex, real projective spaces). 
+
+Overview:
+I just need to write down all the formulas and go back and review through the questions, should not take more than a whole day.
+
+-----------------
+Formulas to remember:
+Kunneth formula, universal coefficients theorem, excision, Mayer-Vietoris, cofiber sequence, 
+
+Exercises: S10D2, S14D3 using Mayer-Vietoris as well as excision.
+-------------
+Fundamental groups to remember:
+wedges of spaces, Van Kampen theorem (F10D3), oriented and unoriented surfaces. 
+
+Exercises: F10D3.
+--------------
+homology groups and CW complexes to remember:
+oriented, unoriented surfaces, real, complex, quaternion projective spaces, top cohomology of oriented and unoriented surfaces, Poincare duality (the pairing on cohomology is non-degenerate), cohomology of connected sum of oriented and unoriented manifolds.
+
+
+
+Exercises: S10D3, F11D2, F15D1, 
+
+
+-------
+Covering spaces:
+
+Exercises: F11D1, S11D2, F12D3, F17D3.
+
+-------
+Random knot homology stuff: 
+S13D3, 
+
+----
+S^\infty is contractible by shifting to the left (a_1, a_2, ..) -> (0, a_1, a_2,...) and then linear contracts to (1,0,0,0...)

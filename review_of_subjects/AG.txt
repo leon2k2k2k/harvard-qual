@@ -1,3 +1,38 @@
 8/19 AG review:
 
-Overview:
+Initial thoughts: need to review the lecture notes. 
+
+Overview: First thing I should probably do is to take a look at Harris's lecture notes. I am not comfortable with some of the projective geometry things (secant variety, Segre variety,  and especially quadratic hypersurfaces, which always gets me). The qual study guide gives which sections to look at.
+
+It seems like I am still a bit uncomfortable with AG, let's definitely spend an entire day or two on this.
+
+Afterwards I should probably go back and (re)do all these exercises again.
+
+Topics:
+
+Projective geometry:
+1. Quadratic surfaces: there is the general theory, like for it to be smooth the associated pairing has to be nondegenerate, and then what is the largest dimension of  linear subspace contained in it.F10D3, S11D3, F15D2, 
+2. Birationality and Blowups: F11D1, F15D2. Esp. blow up of a point on a surface. Its picard group. Why is the. self-intersection of the canonical divisor.
+3. Secant variety: F11D2, S11D1, 
+4. Geometry of linear subspaces: F11D3,
+5. degrees of embeddings.
+6. Emurative geometry: F16D1, 
+
+Curve theory:
+1. Hyperelliptic curves: F16D2.
+2. Planar curve and Gauss map: S10D2. F14D2, S15D1, 
+3. plane curve and maps to P^1 of certain degree (use RR) S14D2, F15D1,
+4. 
+
+Hilbert polynomials/series:
+F12D1, S13D2, S14D3 S16D2, F17D2.
+
+Singularity:
+S11D2, S13D1, 
+
+Miscellanous: 
+S15D3. S16D3.
+
+Specific things:
+Remember the all important theorem that says that given $X \rightarrow Y$ with Y irreducible, and fibers are same dimension and irreducible -> X is irreducible.
+

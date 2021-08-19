@@ -1,0 +1,33 @@
+8/15 Complex Analysis review:
+
+Initial thoughts:
+In complex analysis I just feel like I am missing entire function stuff and integral calculation using residue theorem, mainly actually doing the computation and be very careful. Remembers all the theorems and ofc the Cauchy integration formula. Also know the stadard power series for $e^z$, $1/(1-z)$ for both $|z| > 1$ and $|z| < 1$, and log(1+z).
+Also know about Gamma function and its properties, poles at nonpositive numbers and their residues.
+Know the standard theorems.
+
+review:
+basically the same as initial thoughts, need to learn about infinite products (and when it is well-defined), and then some other miscellanous, and then residue theorem calculations. Probably 1.5 to 2 days.
+-----
+Residue calculation:
+F10D1, S11D2, F11D1, S11D1, F12D1, S13D1, F14D2, S14D1, S15D2, F16D2, F17D2.
+
+___
+Uniform convergence:
+uniform convergence of holomorphic on compact is holomorphic and derivatives and everything also uniform convergences. F12D3, 
+
+-----
+Conformal mapping:
+Understand the basics of conformal mapping, there are several different types of regions (disc, half plane, plane minus line, strips etc, know how they can map to each other).
+Riemann mapping theorem.
+
+F10D2, S13D2, 
+-----
+Maps from disc to itself (use the Schwarz method (if f(0) = z then g = f/z is holomorphic), then using the maximal principal we have |f(z)| < |z|)
+S13D3, 
+----
+Entire functions: Infinite product is something I need do learn more about.
+F16D3, S16D3, F17D1, 
+
+
+
+miscellous: S14D2, (S14 and S16 is also hard here!), S16D1 (Rouche theorem), S16D2, 

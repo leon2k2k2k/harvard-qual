@@ -7,7 +7,7 @@
 There is a lot of equation and stuff to remember for DG. A lot of connection stuff, but I think (thankfully) no gauge theory.
 
 %%%%%%%%%%%%%%%%%%%%
-\section{Connection and curvature}
+\subsection{Connection and curvature}
 
 
 \begin{definition}
@@ -67,7 +67,7 @@ This is uniquely determined by making the pairing map $(E \otimes E^*, \nabla' \
 
 
 %%%%%%%%%%%%%%
-\subsection{Curvature}
+\subsubsection{Curvature}
 
 \todo[inline]{Mean curvature, scalar curvature etc, Ricci curvature, the symmetry of the Riemann curvature tensor}
 From this, we can define the curvature of a connection:
@@ -94,7 +94,7 @@ A connection is flat if its curvature is 0. Thus gives local systems on the mani
 \end{definition}
 
 
-\subsection{Torsion}
+\subsubsection{Torsion}
 The most interesting connections are the ones on the tangent bundle, which is what we called a connection on a manifold.
 
 \begin{definition}Given a connection $\nabla$ on $M$ ($TM$), then its torsion tensor is 
@@ -109,7 +109,7 @@ $$
 \Gamma_{ij}^k = \Gamma_{ji}^k
 $$
 %%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Parallel Transport}
+\subsubsection{Parallel Transport}
 Given a bundle $E$ over the interval $[0,1] \in \mathbb{R}$, together with a connection $\nabla$. At any point $v \in E|_0$, there exists a unique section $s_v : [0,1] \rightarrow E$ with starting point $v$ such that $\nabla_{\partial_x} s_v = 0$.
 
 Locally, write a basis for $E$ with $s_v$ being an basis element (ofc, when $s_v$ is nonzero), and we have Christoffel symbol:
@@ -121,7 +121,7 @@ By the fundamental theorem of ODE, we see that this has a unique solution that e
 Thus given a connection $\nabla$ on $E \rightarrow M$, and a path $\gamma: [0,1] \rightarrow M$, then we get a parallel transport map: $E|_{\gamma(0)} \rightarrow E|_{\gamma(1)} $. Ofc this is compatible with concatenation. Moreover, the difference between how infinitesimally small path give different parallel transport is precisely measure by the curvature. So when the curvature vanishes, then any two homotopic smooth paths gives the same transport, and we get a local system. Another way to put it is that we have local flat sections, over a local neighborhood, not just a path.
 
 %%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Geodesics}
+\subsubsection{Geodesics}
 Given a connection $\nabla$ on (the tangent space of) manifold $M$. Given any path $\gamma: [0,1] \rightarrow M$, we can ask for the following
 $$
 \nabla_{\dot{\gamma}} \dot{\gamma} = 0
@@ -132,7 +132,7 @@ $$
 $$
 Note that this is $n$ 2nd order ODE in $n$ variables, and the existence and uniqueness theorem tells us that there exists locally a unique solution, determined by the starting point as well as the velocity. That is, given any $p \in M$ and $v \in T_p M$, there is locally a unique geodesic going through $p$ with velocity $v$.
 %%%%%%%%%%%%%%%%%%%%
-\section{Riemannian Geometry: General Theory}
+\subsection{Riemannian Geometry: General Theory}
 Let $(M, g)$ be a Riemannian manifold, then we have an inner product 
 $(-,-)$ on $T_p M$ for every point $p \in M$. This identifies vectors with covectors, and gives us a way to turn $(i, j)$ tensors to $(i-1, j+1)$ tensors and vice versa. This is the raising and lowering of indicies.
 
@@ -156,7 +156,7 @@ Given a 1-form $\alpha$, its covariant derivative $\nabla \alpha$ is the dual of
 On a Riemannian manifold $M$, the holonomy around a loop $C$ is the parallel transport of the tangent vector around the loop.
 \end{remark}
 
-\subsection{Curvature of Riemannian manifolds}
+\subsubsection{Curvature of Riemannian manifolds}
 Recall that we have the curvature tensor $R_{ijk}^l$. We can also lower the $l$ to get the tensor $R_{ijkl}$. This tensor has a lot of symmetries:
 $$
 R_{ijkl} = R_{klij}, R_{ijkl} = -R_{jikl} (R_{ijkl} = - R_{ijlk}), R_{ijkl} + R_{iljk} + R_{iljk} = 0
@@ -179,7 +179,7 @@ Taking trace once more, we get the scalar curvature
 $S = R^j _j = g^{ij} R_{ij}$.
 
 %%%%%%%%%%%%%%%%%%%%
-\subsection{Riemannian Geometry: Submanifolds}
+\subsubsection{Riemannian Geometry: Submanifolds}
 
 Given an immersion of manifold $i: N \rightarrow M$, then a Riemannian metric $g$ on $M$ pullback to a Riemannian metric $g'$ on $N$. However, we can define the Levi-Civita connection
 $\nabla'$ on $N$ more easily:
@@ -223,7 +223,7 @@ One can check that $\nabla_{X} \mathfrak{n}$ lies on the tangent space of $M$
 
 As the shape operator is symmetric (with respect to the Riemannian inner product of $N$), its eigenvalues are all real, and they are all orthogonal, no generalize eigenspaces. Thus there are eigenvalues and eigensubspaces of $S$. The eigenvalues are called the principal curvatures and the tangent vector there curve in circle around the normal vector.
 
-\subsection{Geodesics in a Riemannian manifold}
+\subsubsection{Geodesics in a Riemannian manifold}
 Given a Riemann manifold $(M, g)$, since it has a Levi-Civita connection, thus we can ask for geodesics. But in fact there is a more direct interpretation (and use more often for quals), which is using the Lagrangian formulism.
 
 Given any path $\gamma: [0,1] \rightarrow M$, we have the following functional 
@@ -238,7 +238,7 @@ $$
 \frac{\partial \mathcal{L}}{\partial x^i} - \frac{d}{dt} \frac{\partial \mathcal{L}}{\partial \dot{x^i}} = 0
 $$
 
-\subsection{Covariant derivative in Orthogonal frames}
+\subsubsection{Covariant derivative in Orthogonal frames}
 
 On a Riemannian manifold $(M, g)$, given an orthogonal frame $\theta_i$ and coframe $\theta^i$, we would like to calculate the covariant derivative (Christoffel symbols) of the Levi-Civita connection $\nabla$ from the frame. Using torsion-free and compatibility property.
 
@@ -268,13 +268,13 @@ $$
 This formula is super important in calculating covariant derivatives. This is a part of the orthonormal decomposition method!
 (evaluating both sides at $(\theta_m, \theta_l)$, then the left hand side is given by $-\theta^k([\theta_m, \theta_l])$ while the right hand side gives the corresponding $k$-th Christoffel symbol for $\nabla_{\theta_m} \theta_l - \nabla_{\theta_m}\theta_l \ d\theta^k= \omega^k _{ml} - \omega^k _{lm}$.
 
-\subsection{Gauss map}
+\subsubsection{Gauss map}
 Given a immersion $i: M \rightarrow \mathbb{R}^{n+1}$ where $M$ is a compact oriented $n$-dimensional manifold (aka a hypersurface), then taking the (oriented) normal vector gives a map $N_i: M \rightarrow S^n$. The differential of this map is the shape operator (because we have doing $\partial_i \mathfrak{n} = \nabla_{\partial_i} \mathfrak{n}$). 
 If $n=2$, then the Jacobian (the determinant of the differential) it thus the Gaussian curvature. 
 Moreoever, the degree of this map is 1/2 of the Euler characteristic of $M$. This is because the Euler characteristic is the Euler class of the tangent bundle of the sphere, which pulls back to the tangent bundle of the manifold. And taking Euler class intertwines between vector bundles and cohomology classes. Lastly the Euler class of the sphere is $1 = \frac{1}{2} \chi(S^2)$.
 
 
-\section{Riemannian Geometry: Surfaces in $\mathbb{R}^3$}
+\subsection{Riemannian Geometry: Surfaces in $\mathbb{R}^3$}
 \todo[inline]{Gauss map, interpreting the curvature from the Gauss map, Gauss-Bonnet theorem.}
 
 Let $S \subset \mathbb{R}^3$ be an embedded smooth surface, and $\mathfrak{n}$ a normal vector (this implicitly assumed a co-orientation of $S$, equivalently, an orientation of $S$, since $\mathbb{R}^3$ is oriented).
@@ -297,7 +297,7 @@ $$
 $$
 is a unit length normal vector. 
 
-\subsection{Curvature in 2 space}
+\subsubsection{Curvature in 2 space}
 
 In two dimensions, the Riemann curvature tensor only have 1 degree of freedom and is determined by 
 $R^1 _{212}$. 
@@ -322,7 +322,7 @@ $$
 \begin{remark}
 Note that holonomies of loops on a surface are rotations as $SO(2) = U(1)$.
 \end{remark}
-\subsection{Gauss-Bonnet, Theorem-Egrenium}
+\subsubsection{Gauss-Bonnet, Theorem-Egrenium}
 \todo[inline]{State those theorem, at least know the proof of Theorem-Egrenium, and how does Guass-Bonnet relate to the first chern class of the tangent bundle?}
 
 Given a surface $S \subset \mathbb{R}^3$, Theorem Egregium relates the Gaussian curvature, an external curvature invariant, with the Riemann curvature tensor coefficients (or the scalar curvature). It says that 
@@ -348,7 +348,7 @@ $$
 $$
 is the normal vector of the curve. In dimension 2, this is a multiple of the normal vector, thus we get a scalar $k_g$.
 
-\subsection{Orthonormal method to compute curvature of surfaces}
+\subsubsection{Orthonormal method to compute curvature of surfaces}
 This is a standard method for computing curvature in 2-dimensions. First we take a orthonormal coframe $\theta^i$ and the dual frame $\theta_i$. We have the connection 2-form $\omega_j ^k$. From above, we have that 
 $$
 \omega_j ^k = - \omega_k ^j
@@ -373,7 +373,7 @@ R = d \omega + \omega \wedge \omega
 $$
 
 
-\section{Calculus of differential forms}
+\subsection{Calculus of differential forms}
 Lie brackets and exterior derivatives are in some sense dual.
 
 The Lie bracket has the unique properties  that 
@@ -401,7 +401,7 @@ $$
 There is a formula expressing $d\omega$ as evaluation of $\omega$ and lie brackets.
 Using the Cartan's magic formula as well as expanding $\mathcal{L}_X$ on pairings of vectors and covectors.
 
-\section{Standard Coordinates}
+\subsection{Standard Coordinates}
 The polar coordinates on $\mathbb{R}^2 - {0}$:
 $$
 x = r cos \theta, y = r sin \theta

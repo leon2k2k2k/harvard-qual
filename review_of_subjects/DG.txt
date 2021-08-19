@@ -1,0 +1,31 @@
+8/19 DG review:
+
+initial thoughts:
+There are three parts to me: 1. Riemannian geometry and curvature calculations, a lot of Guassian curvature calculations. I think I just need to do more practice with these calculations, using both the Riemann curvature tensor method (R^1 _{212}) and orthonormal frame, as well as using first and second fundamental forms. 2. Differential topology stuff. 3. ODE calculations, either geodesic or integral curves and parallel transport. I struggles with actually solving the ODE.
+
+BASICALLY DO MORE CALCULATIONS.
+
+Must remember: Lagrangian for the geodesic equation and the Euler Lagrange equation.
+Sard's theorem, how lie derivative and d work (Cartan's magic formula).
+
+Overview: CALCULATIONS. More specifically ODE calculations and surface curvature calculations!
+-------
+
+---------
+ODE stuff:
+Completeness of integral curve and geodesics: 
+F10D1, F11D3 (the upper half plane), F14D1, F14D2, S14D2, S14D3, F16D3 (upper half plane).
+F17D2,
+-----------
+Riemannian geometry and curvature:
+General:
+F12D3, S13D2, S13D3, 
+
+Embedded surface and surface curvature calculations:
+F10D2, S10D2, S10D3, S11D2, S11D3, F15D3, S15D2, S15D3, F16D2, S16D1, F17D3.
+
+----
+miscellanous:
+F15D2, S16D3.
+
+

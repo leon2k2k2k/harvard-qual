@@ -1,5 +1,7 @@
 8/19 Algebra review:
 
+Initial thoughts: I reviewed through algebra once already and feels much better afterwards.
+
 Overview: not too much to do honestly. I think I can finish reviewing them in a morning. Namely Galois group stuff, I think there are just the solvability and discrminants thing that I have to know, then do some practice with finding polynomials with specific Galois group.
 
 
