@@ -221,7 +221,7 @@ Given a finite group $G$, we can write down a table, with columns indexed by con
 
 Galois theory is very similar to covering space theory, however in this case the (absolute) Galois group is profinite, so a bit harder to understand. 
 
-\subsubsection{Normality and Separability}
+\subsubsection{Normality}
 
 
 Let $F$ be a field. We will consider finite field (algebraic) extensions over $k$. Examples of them are  $F[x]/f(x)$ where $f$ is an irreducible polynomial over $k$. 
@@ -260,8 +260,17 @@ Another one is $\mathbb{Q}[x]/(x^2 - 2)$, aka adjointing $\sqrt{2}$. In fact, an
 An example of a non-normal extension is $\mathbb{Q}[\sqrt{2}^3]$, because this is contained in $\mathbb{R}$ (really an embedding of this into $\mathbb{C}$), but the other two are complex. 
 \end{example}
 
-We also have the notion of separable:
 
+\subsubsection{Separability and Discriminants}
+
+Given a polynomials $f$ and $g$, we can ask how to determine if they have a common factor base on their coefficients (common root in some extension). And the answer is that in that case $f, xf, ..., x^n f, g, ..., x^m g$ are linear dependent, thus the determinant of the matrix associated to this vanishes, it is product of $(\lamda_i - \mu_j)$ for $\lambda, \mu$ roots of $f$ and $g$.
+
+To ask if $f$ has repeated roots, it is equivalent to ask if $f$ and $f'$ has common factors, the resultant of $f$ and $f'$ is called the discrimants, with the formula 
+$$
+Disc_(f) = (-1)^{n(n-1)/2}\prod(r_i - r_j)
+$$
+it is invariant under galois group thus it is a polynomial in the coefficients. It is a degree $2(n-1)$ polynomial on coefficients of $f$. THIS IS SUPER IMPORTANT!!!!
+We also have the notion of separable:
 
 \begin{definition}
 A polynomial $f \in F[x]$ is separable if it has no repeated roots (in $\overline{F}$).

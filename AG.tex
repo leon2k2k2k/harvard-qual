@@ -1,7 +1,305 @@
 \documentclass[main.tex]{subfiles}
-
+\newcommand{\Pn}[1]{\mathbb{P}^{#1}}
 \begin{document}
 
 \section{Algebraic Geometry}
 There are many different types of Algebraic Geometry problem, roughtly, there is enumerative geometry (incidence, containment, intersections problems), projective geometry (blowups), curves (hyperelliptic, Riemann-Roch), smoothness (show rings not equal by looking at resolutions) . Note that this review is personal and reflect things I am comfortable and uncomfortable with.
+
+\todo[inline]{Review resultant of two polynomials, as well as maps from a projective variety has closed image}
+
+\subsection{Projective Geometry}
+Let $\mathbb{P}^n$ be the projective $n$-space.
+
+Note that we have following important theorem:
+\begin{theorem}
+If $X \rightarrow Y$ is a projective map (for example if $X$ is projective variety, then the image is a closed subvariety of $Y$.
+\end{theorem}
+
+\begin{example}[Veronese Embedding]
+then considering degree $d$ polynomials (that is, the sheaf $\mathcal{O}(d)$) gives an embedding
+$$
+v_d: \mathbb{P}^n \rightarrow \mathbb{P}^N
+$$
+with $N = h^0(\mathcal{O}(d)) = \binom{d+n}{n}$, it is degree $d$ and cut out by quadratic polynomials. 
+\end{example}
+
+\begin{example}[Segre Embedding]
+We have the sheaf $\mathcal{O}(1) \boxtimes \mathcal{O}(1)$ on $\mathbb{P}^n \times \mathbb{P}^m$, giving the segre maps:
+$$
+\sigma_{n,m} \mathbb{P}^n \times \mathbb{P}^m \rightarrow \mathbb{P}^{(n+1)(m+1) - 1}
+$$
+It is also cut out by quadratic equations, in fact they are vanishing of $2\times 2 $minors. 
+\end{example}
+
+The Segre variety $\Sigma_{1,1}$ is the surface in $\mathbb{P}^3$ cut out by $Z_0 Z_3 - Z_1 Z_2$, at each point, the fibers of $\mathbb{P}^1 \times \mathbb{P}^1$ to the projection maps gives lines on the Segre variety.
+
+\begin{example}[Cones]
+Take $X \subset \Pn{n}$ and a point $q \in \Pn{n}$ not on $X$, then we can define the cone to be the variety of all the points lying on $\overline{xq}$ with $x \in X$. 
+
+Now given complementary linear subspaces $\Gamma$ and $\Phi$, then given any $X \subset \Phi$, we can define $\overline{X, \Gamma}$ to be union of all $(k+1)$-planes $\overline{x, \Gamma}$ with $x \in X$. This is doing the point cone construction $dim \Gamma + 1$ times. In coordinates, this is adding a coordinate. 
+\end{example}
+
+
+\begin{example}[Quadratics]
+Given a quadric hypersurface $X$ in $\Pn{V}$ (away from char $2$), $Q$ is the polynomial cutting it out. Then we have associated linear form $Q_0$:
+$$
+Q(v) = Q_0(v, v), Q_0(v, w) = \frac{Q(v+w) - Q(v) - Q(w)}{2}
+$$
+$Q_0$ symmetric and bilinear, thus we also have $Q': V \rightarrow V^*$. By classification of symmetric bilinear forms on $V$, we have there are suitable basis $Q(X) = X_0^2 + X_1^2 + ... + X_k ^2$.  We say $Q$ has rank $k+1$. Rank $1$ gives double plane $Q = L^2$. $X$ is smooth iff $Q$ has maximal rank $n+1$. The associated bilinear form is nondegerate. In general:
+All quadric with polynoof rank $k \geq 2$ is the cone, with vertex $\Gamma \cong \Pn{n-k}$, the subspace of the kernel of $Q'$, over a smooth quadric $\overline{X}$ in $\Pn{k-1}$.
+
+This gives subvarieties by the theory of resiultant.
+
+This genearlized to given complementary linear subspaces $V, U$, and we project away from $U$ to $V$: $\Pn{n} - U \rightarrow V$.
+\end{example}
+
+\begin{examle}[Projections]
+We can also project away from a point, and generally, a linear subspace.
+
+Given a hyperplane $\Pn{n-1}$ and a point $p$, then we have 
+$$
+\pi_p: \Pn{P}^n - \{p\} \rightarrow \Pn{n-1}
+$$
+by sending $q$ to the point that lies on both $\Pn{n-1}$ and $\overline{pq}$. In coordinates, this is just dropping a coordinate (ofc this means that all the other ones can't be all zero).
+\end{examle}
+
+
+
+
+\begin{theorem}[Hilbert's Nullstenatz]
+In nice (say quasi-projective) situations, then the functions that vanish on all points where an ideal $I$ vanish is the radical of $I$. 
+\end{theorem}
+
+\subsection{Grassmannian}
+Grassmannian parametrizes $k + 1$ planes in $V$ (through the origin) = $k$ planes in $\Pn{V}$, we denote it as $G(k+1, dim V) = \mathbb{G}(k, dim V -1)$
+
+We have the Plucker's embedding: given $W \subset V$ a $k$-dimensional linear subspace spanned by $v_1, ..., v_k$, then we have
+$$
+\lambda = v_a \wedge ... \wedge v_k \in \bigwedge^k (V)
+$$
+
+Different basis just changes this by the determinant of the change of matrix. This gives map 
+$$
+\phi: G(k, V) \rightarrow \Pn(\bigwedge^k V)
+$$
+this is an inclusion as given any $[\omega]$, we can recover $W$ as the space of vector $v$ such that $v \wedge w = 0$. 
+
+We get the Plucker coordinates, which given the plane $W$ as $k \times n$ matrix, then the Plucker coordiantes are just the maximal minors. 
+
+To show that it is a subvariety, we have to characterized totally decomposable vectors. They are precisely those such that the map 
+$$
+- \wedge \omeage: V \rightarrow \bigwedge^{k+1} V
+$$
+is rank $n-k$, it is generally greater than $n-k$. Thus it is defined by vanishing of $(n-k + 1) \times (n-k + 1)$ minors of the matrix. However, they don't generate the relation, called the Plucker relations. 
+
+Note that we have the universal $k$-plane correspondence $E \subset \Pn(V) \times G(k, V)$. This shows that join of two varieties is another projective variety
+\begin{example}
+Given $X, Y \subset \Pn(V)$, then the join $\overline{XY}$ of $X$ and $Y$ is all the points lying on a line between a point of $X$ and a point of $Y$.
+\end{example}
+
+We also have the Fano varieties:
+\begin{definition}
+Let $X \subset \Pn{n}$, then the Fano variety associated to $X$ is the variety to $k$-planes contained in $X$, this is a subvariety of $\mathbb{G}(k,n)$. 
+\end{definition}
+
+
+\subsection{Rational Maps and Blow ups}
+
+\subsubsection{Rational Maps}
+
+A rational map $X \rightarrow Y$ is a equivalence class of map $\phi$ defined on a (dense) open subset of $X$ to $Y$, any two are equivalent if they agree on their intersection.
+
+Example of that is $\mathbb{A}^{n+1} \dashrightarrow \Pn{n}$.
+Given a rational map, we have its graph to be the closure of any graph of any actual map from an open subset. This is independent of the choice of open subset. This allows us to define the domain of definition as the largest open subset $U$ in $X$ such that the restriction of the graph on $U$ is an iso (there are no indeterminancy). The complement is called the indeterminancy locus.
+
+Two varieties are birational if there are rational maps going back and forth and they are equal, this is true iff there are open subsets that are isomorphic to each other, iff the field of fractions are the same.
+
+A variety $X$ is rational iff it is birational to $\Pn(n)$ iff its field of fraction is $K(x_1, .., x_n)$ iff $X$ has an open subset iso to open subset of $\mathbb{A}^n$. 
+
+
+\begin{remark}
+Using projection away from a point, we see that all irreducible varieties are birational to a hypersurface.
+\end{remark}
+
+\sbusubsection{Blowups}
+There is a birational map $\pi: \tilde{X} \rightarrow X$ that is iso away from a subvariety $Y$. If $Y$ is locally cut out as $z_1 = .. z_n = 0$, then locally the blow-up is the subspace of $U \times \Pn{n-1}$, $\Pn{n-1}$ has coordinates $w_1...$ cut out by $z_i w_j = z_j w_i$. The exceptional divisor is the $\Pn{n-1}$ with $z_i = 0$. 
+
+It resolves singularity and indeterminancy of rational maps:
+\begin{theorem}
+Let $x$ be any variety and rational map $X \dashrightarrow \Pn{n}$, then $\phi$ can be resolved by a sequence of blow-ups to a regular map. Thus a rational map is a regular map on a blow-up of $X$. 
+\end{theorem}
+
+\begin{example}
+Given the quadric surface $Q$ cut out by $Z_0 Z_3 - Z_1 Z_2 = 0$, take $p \in Q$, then projecting away from $p$ is a rational map. Since general line goes through $p$ exactly at one other point, so it is generically one to one. So it has a partial inverse and is rational ($Q \cong \Pn{1} \times \Pn{1}$). To resolve the singularity at $p$, we blow up at that point, the blow up is exactly the graph of this rational function. In addition, the projection to $\Pn{2}$ is iso way from two points corresponding to the two lines containing $p$ in $Q$. So the blow up $\Gamma$ is also the blow up of $\Pn{2}$ at those two points.
+\end{example}
+
+\subsection{Dimensions}
+Here's some foundational facts about dimensions (which is the Krull dimension aka the transcedental degree of the field of fractions over the base field):
+
+\begin{theorem}
+Given a map $X \rightarrow Z$ of quasi-projective varieties to a projective one. Let $Y$ be the closure of the image, then dimesion of the fiber, as a map on $Y$ is an upper-semicontinuous function on $Y$. In addition, if $\mu$ is the minimum value, then 
+$$
+dim(X) = dim(Y) + \mu
+$$
+\end{theorem}
+
+\begin{example}
+An example of where the dimensions jumps up is blow-ups at subvarieties.
+\end{example}
+
+A corollary is that 
+\begin{theorem}
+For $\pi: X \rightarrow Y$ be regular map of projective varities, with $Y$ irreducible. If all fibers are irreducible of the same dimesions $d$, then $X$ is irreducible.
+\end{theorem}
+
+This is super useful to proof that the total space of a fibration is irreducible. 
+
+
+
+\subsubsetion{examples}
+Dimension of $\Pn{n}$ is ofc $n$. Dimension of Grassmannian is $G(k,n) = \mathbb{G}(k-1, n-1)$ is $k(n-k)$. Dimension of cone $\overline{pX}$ is $d+1$ unless $X$ is linear and $p \in X$.
+Projection of a variety away from a point $p$ is $X$ unless $X$ is a cone with vertex $p$. 
+
+\begin{example}
+Recall we have the secant variety of lines associated to $X \subset \Pn^n$, defined as the closure of rational map 
+$$
+X \times X \dashrightarrow \mathbb{G}(1,n)
+$$
+mapping $p,q \mapsto \overline{pq}$.
+
+If $X$ is not a linear subspace, then this is generically finite and thus secant line has dimension twice of $X$. 
+
+This implies that the secant variety of lines is a proper subvariety of the variety of incident lines for $X \subset \Pn{n}$ with dimension $k \leq n-1$ (the variety of lines containing a point of $X$). This in turns implies that for general projection maps $X$ birational to its image, thus every variety is birational to a hypersurface.
+
+The secant variety is the image in $\Pn{n}$ of the universal plane of the secant variety of lines. It is irredcuible of dimension at most $2k+1$ with equality iff any general point $p \in \overline{qr}$ lies only on a finite number of secant lines.
+\end{example}
+
+\begin{example}
+The Fano variety $F_k(X)$ parametrizes $k$-planes lying on $X$.
+
+Consider the correspondence between hyperplane of degree $d$ and planes lying on it. The fiber over a point coresponding to a hyperplans is exactly the Fano variety $F_k(X)$.
+
+We see that the expected dimension of the Fano variety over a generic hypersurface is 
+$$
+dim(F_k(X)) = (k+1)(n-k) - \binom{k+d}{d}
+$$
+\end{example}
+
+\subsection{Hilbert Function and Polynomials}
+
+Given $X \subset \Pn^n$, then we have the corresponding graded ring of functions $S(X) = k[Z_0, ..., Z_n]/I(X)$, with $I(X)$ the ideal associated to $X$.
+
+Then we define $h_X(m) \coloneqq dim(S(X)_m)$ called the Hilbert function of $X$. Note it heavily depends on the embedding (aka the very ample line bundle on $X$).
+
+\begin{remark}
+As we will see, the Hilbert polynomial is stable under perturbation but Hilbert function is more sensitive, the lower parts of it captures collinearity type information.
+\end{remark}
+
+\begin{example}
+Let $X$ consists of three points in the plane, then $h_X(1)$ tells us if the three points are collinear. 
+
+In general, for $d$ points, there is a $d-1$ degree polynomial that vanishes in all but one point, this means that the map from $d-1$ polynomials to $K^d$ by evaluation on $p_i$ is surjective, thus $h_x(m) = d$ for $m \geq d-1$. However, the lower part of this describes how collinear the map is. 
+\end{example}
+
+\begin{example}
+If $X \subset \Pn{2}$ is a curve, vanishing of $F(Z)$ of degree $d$. Then its vanishing ideal generated by polynomial of degree $m$ divisible by $F$, so 
+$$
+dim(I(X)_m) = \binom{m-d+2}{2}
+$$
+and for $m \geq d$, 
+$$
+h_X(m) = d \times m - \frac{d(d-3)}{2}
+$$
+\end{example}
+Note that there exists a polynomial $p_X$ such that for sufficiently large $m$, $h_X(m) = p_X(m)$; this is called the Hilbert polynomial and its degree is the dimension of $X$ and the top coefficient is $d/k!$ with $d$ called the degree of $X$. It is the number of points of intersection between $X$ and a general $n-k$ plane.
+
+
+\subsection{Gauss Maps}
+Given a variety $X \subset \Pn{n}$, then the assignment $x \mapsto \mathbb{T}_x(X)$ the projective tangent space on smooth points gives a rational map to $\mathbb{G}(k,n)$. If $X$ is smooth, this is a regular map, note that the projective tangent space is the kernel of linear map given by $\partial F/\partial Z_i$ with $F$ collection of generators of the ideal of $X$.
+
+\begin{example}
+If $X$ is a hypersurface associated to $F$, then the Gauss map $X \rightarrow \mathbb{G}(n-1, n) = \Pn{n}^*$ is given by 
+$$
+p \mapsto [\frac{\partial F}{\partial Z_0}(p_0) ...]
+$$
+Note that when $F$ is degree $2$, then this is linear. In fact, we have a $F$ associated to the symmetric bilinear form $Q$ and when $X$ is smooth the form is nondegenerate, thus giving an iso $Q': V \cong V^*$.
+
+For $F$ with degree $d \geq 2$, the fibers of finite thus it gives another hypersurface. In fact, the space of tangent $k$-planes is again $k$ for any $k$-dimensional variety that is not a linear space.
+\end{example}
+
+\subsubsection{Tangential Varieties}
+$X \subset \Pn{n}$ dim $k$, then $TX$ the union of $k$-planes corresponding to the image to the Gauss map is called the tangential variety. It is at most dimension $2k$ with equality holding iff a general point $q$ on a general tangent plane only lies on finite many points.
+
+\subsubsection{Dual Varieties}
+A tangent hyperplane to a variety $X$ is a hyperplane that contains a tangent plane to $X$. The locus of all such hyperplane is called the dual varieties of $X$. It is hyperplanes $H$ such that the intersection $H \cup X$ is singular (when $X$ is smooth).
+
+Here's a cool theorem:
+\begin{theorem}
+Let $X \subset \Pn{n}$ be an irreducible variety and $X^*$ its dual, then the incidence varieties associated to $X^*$ is the incidence varieties associated to $X$, thus the double dual of a variety of a variety is itself.
+\end{theorem}
+
+\subsection{Degree}
+A projective variety $X \subset \Pn{n}$ has a fundamental notion called the degree.
+
+Using cohomology theory, if $X$ has dimension $k$, then 
+$$
+deg(X) = <\alpha^k, i_*[X]> = <i^*(\alpha)^k, [X]>
+$$
+this is helpful if we can get a handle on the Chern class of the line bundle corresponding to the inclusion map $i: X \rightarrow \Pn{n}$.
+\begin{example}
+The veronese varieties, that is, the image of $v_d: \Pn{n} \rightarrow \P{N}$ is $d^n$ as every hyperplane pulls back degree $d$ hypersurface.
+\end{example}
+
+\begin{example}
+Now consider the Segre embedding, then $\mathcal{O}(1)$ pullsback to $\mathcal{O}(1) \boxtimes \mathcal{O}(1)$, thus 
+$$
+deg(\Sigma_{m,n}) = <(\alpha + \beta)^{m+n}, [\Pn{m} \times \Pn{n}] = \binom{m+n}{n}
+$$
+\end{example}
+
+\begin{example}
+As the intersection of a cone $\overline{pX}$ is projectively equivalent to $X$, we see that the degree of the cone is same as the degree of $X$.
+\end{example}
+\subsection{Quadrics}
+Quadrics shows up a lot in the qual exams. 
+
+Once again, we have $Q$ a homogeneous quadratic polynomial $Q: V \rightarrow K$, with associated bilinear form $Q_0$ and map $Q': V \rightarrow V^*$. The rank of $Q$ is the rank of $Q'$. Lower rank is a cone with vertex being the kervel of $Q'$, over a smooth quadric hypersurface on a nondengenerate complementary subspace.
+
+The tangent space at $v$ us $2Q_0(v, -)$, thus \begin{enumerate}
+    \item If $Q'(v) \neq 0$, then it is smooth at $v$ with tangent plane $Q'(v)$.
+    \item if $Q(v) = 0$, it is singular at $v$.
+\end{enumerate}
+The Gauss map is the restriction of the linear map $Q': \Pn{V} \rightarrow \Pn(V^*)$
+
+The intersection of $Q$ with its projective tangent plane $T_x Q$ at smooth point $x \in Q$ is a rank $rank(Q)-2$ hypersurface in $T_x Q. \cong \Pn{n-1}$.
+
+For a general hypersurface $H$ and $Q' = Q \cap H$, then 
+$$
+rank(Q) -2 \leq rank(Q') \leq rank(Q)
+$$
+with equality hold iff $H$ is tangent to $Q$. This obviously generalizes.
+
+\begin{example}
+All plane conics are projective equivalent to $v_2: \Pn{1} \rightarrow \Pn{2}$, giving a conic, we simply project away from a point $x \in Q$, it extends to an iso with $x$ mapped to infinity.
+\end{example}
+
+\begin{example}
+Quadric Surfaces: image of Segre map $\sigma_{1,1}: \Pn{1} \times \Pn{1} \rightarrow \Pn{3}$ is a smooth quadric. Every smooth quadric is obtained this way. It has two rulings by line with unique ruling passing through each point $x \in Q$. There is two lines passing through two points as the the quadric intersects the tangent plane to is a rank 1 quadric in the tangent plane, that is, a union of two lines.
+\end{example}
+
+\subsubsection{Quadrics in \Pn{n}}
+Take $x$ not in $Q$ and project away, any line will intersect in one (nonreduced) or two points, so it is a two-sheeted branch cover over $H \cong \Pn{n-1}$. The branch points are where $\overline{xp}$ is tangent to $p \in Q$, equivalently, $p$ lies in the hyperplane $Q'(x)$. Since $x$ is not in $Q$, the hyperplane $Q'(x)$ is not tangent to $Q$, and they intersect in a smooth quadric $C$, which project isomorphically to a smooth quadric $\overline{C} \subset H$. Thus it is a double cover branched over a smooth quadric.
+
+
+We can also project from a point $x \in Q$, this is a rational map, and does not extend. The graph is the blow-up of $Q$ at the point $x$, with projection carry the exceptional divisor $E$ to to the hyperplane $T_x Q \subset H$. This projection also collapse all the lines on $Q$ through the point $x$. The intersection is of rank $n-1$ so it is a cone over a smooth quadric hypersurface inside $T_x Q \subset H \cong \Pn{n-2}$. In fact the graph $\Gamma$ is the blow-up of the pyperplane along the quadric $C$. 
+
+\subsubsection{Linear Spaces on Quadrics}
+We want to understand the Fano variety
+$$
+F_k(Q) = \{\Gamma: \Gamma \subset Q\} \subset \mathbb{G}(k,n)
+$$
+
+A plane $\Gamma = \Pn{W}$ lies in a quadric $Q$ means that the subspace $W \subset V$ is isotropic, that is, $Q|_W = 0$, or that $Q'(W) \subset Ann(W)$. If $Q$ is smooth, then $Q'$ is an iso and $2 dim(W) \leq dim(V)$. And in fact converse is true.
+
+The Fano variety are nonempty when $k \leq m/2$ and irreducible for $k < m/2$, in the case $k = m/2$ there are two connected component, each one iso to $F_{k-1, 2k-1}$
 \end{document}

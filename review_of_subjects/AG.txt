@@ -3,10 +3,11 @@
 Initial thoughts: need to review the lecture notes. 
 
 Overview: First thing I should probably do is to take a look at Harris's lecture notes. I am not comfortable with some of the projective geometry things (secant variety, Segre variety,  and especially quadratic hypersurfaces, which always gets me). The qual study guide gives which sections to look at.
-
 It seems like I am still a bit uncomfortable with AG, let's definitely spend an entire day or two on this.
-
 Afterwards I should probably go back and (re)do all these exercises again.
+
+
+
 
 Topics:
 
