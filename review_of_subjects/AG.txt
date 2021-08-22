@@ -13,7 +13,7 @@ Topics:
 
 Projective geometry:
 1. Quadratic surfaces: there is the general theory, like for it to be smooth the associated pairing has to be nondegenerate, and then what is the largest dimension of  linear subspace contained in it.F10D3, S11D3, F15D2, 
-2. Birationality and Blowups: F11D1, F15D2. Esp. blow up of a point on a surface. Its picard group. Why is the. self-intersection of the canonical divisor.
+2. Birationality and Blowups: F11D1, S15D2. Esp. blow up of a point on a surface. Its picard group. Why is the. self-intersection of the canonical divisor.x
 3. Secant variety: F11D2, S11D1, 
 4. Geometry of linear subspaces: F11D3,
 5. degrees of embeddings.
