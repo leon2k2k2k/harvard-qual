@@ -37,3 +37,8 @@ S15D3. S16D3.
 Specific things:
 Remember the all important theorem that says that given $X \rightarrow Y$ with Y irreducible, and fibers are same dimension and irreducible -> X is irreducible.
 
+
+
+
+8/22: 
+Review through all of them, feeling good about AG now!

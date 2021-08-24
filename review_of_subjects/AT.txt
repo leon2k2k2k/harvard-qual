@@ -6,6 +6,7 @@ I feel pretty confident about AT, just need to review some specific things like 
 Overview:
 I just need to write down all the formulas and go back and review through the questions, should not take more than a whole day.
 
+Luckily, all of those are available in the in quals-material's "algebraic-topology.pdf"
 -----------------
 Formulas to remember:
 Kunneth formula, universal coefficients theorem, excision, Mayer-Vietoris, cofiber sequence, 

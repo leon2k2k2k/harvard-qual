@@ -1,72 +1,20 @@
-%%%%%%%%%%%%
+8/22 plan:
 
-A. Pretty comfortable, feel like only need practice with finding polynomials whose splitting field has certain Galois group.
-
-AG. Pretty good. I would like to go through Harris's "lecture notes" for some of the projective geometry part, like quadratic hypersurfaces etc.
-
-AT. The most comfortable with. If I have time I would like to take a morning to do some reviewing.
-
-DG. Okay, mostly need calculation practices with Guassian curvature and stuff.
-
-RA. Need help. Not really comfortable with all of the questions. Need knowledge on the esoteric topology of things, namely the Baire category theory and its applications.
-
-CA. Currently working on it. Doing a lot better than RA. Hopefully after this week I will be pretty good with it.
-
-%%%%%%%%%%%
-
-8/18 status:
-
-took one full practice test and got pretty satisfying results (pass 5/6 and likely passed RA by my own grading).
-
-Have 4 more practice tests and have 11 days!!!
+Things I need to work on:
+1. CA and RA. For CA I need to learn about entire functions and convergence, go through the CA.txt file and look through all the previous questions.
+For RA I need Baire category theory and limit stuff like criterion for derivative and integral to commute etc. Let's try to finish learning all the new materials and go back into practice questions/calculation mode, esp. for DG.
+2. I need to really review the newer tests. If I have time I would also like to review some older ones but who knows.
+3. I think the last exam let's take the full three hours and really sit down and simulate the testing environment. The last two exams I need to fully write out the answers to questions.
 
 
-8/18: 
-Review F17 practice test and grade it.
-Write out a plan for the reminder of the days before qual, which is 8/31st.
+8/22 comfortability for each subjects:
+A. pretty comfortable, just need a quick review and ready to get it behind me.
+AG. Quite comfortable, ready Harris's lecture notes and going through the problem again really helps.
+AT. Again quite quite comfortable, feel like I can do most problems just from looking at it.
+DG. Really need practice with solving ODE and stuff!!!!! Also need calculation practices.
+RA. Not comfortable with it, there are quite things I need to learn and also need to be better with just basic real analysis stuff. Go through the questions.
+CA. Same here, learn and go through.
 
-Review: pretty good, there are definitely rooms to improve on but I think I am at a good stage for right now.
-
-Plan: 
-
-Testings: I have 4 newest tests still available, so I would like to take one this weekend. 2 next week, and last one the weekend and Monday before the quals.
-
-Right now, let's try to review through all of the problems from 2010-2017 for each subjects and write down things that I feel like I need more work on. Let's try to finish this before the beginning of next week.
-
-Write down not only concepts I need to know, but also keep track of specific (counter)examples I should remember, like how to construct specific groups etc. 
-
-Next week, I would like to go through each subject and learn/work on the specific things that I wrote down. 
+I think the plan is let's do CA next, learn entire function then go through all the questions we have had so far and do them. Then do RA.
 
 
-
-So here's a rough schedule
-
-8/18: 
-Write down the schedule.
-
-8/19 -8/20:
-Review through the questions 2010-2017 and write down topics and examples and counterexamples that i need to review study for. Also review the old qual resources.
-
-
-For example, field extension theory, discriminant in A/AN, residue calculations, entire functions in CA, topological arguments in RA...
-
-For examples: 
-
-A: discriminants, Galois field extensions. Cyclotomic extensions for finite fields.
-
-AG: look through Harris's lecture notes on the projective geometry part.
-
-AT: oriented and unoriented surfaces and the polygon gluing, excision and some other suff.
-
-
-RA: Baire category and open mapping theorem, close graph theorem and something something.
-DG: solving ODE and Gaussian curvature technique and calculations. 
-
-CA: residue calculations, entire functions and infinite products. Standard power series (1/1-z, log(1-z)..., e^z)
-
-8/21-8/22:
-Take another practice exam, use the rest of the time reviewing. Hopefully we can go through say one subject each day.
-
-8/22 - 8/27: finished reviewing. Do another test
-
-8/27-8/30: fini

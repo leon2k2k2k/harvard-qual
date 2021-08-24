@@ -560,6 +560,13 @@ Now we study given $z_i$ countable, can we find $f$ entire such that it vanishes
 
 \subsubsection{Infinite Products}
 
+First we have a criterion for when an infinite product converges, the idea is that the terms in the product need to be close to 1 and in there we can take the log and turn it into a exponential of a infinite sum. 
+
+\begin{proposition}
+If $\Sigma |a_n| < \infty$, then the product $\prod(1+a_n)$ converges and the product converges to $0$ iff one of its factors is 0.
+\end{proposition}
+
+
 \begin{proposition}
 If $\{F_n\}$ is sequence of holomorphic functions on $\Omega$, if exists $c_n > 0$ such that 
 $\sum c_n < \infty$, and $|F_n(z) - 1| \leq c_n$, then 
@@ -574,7 +581,7 @@ $\sum c_n < \infty$, and $|F_n(z) - 1| \leq c_n$, then
 
 An example is 
 $$
-\frac{sin \pi z}{\pi } = z \prod (1 - \frac{z^2}{n^2}
+\frac{sin \pi z}{\pi } = z \prod (1 - \frac{z^2}{n^2})
 $$
 
 Here's the theorem:
@@ -586,6 +593,40 @@ $$
 where $g$ is entire.
 \end{theorem}
 
+The idea is that for every zero $a_n$, we add in factor $(1-z/a_n)$, but this will only converge for suitable choices of $a_n$. We correct this by adding exponetial factors:
+$$
+E_0(z) = 1-z, E_k(z) = (1-z)e^{z + z^2/2 + ... + z^k /k}
+$$
+$k$ is called the degree of the canonical factors.
+
+Given a zero of order $m$ at the origin, and $a_1, ...$ all non-zero, then we defined the Weirestrass product
+$$
+f(z) = z^m \prod E_n(z/a_n)
+$$
+
+\begin{theorem}
+This infinite product converges and defines an entire function with the properties:
+\begin{enumerate}
+    \item $f$ is entire with zero of order $m$ at the origin.
+    \item zeros at each point $a_n$
+    \item it vanishes nowhere else.
+\end{enumerate}
+\end{theorem}
+
+
+\subsubsection{Hadamard's Factorization Theorem}
+Weirestrass's theorem implies that a function that vanishes at $a_1, ...$ takes the form
+$$
+e^{g(z)}z_m \prod E_n(z/a_n)
+$$
+Hadamard tells us that in the case of functions of finite order, the degree of the canonical factors can be a constant, and $g$ is a polynomial:
+\begin{theorem}[Hadamard's Theorem]
+If $f$ is entire and has growth order $\rho_0$, let $k$ be such $k \leq \rho_0 < k+1$, if $a_i$ are the zeroes, then 
+$$
+f(z) = e^{P(z)}z^m \prod E_k(z/a_n)
+$$
+where $P$ is a polynomial of degree $\leq k$, and $m$ is the order of zero at $z =0$.
+\end{theorem}
 
 \subsection{The Gamma and Zeta Functions}
 They are super important, especially Zeta function.
